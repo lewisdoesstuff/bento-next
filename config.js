@@ -19,6 +19,13 @@ const CONFIG = {
 	theme: 'bento',
 	imageBackground: false,
 	iamgeUrl: './assets/background.jpg',
+
+	// Search Bar
+	searchBar: true,
+	searchEngine: 'google', // google, ddg
+	barStyle: 'bento',
+	barPlaceholder: '', // if blank, use search engine name. Set to ' ' for no placeholder.
+	
 	// Greetings
 	greetingMorning: 'Good morning!',
 	greetingAfternoon: 'Good afternoon,',

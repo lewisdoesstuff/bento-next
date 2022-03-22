@@ -19,7 +19,6 @@
   --fg-date: 8vh; /* Date */
   --fg-list: 2vh; /* Links List */
   --icon: 3vh; /* Icon Size */
-
 }
 
 
@@ -59,6 +58,7 @@ body {
   background-size: cover;
 }
 
+
 #themeButton {
   position: absolute;
   margin: 2em 2em 0 0;
@@ -94,7 +94,9 @@ body {
 .card:hover {
   transform: translateY(-0.2rem);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.35);
+  
 }
+
 
 .timeBlock {
   grid-row: 1 / span 2;
