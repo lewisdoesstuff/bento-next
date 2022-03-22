@@ -12,11 +12,13 @@ const CONFIG = {
 
 	// General
 	name: 'John',
-	imageBackground: false,
-	imageUrl: './assets/background.jpg', // Set custom background image URL. If the page is served insecurely, you may have issues loading images from pages over https.
 	openInNewTab: true,
 	twelveHourFormat: false,
 
+	// Theme
+	theme: 'bento',
+	imageBackground: false,
+	iamgeUrl: './assets/background.jpg',
 	// Greetings
 	greetingMorning: 'Good morning!',
 	greetingAfternoon: 'Good afternoon,',
