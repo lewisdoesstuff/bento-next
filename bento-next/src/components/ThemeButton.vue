@@ -1,5 +1,4 @@
 <script setup>
-import { config } from '../../config.js';
 import { ref, onMounted } from 'vue';
 
 onMounted(() => {

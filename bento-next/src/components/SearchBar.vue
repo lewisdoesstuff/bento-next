@@ -1,27 +1,27 @@
 <script setup>
-import { config } from "../../config.js";
-import { ref, onMounted } from "vue";
+import { config } from '../../config.js';
+import { ref, onMounted } from 'vue';
 
 const search = ref(null);
 
-const searchText = ref("");
+const searchText = ref('');
 onMounted(() => {
   search.value.focus();
 });
 
 const engines = {
   google: {
-    url: "https://www.google.com/search?q=",
-    display: "Google",
+    url: 'https://www.google.com/search?q=',
+    display: 'Google',
   },
   ddg: {
-    url: "https://duckduckgo.com/?q=",
-    display: "DuckDuckGo",
+    url: 'https://duckduckgo.com/?q=',
+    display: 'DuckDuckGo',
   },
 };
 
 const placeholder = () => {
-  if (config.barPlaceholder === "") {
+  if (config.barPlaceholder === '') {
     return engines[config.searchEngine].display;
   } else {
     return config.barPlaceholder;
@@ -32,9 +32,11 @@ const submitted = () => {
   if (config.openInNewTab) {
     window.open(`${engines[config.searchEngine].url}${searchText.value}`);
   } else {
-    window.location.href = `${engines[config.searchEngine].url}${searchText.value}`;
+    window.location.href = `${engines[config.searchEngine].url}${
+      searchText.value
+    }`;
   }
-  searchText.value = "";
+  searchText.value = '';
 };
 </script>
 
@@ -66,5 +68,4 @@ const submitted = () => {
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
