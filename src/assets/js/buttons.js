@@ -1,7 +1,9 @@
-// ┌┐ ┬ ┬┌┬┐┌┬┐┌─┐┌┐┌┌─┐
-// ├┴┐│ │ │  │ │ ││││└─┐
-// └─┘└─┘ ┴  ┴ └─┘┘└┘└─┘
-// Function to print Button Cards.
+//
+//    Bento-Next
+//    Buttons generator script
+//   
+//    https://github.com/migueravila/Bento - upstream
+//
 
 const generateFirstButtonsContainer = () => {
 	for (const button of CONFIG.firstButtonsContainer) {

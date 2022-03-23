@@ -1,4 +1,5 @@
-<script setup></script>
+<script setup>
+import SearchBar from './components/SearchBar.vue';</script>
 
 <template>
   <header>
@@ -10,7 +11,7 @@
       height="125"
     />
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <SearchBar />
     </div>
   </header>
 </template>
