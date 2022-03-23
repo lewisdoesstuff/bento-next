@@ -1,19 +1,14 @@
 <script setup>
-import SearchBar from './components/SearchBar.vue';</script>
+import SearchBar from "./components/SearchBar.vue";
+import ThemeButton from "./components/ThemeButton.vue";
+</script>
 
 <template>
-  <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="./assets/logo.svg"
-      width="125"
-      height="125"
-    />
-    <div class="wrapper">
-      <SearchBar />
-    </div>
-  </header>
+  <div id="app">
+    <ThemeButton />
+    <SearchBar />
+    <h1 class="underline font-bold"></h1>
+  </div>
 </template>
 
 <style>

@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "pwa-chrome",
+        "request": "launch",
+        "name": "vuejs: chrome",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}/bento-next/",
+        "breakOnLoad": true,
+        "pathMapping": {
+          "/_karma_webpack_": "${workspaceFolder}/bento-next/"
+        },
+        "sourceMapPathOverrides": {
+          "webpack:/*": "${webRoot}/*",
+          "/./*": "${webRoot}/*",
+          "/src/*": "${webRoot}/*",
+          "/*": "*",
+          "/./~/*": "${webRoot}/node_modules/*"
+        },
+        "preLaunchTask": "vuejs: start"
+      }
+    ]
+  }

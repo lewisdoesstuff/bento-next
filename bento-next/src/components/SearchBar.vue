@@ -1,9 +1,12 @@
 <script setup>
-import * as config from "../../config.js";
-import { onMounted } from "vue";
+import { config } from "../../config.js";
+import { ref, onMounted } from "vue";
 
+const search = ref(null);
+
+const searchText = ref("");
 onMounted(() => {
-  this.$refs.search.focus();
+  search.value.focus();
 });
 
 const engines = {
@@ -19,18 +22,19 @@ const engines = {
 
 const placeholder = () => {
   if (config.barPlaceholder === "") {
-    return engines[config.barPlaceholder].display;
+    return engines[config.searchEngine].display;
   } else {
     return config.barPlaceholder;
   }
 };
 
-const query = "";
-const submitted = (event) => {
-  event.preventDefault();
-  if (this.$config.openInNewTab) {
-    window.open(`${engines[config.searchEngine].url}${query}`);
+const submitted = () => {
+  if (config.openInNewTab) {
+    window.open(`${engines[config.searchEngine].url}${searchText.value}`);
+  } else {
+    window.location.href = `${engines[config.searchEngine].url}${searchText.value}`;
   }
+  searchText.value = "";
 };
 </script>
 
@@ -40,8 +44,7 @@ const submitted = (event) => {
       id="form"
       class="searchform"
       role="search"
-      @submit="submitted(e)"
-      :value="query"
+      @submit.prevent="submitted()"
     >
       <input
         type="search"
@@ -50,8 +53,9 @@ const submitted = (event) => {
         class="searchinput"
         id="query"
         name="q"
-        :src="placeholder()"
+        :placeholder="placeholder()"
         :aira-label="placeholder()"
+        v-model="searchText"
       />
       <button class="searchbutton">
         <svg class="searchsvg" id="path" viewBox="0 0 1024 1024">
@@ -59,12 +63,8 @@ const submitted = (event) => {
         </svg>
       </button>
     </form>
-    `
   </div>
 </template>
 
 <style scoped>
-@import url(../assets/app.css);
-@import url(../assets/main.css);
-@import url(../assets/bento.css);
 </style>
