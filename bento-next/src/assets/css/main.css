@@ -7,6 +7,9 @@
   --icon: 3vh; /* Icon Size */
 }
 
+.card {
+  @apply shadow-md rounded hover:-translate-y-2
+}
 
 * {
   margin: 0;

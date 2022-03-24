@@ -26,15 +26,15 @@ const setWeather = () => {
 </script>
 
 <template>
-  <div class="weather flex align-center justify-center">
-    <div class="weatherIcon w-16 h-16">
-      <img :src="icon" />
+  <div class="weather flex items-center justify-center">
+    <div class="weatherIcon">
+      <img class="w-16 h-16" :src="icon" />
     </div>
-    <div class="weatherValue text-3xl font-black font-sans ml-4">
-      <p>{{ temp }}°</p>
+    <div class="weatherValue ">
+      <p class="text-3xl font-bold font-sans ml-4">{{ temp }}°</p>
     </div>
-    <div class="weatherDescription text-2xl font-sans mt-1 ml-2">
-      <p>{{ description }}</p>
+    <div class="weatherDescription">
+      <p class="text-2xl font-sans mt-1 ml-2">{{ description }}</p>
     </div>
   </div>
 </template>
