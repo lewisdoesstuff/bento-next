@@ -18,7 +18,7 @@ const CONFIG = {
   // Theme
   theme: "bento",
   imageBackground: false,
-  iamgeUrl: "./assets/background.jpg",
+  imageUrl: "./assets/background.jpg",
 
   // Search Bar
   searchBar: true,
@@ -37,7 +37,7 @@ const CONFIG = {
   bentoLayout: "bento", // 'bento', 'lists', 'buttons'
 
   // Weather
-  weatherKey: "286314faafe9e3b2b45b6d66596aa6ab", // Write here your API Key
+  weatherKey: "YourOpenWeatherMapAPIKey", // Write here your API Key
   weatherIcons: "OneDark", // 'Onedark', 'Nord', 'Dark', 'White'
   weatherUnit: "C", // 'F', 'C'
   language: "en", // More languages in https://openweathermap.org/current#multi
