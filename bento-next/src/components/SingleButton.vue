@@ -26,7 +26,7 @@ const prefixedIcon = () => {
       :target="config.openInNewTab ? '_blank' : ''"
       class="card flex justify-center items-center w-max shadow-sm rounded-md hover:-translate-y-1 hover:shadow-lg"
       :class="'button__' + props.id"
-    ></a>
-    <fa-icon :icon="prefixedIcon()" class="w-10 h-10"></fa-icon>
+    ><fa-icon :icon="prefixedIcon()" class="w-10 h-10"></fa-icon></a>
+    
   </div>
 </template>

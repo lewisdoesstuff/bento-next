@@ -9,9 +9,9 @@ const getGreeting = () => {
   } else if (hour >= 6 && hour < 12) {
     return `${config.greetingAfternoon} ${config.name}`;
   } else if (hour >= 12 && hour < 17) {
-    return `${config.greetingEvening} + ${config.name}`;
+    return `${config.greetingEvening} ${config.name}`;
   } else {
-    return `${config.greetingNight} + ${config.name}`;
+    return `${config.greetingNight} ${config.name}`;
   }
 };
 </script>

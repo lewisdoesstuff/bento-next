@@ -22,7 +22,7 @@ import "./assets/css/main.css";
   <div id="app" class="width w-screen h-screen flex items-center justify-center">
     <ThemeButton />
     <SearchBar />
-    <div class="container w-5/6 h-5/6 grid grid-cols-4 grid-rows-4 gap-6 p-5">
+    <div class="container w-[145vh] h-[85vh] grid grid-cols-4 grid-rows-4 gap-6 p-5">
       <div class="timeBlock row-start-1 row-span-2 col-start-1 col-span-2 flex flex-col items-center justify-center">
         <DigitalClock />
         <Greeter />
@@ -37,7 +37,7 @@ import "./assets/css/main.css";
       </div>
 
       <div
-        class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-4 gap-6"
+        class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-2 gap-6"
         id="linksBlock"
       >
         <div class="linksBlockLeft row-start-1 row-span-2 col-start-1 col-span-2" id="linksBlockLeft">
