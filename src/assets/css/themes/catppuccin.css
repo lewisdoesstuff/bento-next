@@ -11,27 +11,19 @@
   --sfg: #f5e0dc; /* Secondary Foreground color */
 
   /* Image background  */
-  --imgcol: linear-gradient(
-    rgba(87, 82, 104, 0.85),
-    rgba(87, 82, 104, 0.85)
-  ); /* Filter color */
-}
+  --imgcol: linear-gradient(rgba(87, 82, 104, 0.85), rgba(87, 82, 104, 0.85)); /* Filter color */
 
-.darktheme {
   /* Dark Colors  */
 
-  --background: #1e1e2e; /* Background color */
-  --accent: #575268; /* Hover color */
-  --cards: #302d41; /* Cards color */
+  --darkbackground: #1e1e2e; /* Background color */
+  --darkaccent: #575268; /* Hover color */
+  --darkcards: #302d41; /* Cards color */
 
   /* Fonts Color */
-  --fg: #d9e0ee; /* Foreground color */
-  --sfg: #f5e0dc; /* Secondary Foreground color */
+  --darkfg: #d9e0ee; /* Foreground color */
+  --darksfg: #f5e0dc; /* Secondary Foreground color */
 
   /* Image background  */
   /* Image background  */
-  --imgcol: linear-gradient(
-    rgba(30, 30, 46, 0.85),
-    rgba(30, 30, 46, 0.85)
-  ); /* Filter color */
+  --darkimgcol: linear-gradient(rgba(30, 30, 46, 0.85), rgba(30, 30, 46, 0.85)); /* Filter color */
 }
