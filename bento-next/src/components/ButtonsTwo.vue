@@ -1,20 +1,14 @@
 <script setup>
 import { config } from "../../config";
+import SingleButton from './SingleButton.vue';
 
 const items = config.secondButtonsContainer;
-console.log(items);
 </script>
 
 <template>
-  <div>
-    <a
-      v-for="item in items"
-      :key="item.id"
-      :href="item.link"
-      :target="config.openInNewTab ? '_blank' : ''"
-      class="card button"
-      :class="'button' + item.id"
-    ></a>
-    <fa-icon v-for="item in items" :key="item.id" :icon="item.icon"></fa-icon>
+  <div class="contents">
+    <div class="contents" v-for="item in items" :key="item.id">
+      <SingleButton :id="item.id" :link="item.link" :icon="item.icon"></SingleButton>
+    </div>
   </div>
 </template>

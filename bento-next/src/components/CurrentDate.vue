@@ -25,14 +25,14 @@ const displayDate = () => {
   ];
 
   const date = new Date();
-  mm.value = monthNames[date.getMonth()];
+  mm.value = `${monthNames[date.getMonth()]} `;
   dd.value = date.getDate();
 };
 </script>
 
 <template>
-  <div class="date">
-    <div id="month">{{ mm }}</div>
-    <div id="day">{{ dd }}</div>
+  <div class="date flex align-center justify-center mt-7">
+    <div id="month" class="text-[8vh] mr-5"><p>{{ mm }} </p></div>
+    <div id="day" class="text-[8vh]">{{ dd }}</div>
   </div>
 </template>
