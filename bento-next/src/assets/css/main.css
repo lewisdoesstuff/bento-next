@@ -8,15 +8,14 @@
 }
 
 .card {
-  @apply shadow-md rounded hover:-translate-y-2
+  @apply shadow-xl rounded hover:-translate-y-2 bg-cards dark:bg-darkcards
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  transition: 0.2s ease-in-out;
+  @apply transition-all ease-in-out duration-150
 }
 
 
@@ -68,14 +67,12 @@
 .listIcon {
   /* margin-top: 3vh; */
   margin-bottom: 2vh;
-  color: var(--fg);
   width: var(--icon);
   height: var(--icon);
 }
 .listItem {
   text-decoration: none;
   font-size: var(--fg-list);
-  color: var(--fg);
   margin-top: 1vh;
   padding: 8px 12px;
   border-radius: 5px;

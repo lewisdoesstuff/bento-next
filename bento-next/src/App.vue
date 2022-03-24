@@ -19,7 +19,10 @@ import "./assets/css/main.css";
 </script>
 
 <template>
-  <div id="app" class="width w-screen h-screen flex items-center justify-center">
+  <div
+    id="app"
+    class="width w-screen h-screen flex items-center justify-center bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
+  >
     <ThemeButton />
     <SearchBar />
     <div class="container w-[145vh] h-[85vh] grid grid-cols-4 grid-rows-4 gap-6 p-5">
@@ -28,7 +31,7 @@ import "./assets/css/main.css";
         <Greeter />
       </div>
       <div class="weatherBlock col-start-3 col-span-2 row-start-1 row-span-2 flex flex-col items-center justify-center">
-        <div class="date flex items-center justify-center mt-8">
+        <div class="date flex items-center justify-center">
           <CurrentDate />
         </div>
         <Suspense>
@@ -80,7 +83,3 @@ import "./assets/css/main.css";
     </div>
   </div>
 </template>
-
-<style>
-@import "./assets/base.css";
-</style>

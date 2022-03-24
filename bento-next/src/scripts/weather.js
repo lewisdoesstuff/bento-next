@@ -1,8 +1,8 @@
-import { config } from '../../config';
+import { config } from "../../config";
 
 export const weatherPromise = getWeather();
 
-var tempUnit = config.tempUnit;
+const tempUnit = config.weatherUnit;
 
 const kelvin = 273.15;
 const key = config.weatherKey;
@@ -11,7 +11,7 @@ async function setPosition() {
   let pos;
   if (!config.trackLocation || !navigator.geolocation) {
     if (config.trackLocation) {
-      console.error('Geolocation not available');
+      console.error("Geolocation not available");
     }
     pos = { lat: config.defaultLatitude, lon: config.defaultLongitude };
   }
@@ -21,7 +21,7 @@ async function setPosition() {
       (pos) => {
         resolve({
           lat: pos.coords.latitude.toFixed(3),
-          lon: pos.coords.longitude.toFixed(3),
+          lon: pos.coords.longitude.toFixed(3)
         });
       },
       () => {
@@ -40,13 +40,12 @@ async function getWeather() {
     console.log(err);
   });
   let data = await response.json();
-
   let celsius = Math.floor(data.main.temp - kelvin);
   return {
     description: data.weather[0].description,
-    iconId: data.weather[0].icon,
+    icon: data.weather[0].icon,
     sunrise: data.sys.sunrise,
     sunset: data.sys.sunset,
-    temperature: tempUnit == 'C' ? celsius : (celsius * 9) / 5 + 32,
+    temperature: tempUnit == "C" ? celsius : (celsius * 9) / 5 + 32
   };
 }

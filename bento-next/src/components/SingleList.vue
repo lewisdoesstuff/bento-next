@@ -19,13 +19,13 @@ const prefixedIcon = () => {
 
 <template>
   <div class="contents">
-    <fa-icon class="listIcon mb-5 w-6 h-6" :icon="prefixedIcon()"></fa-icon>
+    <fa-icon class="listIcon mb-5 w-6 h-6 text-foreground dark:text-darkforeground" :icon="prefixedIcon()"></fa-icon>
     <a
       v-for="(link, index) in links"
       :key="index"
       :target="config.openInNewTab ? '_blank' : ''"
       :href="link.link"
-      class="listItem text-lg mt-1 p-2 rounded-md font-bold text-center w-4/5"
+      class="listItem text-lg mt-1 p-2 rounded-md font-bold text-center w-4/5 text-foreground dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent"
       >{{ link.name }}</a
     >
   </div>

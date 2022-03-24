@@ -27,9 +27,11 @@ setInterval(() => displayClock(), 1000);
 
 <template>
   <div class="clock flex align-center justify-center">
-    <div id="hour" class="text-[14vh] font-bold font-sans">{{ hh }}</div>
-    <div id="separator" class="text-[14vh] font-bold font-sans">{{ ":" }}</div>
-    <div id="minutes" class="text-[14vh] font-bold font-sans" >{{ min + ampm }}</div>
+    <div id="hour" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground">{{ hh }}</div>
+    <div id="separator" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground">{{ ":" }}</div>
+    <div id="minutes" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground">
+      {{ min + ampm }}
+    </div>
   </div>
 </template>
 
