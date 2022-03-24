@@ -7,8 +7,8 @@ const items = config.secondListsContainer;
 
 <template>
   <div class="contents">
-    <div v-for="item in items" :key="item.id" class="contents">
-      <SingleList :icon="item.icon" :links="item.links"></SingleList>
+    <div v-for="item in items" :key="item.id" :class="`list__${item.id}`" class="flex items-center justify-center flex-col card">
+      <SingleList class="contents" :icon="item.icon" :links="item.links"></SingleList>
     </div>
   </div>
 </template>

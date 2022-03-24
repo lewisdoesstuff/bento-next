@@ -8,7 +8,7 @@
 }
 
 .card {
-  @apply shadow-xl rounded hover:-translate-y-2 bg-cards dark:bg-darkcards
+  @apply shadow-md hover:shadow-xl shadow-gray-400/75 dark:shadow-black/40 rounded hover:-translate-y-2 bg-cards dark:bg-darkcards
 }
 
 * {

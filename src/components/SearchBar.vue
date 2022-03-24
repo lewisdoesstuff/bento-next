@@ -41,10 +41,10 @@ const submitted = () => {
 </script>
 
 <template>
-  <div class="search absolute m-3 top-0" ref="search">
+  <div class="search absolute my-2 top-0" ref="search">
     <form
       id="form"
-      class="searchform flex flex-row items-center transition-all ease-in-out duration-150"
+      class="searchform flex flex-row items-center rounded-md transition-all ease-in-out duration-150"
       :class="config.barStyle"
       role="search"
       autocomplete="off"
@@ -53,7 +53,7 @@ const submitted = () => {
       <input
         type="search"
         onfocus="this.select()"
-        class="searchinput h-full w-full p-2 bg-background dark:bg-darkbackground dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
+        class="searchinput h-full w-full p-2 rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darksforeground shadow-inherit"
         :class="config.barStyle"
         id="query"
         name="q"
@@ -62,11 +62,13 @@ const submitted = () => {
         v-model="searchText"
         ref="searchBox"
       />
-      <button class="searchbutton cursor-pointer w-16 h-11">
+      <button class="searchbutton unset cursor-pointer w-[4em] h-full p-2 rounded-r-md text-center ">
         <svg
-          class="searchsvg fill-current w-full h-full p-3 text-foreground dark:text-darkforeground shadow-inherit"
+          class="searchsvg text-foreground fill-current w-full h-full p-2 rounded-r-md bg-cards dark:bg-darkcards"
           id="path"
           :class="config.barStyle"
+          width="24"
+          height="21"
           viewBox="0 0 1024 1024"
         >
           <path class="path"></path>
@@ -78,25 +80,36 @@ const submitted = () => {
 
 <style scoped>
 form.bento {
-  @apply max-w-2xl mt-2 w-screen h-5 shadow-md rounded-md hover:shadow-xl;
+  @apply max-w-2xl mt-2 w-screen shadow-md rounded-md hover:shadow-xl;
 }
+
 form.boxy {
-  @apply max-w-2xl mt-2 w-screen h-5 shadow-md border-2 border-sforeground dark:border-darksforeground;
+  @apply max-w-2xl mt-2 w-screen shadow-md border-2 border-sforeground dark:border-darksforeground;
 }
 
 form.minimal {
-  @apply max-w-2xl mt-2 w-screen h-7 border-l-2 border-sforeground;
+  @apply max-w-2xl mt-2 w-screen h-7 border-l-8 border-sforeground text-transparent bg-cards dark:bg-darkcards;
 }
 svg.minimal {
   @apply hidden;
 }
 
+input.minimal {
+  @apply bg-transparent
+}
 form.rounded {
-  @apply max-w-2xl mt-2 w-screen h-5 shadow-md rounded-3xl;
+  @apply max-w-2xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
 }
 input.rounded {
-  @apply rounded-3xl;
+  @apply rounded-3xl bg-transparent;
 }
+button.rounded{
+   @apply  shadow-none h-full rounded-r-3xl
+}
+svg.rounded {
+  @apply rounded-r-3xl
+}
+
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,

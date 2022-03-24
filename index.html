@@ -5,10 +5,10 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./src/assets/css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Bento</title>
     <script type="module">
       import { config } from './config.js';
-      document.head.innerHTML += `<link rel="stylesheet" href="./src/assets/css/themes/${config.theme}.css" type="text/css"/>`;
+      import(`./src/assets/css/themes/${config.theme}.css`);
     </script>
     <script>
       if (
