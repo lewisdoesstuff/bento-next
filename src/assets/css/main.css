@@ -1,0 +1,82 @@
+:root {
+  /* Font Size */
+  --fg-primary: 12vh; /* Time and Greetings */
+  --fg-secondary: 3vh; /* Greetings and Weather widger */
+  --fg-date: 8vh; /* Date */
+  --fg-list: 2vh; /* Links List */
+  --icon: 3vh; /* Icon Size */
+}
+
+.card {
+  @apply shadow-xl rounded hover:-translate-y-2 bg-cards dark:bg-darkcards
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  @apply transition-all ease-in-out duration-150
+}
+
+
+.notransition {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.withImageBackground {
+  background-image: var(--imgcol), var(--imgbg);
+  background-size: cover;
+}
+
+.button__1 {
+  grid-row: 1;
+  grid-column: 1;
+}
+.button__2 {
+  grid-row: 1;
+  grid-column: 2;
+}
+.button__3 {
+  grid-row: 2;
+  grid-column: 1;
+}
+.button__4 {
+  grid-row: 2;
+  grid-column: 2;
+}
+.button__5 {
+  grid-row: 1;
+  grid-column: 3;
+}
+.button__6 {
+  grid-row: 2;
+  grid-column: 3;
+}
+
+.list__1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+.list__2 {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+.listIcon {
+  /* margin-top: 3vh; */
+  margin-bottom: 2vh;
+  width: var(--icon);
+  height: var(--icon);
+}
+.listItem {
+  text-decoration: none;
+  font-size: var(--fg-list);
+  margin-top: 1vh;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  width: 80%;
+}

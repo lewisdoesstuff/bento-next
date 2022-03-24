@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "vuejs: start",
+        "type": "npm",
+        "script": "dev",
+        "isBackground": true,
+        "options": {
+            "cwd": "${workspaceFolder}/bento-next/src"
+        }
+      }
+    ]
+  }
