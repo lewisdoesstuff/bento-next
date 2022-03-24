@@ -64,19 +64,19 @@ const CONFIG = {
     {
       id: "1",
       name: "Github",
-      icon: "github",
+      icon: "fab-github",
       link: "https://github.com/",
     },
     {
       id: "2",
       name: "Mail",
-      icon: "mail",
+      icon: "envelope",
       link: "https://mail.protonmail.com/",
     },
     {
       id: "3",
       name: "Todoist",
-      icon: "trello",
+      icon: "list-ol",
       link: "https://todoist.com",
     },
     {
@@ -88,13 +88,13 @@ const CONFIG = {
     {
       id: "5",
       name: "Reddit",
-      icon: "glasses",
+      icon: "fab-reddit",
       link: "https://reddit.com",
     },
     {
       id: "6",
       name: "Odysee",
-      icon: "youtube",
+      icon: "fab-youtube",
       link: "https://odysee.com/",
     },
   ],
