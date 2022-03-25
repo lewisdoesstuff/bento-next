@@ -36,5 +36,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: 'latest'
+          tags: 'lewisdoesstuff/bento-next:latest'
           labels: ${{ steps.meta.outputs.labels }}
