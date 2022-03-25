@@ -2,10 +2,10 @@ version: "3.9"
 
 services: 
   bento:
-    image: lewisdoesstuff/bento
+    image: lewisdoesstuff/bento-next
     volumes:
       # Append Bento config location to below line.
       - /config.js:/usr/share/nginx/html/config.js
     ports:
       # Replace host port 80 (left side) with desired port.
-      - 80:80
+      - 80:8080
