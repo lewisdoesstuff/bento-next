@@ -4,7 +4,7 @@ import { config } from "../../config";
 
 const props = defineProps({
   icon: String,
-  links: Array
+  links: Array,
 });
 
 const prefixedIcon = () => {
@@ -19,14 +19,14 @@ const prefixedIcon = () => {
 
 <template>
   <div class="contents">
-    <fa-icon class="listIcon mb-5 w-6 h-6 text-foreground dark:text-darkforeground" :icon="prefixedIcon()"></fa-icon>
-    <a
-      v-for="(link, index) in links"
-      :key="index"
-      :target="config.openInNewTab ? '_blank' : ''"
-      :href="link.link"
-      class="listItem text-lg mt-1 p-2 rounded-md font-bold text-center w-4/5 text-foreground dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent"
-      >{{ link.name }}</a
-    >
+      <fa-icon class="listIcon w-8 my-4 grow text-foreground dark:text-darkforeground justify-self-start content-start basis-10" :icon="prefixedIcon()"></fa-icon>
+      <a
+        v-for="(link, index) in links"
+        :key="index"
+        :target="config.openInNewTab ? '_blank' : ''"
+        :href="link.link"
+        class="listItem text-center justify-center  rounded-md font-bold text-foreground dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent grow flex mb-8 items-center"
+        >{{ link.name }}</a
+      >
   </div>
 </template>
