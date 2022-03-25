@@ -18,7 +18,7 @@ const CONFIG = {
   // Theme
   theme: "bento",
   imageBackground: false,
-  iamgeUrl: "./assets/background.jpg",
+  imageUrl: "./assets/background.jpg",
 
   // Search Bar
   searchBar: true,

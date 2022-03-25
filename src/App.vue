@@ -52,7 +52,7 @@ import "./assets/css/main.css";
             <ButtonsOne />
           </div>
           <div
-            class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-2"
+            class="listsContainer w-full grid grid-cols-3 grid-rows-2 gap-7 p-5 items-stretch"
             id="lists1"
             v-if="config.bentoLayout == 'lists'"
           >
@@ -62,7 +62,7 @@ import "./assets/css/main.css";
 
         <div class="linksBlockRight row-start-1 row-span-2 col-start-3 col-span-2" id="linksBlockRight">
           <div
-            class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-2"
+            class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
             id="lists1"
             v-if="config.bentoLayout == 'bento'"
           >
