@@ -1,6 +1,9 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   theme: {
+    container: {
+      center: true
+    },
     extend: {
       fontFamily: {
         sans: ["Helvetica Neue", "Ubuntu Sans", ...defaultTheme.fontFamily.sans]
@@ -24,7 +27,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: "class",
   variants: {
-    extend: {}
+    extend: {
+      display: ["group-hover"]
+    }
   },
   plugins: []
 };

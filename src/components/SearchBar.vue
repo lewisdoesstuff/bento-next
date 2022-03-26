@@ -41,7 +41,7 @@ const submitted = () => {
 </script>
 
 <template>
-  <div class="search absolute my-2 top-0" ref="search">
+  <div class="search absolute my-2 top-0 items-center justify-center" ref="search">
     <form
       id="form"
       class="searchform flex flex-row items-center rounded-md transition-all ease-in-out duration-150"
@@ -62,17 +62,8 @@ const submitted = () => {
         v-model="searchText"
         ref="searchBox"
       />
-      <button class="searchbutton unset cursor-pointer w-[4em] h-full p-2 rounded-r-md text-center ">
-        <svg
-          class="searchsvg text-foreground fill-current w-full h-full p-2 rounded-r-md bg-cards dark:bg-darkcards"
-          id="path"
-          :class="config.barStyle"
-          width="24"
-          height="21"
-          viewBox="0 0 1024 1024"
-        >
-          <path class="path"></path>
-        </svg>
+      <button class="searchbutton  cursor-pointer w-[4em] h-full p-[5.5px] rounded-r-md text-center bg-cards dark:bg-darkcards ">
+        <fa-icon icon="magnifying-glass" class="text-foreground dark:text-darkforeground fill-current rounded-r-md bg-cards dark:bg-darkcards"></fa-icon>
       </button>
     </form>
   </div>

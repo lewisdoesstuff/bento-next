@@ -19,6 +19,17 @@ const CONFIG = {
   theme: "bento",
   imageBackground: false,
   imageUrl: "./assets/background.jpg",
+  themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
+    "arc",
+    "bento",
+    "catppuccin",
+    "conceptdark",
+    "monokai",
+    "nord",
+    "sakura",
+    "solarized",
+    "summer"
+  ],
 
   // Search Bar
   searchBar: true,
