@@ -19,7 +19,7 @@ const prefixedIcon = () => {
 
 <template>
   <div class="contents">
-      <fa-icon class="listIcon w-8 my-4 grow text-foreground dark:text-darkforeground justify-self-start content-start basis-10" :icon="prefixedIcon()"></fa-icon>
+      <fa-icon class="mt-12 listIcon w-8 my-4 grow text-foreground dark:text-darkforeground justify-self-start content-start basis-10" :icon="prefixedIcon()"></fa-icon>
       <a
         v-for="(link, index) in links"
         :key="index"

@@ -19,18 +19,16 @@ import "./assets/css/main.css";
 </script>
 
 <template>
-  <div
-    id="app"
-    class="width w-screen h-screen flex items-center justify-center bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
-  >
+  <div id="app" class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150">
     <ThemeButton />
     <SearchBar />
-    <div class="container w-[145vh] h-[85vh] grid grid-cols-4 grid-rows-4 gap-6 p-5">
-      <div class="timeBlock row-start-1 row-span-2 col-start-1 col-span-2 flex flex-col items-center justify-center">
+
+    <div class="box w-full grid grid-cols-4 grid-rows-4 gap-5 p-1 lg:gap-6 lg:p-5">
+      <div class="timeBlock row-start-1 row-span-2 col-start-1 col-span-4 flex flex-col items-center justify-center lg:col-span-2">
         <DigitalClock />
         <Greeter />
       </div>
-      <div class="weatherBlock col-start-3 col-span-2 row-start-1 row-span-2 flex flex-col items-center justify-center">
+      <div class="weatherBlock col-start-3 col-span-2 row-start-1 row-span-2 flex-col items-center justify-center hidden lg:flex">
         <div class="date flex items-center justify-center">
           <CurrentDate />
         </div>
@@ -43,9 +41,9 @@ import "./assets/css/main.css";
         class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-2 gap-6"
         id="linksBlock"
       >
-        <div class="linksBlockLeft row-start-1 row-span-2 col-start-1 col-span-2" id="linksBlockLeft">
+        <div class="linksBlockLeft row-start-1 row-span-2 col-start-1 col-span-4 lg:col-span-2" id="linksBlockLeft">
           <div
-            class="buttonsContainer w-full h-full grid grid-cols-3 grid-rows-2 gap-7 p-5"
+            class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7"
             id="buttons1"
             v-if="config.bentoLayout == 'bento' || config.bentoLayout == 'buttons'"
           >
@@ -60,7 +58,7 @@ import "./assets/css/main.css";
           </div>
         </div>
 
-        <div class="linksBlockRight row-start-1 row-span-2 col-start-3 col-span-2" id="linksBlockRight">
+        <div class="linksBlockRight row-start-1 row-span-2 col-start-3 col-span-2 hidden lg:block" id="linksBlockRight">
           <div
             class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
             id="lists1"

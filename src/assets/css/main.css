@@ -82,3 +82,9 @@
   width: 80%;
 
 }
+
+.button {
+  grid-gap: 3vw;
+  padding-left: 100px;
+  padding-right: 100px;
+}

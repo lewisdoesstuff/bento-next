@@ -14,11 +14,23 @@ const CONFIG = {
   name: "John",
   openInNewTab: true,
   twelveHourFormat: false,
+  title: "Bento",
 
   // Theme
   theme: "bento",
   imageBackground: false,
   imageUrl: "./assets/background.jpg",
+  themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
+    "arc",
+    "bento",
+    "catppuccin",
+    "conceptdark",
+    "monokai",
+    "nord",
+    "sakura",
+    "solarized",
+    "summer"
+  ],
 
   // Search Bar
   searchBar: true,
@@ -28,16 +40,16 @@ const CONFIG = {
   autoFocusBar: true,
 
   // Greetings
-  greetingMorning: "Good morning!",
+  greetingMorning: "Good morning,",
   greetingAfternoon: "Good afternoon,",
   greetingEvening: "Good evening,",
-  greetingNight: "Go to Sleep!",
+  greetingNight: "Sweet dreams,",
 
   // Layout
   bentoLayout: "bento", // 'bento', 'lists', 'buttons'
 
   // Weather
-  weatherKey: "YourOpenWeatherMapKey", // Write here your API Key
+  weatherKey: "YourOpenWeatherMapAPIKey", // Write here your API Key
   weatherIcons: "OneDark", // 'Onedark', 'Nord', 'Dark', 'White'
   weatherUnit: "C", // 'F', 'C'
   language: "en", // More languages in https://openweathermap.org/current#multi
