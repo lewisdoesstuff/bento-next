@@ -25,7 +25,7 @@ const prefixedIcon = () => {
         :key="index"
         :target="config.openInNewTab ? '_blank' : ''"
         :href="link.link"
-        class="listItem text-center justify-center  rounded-md font-bold text-foreground dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent grow flex mb-8 items-center"
+        class="listItem text-center justify-center  rounded-md font-bold text-foreground text-3xl dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent grow flex mb-8 items-center"
         >{{ link.name }}</a
       >
   </div>

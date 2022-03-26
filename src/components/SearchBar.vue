@@ -79,7 +79,7 @@ form.boxy {
 }
 
 form.minimal {
-  @apply max-w-2xl mt-2 w-screen h-7 border-l-8 border-sforeground text-transparent bg-cards dark:bg-darkcards;
+  @apply max-w-2xl mt-2 w-screen h-7 border-l-8 border-sforeground dark:border-darksforeground text-transparent bg-cards dark:bg-darkcards;
 }
 svg.minimal {
   @apply hidden;
