@@ -13,7 +13,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "lucide-vue-next": "^0.17.13",
-    "vue": "^3.2.31"
+    "vue": "^3.2.31",
+    "vue-contenteditable": "^3.0.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",

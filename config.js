@@ -40,10 +40,10 @@ const CONFIG = {
   autoFocusBar: true,
 
   // Greetings
-  greetingMorning: "Good morning!",
+  greetingMorning: "Good morning,",
   greetingAfternoon: "Good afternoon,",
   greetingEvening: "Good evening,",
-  greetingNight: "Go to Sleep!",
+  greetingNight: "Sweet dreams,",
 
   // Layout
   bentoLayout: "bento", // 'bento', 'lists', 'buttons'
