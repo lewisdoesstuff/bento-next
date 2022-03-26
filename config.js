@@ -14,6 +14,7 @@ const CONFIG = {
   name: "John",
   openInNewTab: true,
   twelveHourFormat: false,
+  title: "Bento",
 
   // Theme
   theme: "bento",

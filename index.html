@@ -5,9 +5,10 @@
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./src/assets/css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bento</title>
+ 
     <script type="module">
       import { config } from './config.js';
+      document.title = config.title;
       if (localStorage.getItem('colors')){ 
         import (`./src/assets/css/themes/${localStorage.getItem('colors')}.css`)
       } else {
