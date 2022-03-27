@@ -53,7 +53,7 @@ const submitted = () => {
       <input
         type="search"
         onfocus="this.select()"
-        class="searchinput h-full w-full p-2 rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darksforeground shadow-inherit"
+        class="searchinput h-full w-full p-2 rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
         :class="config.barStyle"
         id="query"
         name="q"

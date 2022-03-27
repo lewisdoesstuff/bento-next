@@ -58,7 +58,7 @@ import "./assets/css/main.css";
               <ButtonsOne />
             </div>
             <div
-              class="listsContainer w-full grid grid-cols-3 grid-rows-2 gap-7 p-5 items-stretch"
+              class="listsContainerw-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
               id="lists1"
               v-if="config.bentoLayout == 'lists'"
             >
@@ -78,13 +78,13 @@ import "./assets/css/main.css";
               <ListOne />
             </div>
             <div
-              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-2"
+              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
               id="lists2"
               v-if="config.bentoLayout == 'lists'"
             >
               <ListTwo />
             </div>
-            <div class="buttonsContainer" id="buttons2" v-if="config.bentoLayout == 'buttons'">
+            <div class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7" id="buttons2" v-if="config.bentoLayout == 'buttons'">
               <ButtonsTwo />
             </div>
           </div>

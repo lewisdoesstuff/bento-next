@@ -13,9 +13,11 @@ const CONFIG = {
   // General
   name: "John",
   openInNewTab: true,
-  twelveHourFormat: false,
   title: "Bento",
 
+  // Clock
+  twelveHourFormat: false,
+  flashSeparator: false,
   // Theme
   theme: "bento",
   imageBackground: false,
@@ -116,37 +118,37 @@ const CONFIG = {
     {
       id: "1",
       name: "Music",
-      icon: "headphones",
+      icon: "fab-spotify",
       link: "https://open.spotify.com"
     },
     {
       id: "2",
       name: "twitter",
-      icon: "twitter",
+      icon: "fab-twitter",
       link: "https://twitter.com/"
     },
     {
       id: "3",
       name: "bot",
-      icon: "bot",
+      icon: "fab-discord",
       link: "https://discord.com/app"
     },
     {
       id: "4",
       name: "Amazon",
-      icon: "shopping-bag",
+      icon: "fab-amazon",
       link: "https://amazon.com/"
     },
     {
       id: "5",
       name: "Hashnode",
-      icon: "pen-tool",
+      icon: "fab-hashnode",
       link: "https://hashnode.com/"
     },
     {
       id: "6",
       name: "Figma",
-      icon: "figma",
+      icon: "fab-figma",
       link: "https://figma.com/"
     }
   ],
@@ -206,7 +208,7 @@ const CONFIG = {
   // Second Links Container
   secondListsContainer: [
     {
-      icon: "binary",
+      icon: "house-user",
       id: "1",
       links: [
         {
@@ -228,7 +230,7 @@ const CONFIG = {
       ]
     },
     {
-      icon: "github",
+      icon: "fab-github",
       id: "2",
       links: [
         {
