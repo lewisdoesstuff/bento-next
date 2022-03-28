@@ -1,244 +1,100 @@
-![image](assets/img/header.png)
+# 🖥 Bento-next
+## A fork of Bento, the simple, customizable, and beautiful startpage written with Vue.js 3 and TailwindCSS! 
 
-<p style="margin: -20px 0 30px">
-  <a href="https://www.buymeacoffee.com/migueravila" target="_blank" style='margin-right:0px; margin-top:5px'>
-    <img align="center" src="https://github.com/migueravila/Bento/blob/master/assets/img/donation.png" alt="donation" height="35px" />
-  </a>
-
-  <a href="https://migueravila.github.io/Bento/" target="_blank" style='margin-right:0px; margin-top:5px'>
-    <img align="center" src="https://github.com/migueravila/Bento/blob/master/assets/img/live.png" alt="live-preview" height="35px" />
-  </a>
-</p>
-
+![image](assets/header.png)
 <br />
+[Upstream](https://github.com/migueravila/Bento)
 
+<a name="index"></a>
 ## 👇 Index
-- [👇 Index](#-index)
-- [✨ Features](#-features)
-- [🚀 Usage](#-usage)
-  - [🏡 As Home Page](#-as-home-page)
-  - [➕ As New Tab](#-as-new-tab)
-  - [🐬 In a Docker Container](#-in-a-docker-container)
-- [🎨 Customization](#-customization)
-  - [👋 General: Name, Image Background and Greetings](#-general-name-image-background-and-greetings)
-  - [📐 Layouts: Bento, Lists and Buttons.](#-layouts-bento-lists-and-buttons)
-  - [🏷️ Buttons & Links](#️-buttons--links)
-  - [📑 Lists & Links](#-lists--links)
-  - [⛈️ Weather: Api Key, Icons and Unit](#️-weather-api-key-icons-and-unit)
-  - [💛 Colors](#-colors)
-  - [🌑 Auto change theme](#-auto-change-theme)
+- [👇 Index](#index)
+- [✨ Features](#features)
+- [🚀 Usage](#usage)
+  - [🐬 In a Docker Container](#docker)
+  - [💾 With a web server](#httpserve)
+- [🎨 Customization](#customization)
+  - [🛠️ General](#general)
+  - [🕓 Clock](#clock)
+  - [🎨 Themes](#themes)
+  - [🔍 Search Bar](#search)
+  - [👋 Greetings](#greetings)
+  - [📐 Layouts](#layouts)
+  - [⛈️ Weather](#️weather)
+  - [🏷️ Buttons & Lists](#️buttons)
+  - [🌑 Auto change theme](#autochange)
+- [🍴 Changes and Contributing](#contribute)
+  - [🖌️ Custom Themes](#customthemes)
+  - [📂 Contributing Changes](#changes)
 
-
+<a name="features"></a>
 ## ✨ Features
-
-- **Easy configuration** file.
-- **Dark/Light** mode, you can toggle it and will be saved in local storage.
-- **Layouts!** to customize your experience following your workflow.
-- **Clock and Date** format can be set to 24 hour (default) or 12 hour.
+- **Themes** Bento-next ships with 9 included themes, such as Nord, Arc, and Solarized, each with their own light/dark palletes.
+- **Local storage** Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
+- **Easy configuration** with the included `config.js` file.
+- **Dark/Light**, toggleable through your browser.
+- **Layouts!** adjust the layout of Bento to fit your needs and workflow.
+- **Clock and Date** 24/12 hour, with an optional animated separator.
 - **Greetings** are easy to modify.
-- **Variables** for custom colors and font sizes in the `app.css` code.
-- **Icons** all icons are from [Lucide icons](https://lucide.dev).
-- **Modular** javascript files for an easy read.
+- **Icons** Bento-next supports a huge array of icons from [FontAwesome](https://fontawesome.com).
 
+<a name="usage"></a>
 ## 🚀 Usage
 
-### 🏡 As Home Page
-
-1. Fork this repo
-2. Enable the Github Pages service `Settings → GitHub Pages → Source [master branch] → Save`
-3. Set it as Home Page:
-   - Click the menu button. and select Options. Preferences.
-   - Click the Home panel.
-   - Click the menu next to Homepage and new windows and choose to show custom URLs and add your `Github Pages link`
-
-### ➕ As New Tab
-
-You can use different Add-ons/Extensions for it
-
-- If you use Firefox: [Custom New Tab Page](https://addons.mozilla.org/en-US/firefox/addon/custom-new-tab-page/?src=search) and make sure you enable "Force links to open in the top frame (experimental)" in the extension's preferences page.
-- If you use Chromium (Brave, Vivaldi, Chrome): [Custom New Tab URL](https://chrome.google.com/webstore/detail/custom-new-tab-url/mmjbdbjnoablegbkcklggeknkfcjkjia)
-
+Currently, Bento-next needs to be hosted, although this will change soon!
+<a name="docker"></a>
 ### 🐬 In a Docker Container
 
 You can run Bento in a Docker Container, either with `docker run`, or with the included `docker-compose` file.
 
 #### Docker run
- 1. Clone this repo to pull the config.js file: `git clone https://github.com/migueravila/Bento/`
+ 1. Clone this repo to pull the config.js file: `git clone https://github.com/lewisdoesstuff/bento-next/`
  2. Run the following `docker` command, providing the path to the config.js file, changing port mappings if needed.
  3. `# docker run -it -d -p 80:8080 -v <config.js location>:/usr/share/nginx/html/config.js lewisdoesstuff/bento-next`
 
 #### docker-compose
-  1. Clone this repo with `git clone https://github.com/migueravila/Bento/`
+  1. Clone this repo with `git clone https://github.com/lewisdoesstuff/bento-next/`
   2. Edit port mappings, and provide a path to the config.js file in `docker-compose.yml`
   3. `cd` into the cloned repo, then run `# docker-compose -d up` to start. 
 
-## 🎨 Customization
+<a name="httpserve"></a>
+### 💾 With a web server (nginx, apache, etc...)
 
-All customization can be managed in the `config.js` file:
+  #### Building Bento
+  1. Clone this repo with `git clone https://github.com/lewisdoesstuff/bento-next/`
+  2. `cd bento-next` to enter the cloned repo.
+  3. `npm install` to install node modules.
+  4. `npm run build` to build the app.
+  5. Copy the files placed in `./dist` to your webservers html directory. eg: `cp ./dist/* /usr/share/nginx/html -r` 
 
-### 👋 General: Name, Image Background and Greetings
+<a name="customization"></a>
+## 🔧 Customization
 
-To change the default name, the greetings and if you want to have an image background or open your links in new tabs, edit the first configs in the `config.js`.
+All settings can be managed in the `config.js` file:
+<a name="general"></a>
+### 🛠️ General
+
+Change the default name (displayed to all users), choose if links open in a new tab, and change the window title.
 
 ```js
- // General
-  name: 'John',
-  imageBackground: false,
-  imageUrl: './assets/background.jpg', // Set custom background image URL. If the page is served insecurely, you may have issues loading images from pages over https.
+  // General
+  name: "John",
   openInNewTab: true,
-
-  // Greetings
-  greetingMorning: 'Good morning!',
-  greetingAfternoon: 'Good afternoon,',
-  greetingEvening: 'Good evening,',
-  greetingNight: 'Go to Sleep!',
-
+  title: "Bento",
 ```
+<a name="clock"></a>
+### 🕓 Clock
 
-> You can change the background by providing a link to an image in `config.js`.
-
-![](assets/img/backgroundImage.png)
-
-### 📐 Layouts: Bento, Lists and Buttons.
-
-Bento has three different layouts `bento`, `lists` & `buttons`. It allows you to cutomize your experience giving you more buttons or lists depending on how are you more comfortable. To modify the laout you need to change the following line in the `config.js` file:
+Adjust 12/24hr format, or enable an animated separator.
 
 ```js
-  // Layout
-  bentoLayout: 'bento', // 'bento', 'lists', 'buttons'
-
+  // Clock
+  twelveHourFormat: false,
+  flashSeparator: false,
 ```
+<a name="themes"></a>
+### 🎨 Themes
 
-If you want to customize all your extra buttons and lists go to [🏷️ Buttons & Links](#️-buttons--links) & [📑 Lists & Links](#-lists--links) sections.
-
-![](assets/img/bentoLayouts.png)
-
-### 🏷️ Buttons & Links
-
-To edit the buttons you just need to change the follow list in the `config.js` file by choosing a link, an icon from [Lucide icons](https://lucide.dev) and a name. If you're using the `buttons` [layout](#-layouts-bento-lists-and-buttons) you can customize `secondButtonsContainer`
-
-```js
-  firstButtonsContainer: [
-    {
-      id: '1',
-      name: 'Github',
-      icon: 'github',
-      link: 'https://github.com/',
-    },
-    {
-      id: '2',
-      name: 'Mail',
-      icon: 'mail',
-      link: 'https://mail.protonmail.com/',
-    },
-    {
-      id: '3',
-      name: 'Todoist',
-      icon: 'trello',
-      link: 'https://todoist.com',
-    },
-    {
-      id: '4',
-      name: 'Calendar',
-      icon: 'calendar',
-      link: 'https://calendar.google.com/calendar/r',
-    },
-    {
-      id: '5',
-      name: 'Reddit',
-      icon: 'glasses',
-      link: 'https://reddit.com',
-    },
-    {
-      id: '6',
-      name: 'Odysee',
-      icon: 'youtube',
-      link: 'https://odysee.com/',
-    },
-  ],
-```
-
-### 📑 Lists & Links
-
-The same happens with the list links, you can change the list icon (also using Lucide icons) and the links. If you're using the `lists` [layout](#-layouts-bento-lists-and-buttons) you can customize `secondListsContainer`, you can find it bellow `firstListsContainer`.
-
-```js
-   firstlistsContainer: [
-    {
-      icon: 'music',
-      id: '1',
-      links: [
-        {
-          name: 'Inspirational',
-          link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        },
-        {
-          name: 'Classic',
-          link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        },
-        {
-          name: 'Oldies',
-          link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        },
-        {
-          name: 'Rock',
-          link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        },
-      ],
-    },
-    {
-      icon: 'coffee',
-      id: '2',
-      links: [
-        {
-          name: 'Linkedin',
-          link: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-        },
-        {
-          name: 'Dribbble',
-          link: 'https://www.linkedin.com',
-        },
-        {
-          name: 'Trello',
-          link: 'https://www.trello.com',
-        },
-        {
-          name: 'Slack',
-          link: 'https://www.slack.com',
-        },
-      ],
-    },
-  ],
-```
-
-### ⛈️ Weather: Api Key, Icons and Unit
-
-For setting up the Weather widget you'll need an API Key from: `https://openweathermap.org/`. Once you have your Key you'll need to set your latitude and longitude, you can use: `https://www.latlong.net/` to get them. 
-
-Finally, choose an Icon set:
-
-![](assets/img/icons.png)
-
-- **Nord** Using the Nord Color Scheme and easy-to-eyes colors
-- **OneDark** (_Default one_) Using the One Dark Pro color scheme
-- **Dark** For White theme only users that want a minimalist look
-- **White** For Dark theme only users that want a minimalist look
-
-Finally just add them to the `config.js` file.
-
-```js
-  // Weather
-  weatherKey: 'InsertYourAPIKeyHere123456',
-  weatherIcons: 'OneDark',
-  weatherUnit: 'C',
-  weatherLatitude: '37.774929',
-  weatherLongitude: '-122.419418',
-```
-
-### 💛 Colors
-
-Bento supports custom theming with several pre-included presets to choose from!
-Change the current theme in `config.js`
+Bento-next supports 9 pre-included themes, if you'd like to add more, please see the steps at [Custom Themes](#customthemes)
 Included themes: 
   
   - [Arc](https://github.com/horst3180/arc-theme)
@@ -251,19 +107,142 @@ Included themes:
   - [Solarized](https://ethanschoonover.com/solarized/)
   - [Summer](https://github.com/JhonnyRice/summer)
 
+```js
+// Theme
+  theme: "bento",
+  imageBackground: false,
+  imageUrl: "./assets/background.jpg",
+  themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
+    "arc",
+    "bento",
+    "catppuccin",
+    "conceptdark", // dark mode only
+    "monokai",
+    "nord",
+    "sakura",
+    "solarized",
+    "summer"
+  ],
+```
+<a name="search"></a>
+### 🔍 Search Bar
+
+Bento-next includes a search bar by default, with 4 themes to choose from. If you'd like to add your own, you'll have to do this in the app's source (for now). You can find the search bar at `./src/components/SearchBar.vue`.
+```js
+  // Search Bar
+  searchBar: true,
+  searchEngine: "google", // google, ddg
+  barStyle: "bento", // bento, minimal, boxy, rounded
+  barPlaceholder: "", // if blank, use search engine name. Set to ' ' for no placeholder.
+  autoFocusBar: true,
+```
+<a name="greetings"></a>
+### 👋 Greetings
+
+Edit the displayed greetings for morning, afternoon, evening, and night.
+```js
+  // Greetings
+  greetingMorning: "Good morning,",
+  greetingAfternoon: "Good afternoon,",
+  greetingEvening: "Good evening,",
+  greetingNight: "Sweet dreams,",
+  ```
+<a name="layouts"></a>
+### 📐 Layouts
+
+Bento has three different layouts `bento`, `lists`, and `buttons`. `Bento` is a split with buttons on the left and lists on the right. `Lists` swaps the buttons out for another list container, and `buttons` does the same with buttons. 
+```js
+  // Layout
+  bentoLayout: 'bento', // 'bento', 'lists', 'buttons'
+```
+
+If you want to customize all your extra buttons and lists go to [🏷️ Buttons & Lists](#️buttons).
+
+<a name="weather"></a>
+### ⛈️ Weather
+
+Bento provides a weather widget that pulls data from OpenWeatherMap. To use this, you'll need to add an API key to the settings. You can generate a free API key from [OpenWeatherMap](https://openweathermap.org/api). You'll need a "Current Weather Data" key.  
+You can provide a default lat/long, or have Bento automatically pull your location from your browsers location data. 
+If this isn't available, or you deny location permissions, Bento will fall back to using the lat/long set in the config.
+
+Finally, choose an icon set:
+
+- **OneDark** (_Default_) Using the One Dark Pro color scheme
+- **Nord** Using the Nord Color Scheme
+- **Dark** For White theme only users that want a minimalist look
+- **White** For Dark theme only users that want a minimalist look
 
 ```js
-	// Theme
-	theme: 'bento',
-```
-### 🖌️ Custom Colors
+  // Weather
+  weatherKey: "YourOpenWeatherMapAPIKey", // Write here your API Key
+  weatherIcons: "OneDark", // 'Onedark', 'Nord', 'Dark', 'White'
+  weatherUnit: "C", // 'F', 'C'
+  language: "en", // More languages in https://openweathermap.org/current#multi
 
-You can create your own themes by adding them to the `./assets/themes/` folder, with a `.css` extension!  
+  trackLocation: true, // Request location from the browser. If false, or location is denied, use the coordinates below.
+  defaultLatitude: "37.775",
+  defaultLongitude: "-122.419",
+```
+
+<a name="buttons"></a>
+### 🏷️ Buttons & Lists
+
+Every entry in the buttons or lists containers are editable through here! A breakdown of the object is below.
+```js
+  itemContainer: [
+    {
+      id: "1", // entry ID, don't modify.
+      name: "Github", // set the name of the card
+      icon: "fab-github", // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
+      link: "https://github.com", // provide a link to the page.
+    },
+    {
+      id: "2",
+      name: "GMail",
+      icon: "envelope",
+      link: "https://mail.google.com/",
+    },
+  ]
+```
+
+<a name="autochange"></a>
+### 🌑 Auto change theme
+
+**Note: The below options don't currently work in bento-next. Coming very soon!**
+
+The theme can be automatically changed by the OS' current theme or personalized hours
+that you can change in the `config.js` file:
+
+```js
+  // Autochange theme from OS preferece
+  changeThemeByOS: true,
+
+  // Switch theme based on set hours. (24hr format, string must be in: hh:mm)
+  changeThemeByHour: false,
+  hourDarkThemeActive: "18:30",
+  hourDarkThemeInactive: "07:00",
+
+  // Switch dark theme automatically from sunrise to sunset. Pulls from the browsers location, or falls back to the defaults if not.
+  // Requires an OpenWeatherMap API key.
+  changeThemeByLocation: false,
+```
+
+
+
+<a name="contribute">
+
+# 🍴 Changes and Contributing
+
+<a name="customthemes"></a>
+
+## 🖌️ Custom Themes
+
+Bento can be expanded with user-defined themes! To create one, add a new .css file to `./public/css/themes/`, then add it to the array of themes in `config.js`.
+If you've got a theme you'd like to see included, please open a PR, or open an issue with a link to the color palette.
 Example:
 
 ```css
 :root {
-
   /* Light Colors  */
 
   --background: #f5f5f5; /* Background color */
@@ -275,48 +254,30 @@ Example:
   --sfg: #494949; /* Sceondary Foreground color */
 
   /* Image background  */
-  --imgcol: linear-gradient(
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.7)
-  ); /* Filter color */
-}
+  --imgcol: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)); /* Filter color */
 
-.darktheme {
   /* Dark Colors  */
-  
-  --background: #19171a; /* Background color */
-  --accent: #57a0d9; /* Hover color */
-  --cards: #201e21; /* Cards color */
+
+  --darkbackground: #19171a; /* Background color */
+  --darkaccent: #57a0d9; /* Hover color */
+  --darkcards: #201e21; /* Cards color */
 
   /* Fonts Color */
-  --fg: #d8dee9; /* Foreground color */
-  --sfg: #2c292e; /* Secondary Foreground color */
+  --darkfg: #d8dee9; /* Foreground color */
+  --darksfg: #2c292e; /* Secondary Foreground color */
 
   /* Image background  */
-  --imgcol: linear-gradient(
-    rgba(0, 0, 0, 0.85),
-    rgba(0, 0, 0, 0.85)
-  ); /* Filter color */
+  --darkimgcol: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)); /* Filter color */
 }
-
 ```
+<a name="changes">
 
-### 🌑 Auto change theme
+## 📂 Contributing Changes
 
-The theme can be automatically changed by the OS' current theme or personalized hours
-that you can change in the `config.js` file:
+I'd be thrilled to hear about any changes that you've made to the project!  
+If you feel that these would work as a default feature, please submit a PR with your changes!  
+For anything that you feel may be better suited to the upstream project, please port your changes to vanilla HTML/JS and open a PR on [migueravila/Bento](https://github.com/migueravila/Bento).
 
-```js
-  // Autochange
-  autoChangeTheme: true,
+While I don't have a specific contributing guide, or code style to follow, please ensure your changes follow the general style of the program, and respect any existing features (no breaking changes, please!)  
+Please ensure that any PR's don't contain changes to the default `config.js` values, unless you need to add another. Please also ensure to remove your OpenWeatherMap API key!
 
-  // Autochange by OS
-  changeThemeByOS: false, 
-
-  // Autochange by hour options (24hrs format, string must be in: hh:mm)
-  changeThemeByHour: true, // If it's true, it will use the values below:
-  hourDarkThemeActive: '18:30', // Turn on the dark theme after this hour
-  hourDarkThemeInactive: '07:00', // Turn off the dark theme after this hour and before the above hour
-```
-
-![](assets/img/darkMode.png)
