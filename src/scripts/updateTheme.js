@@ -55,11 +55,11 @@ const hourTheme = () => {
 
 const locationTheme = async () => {
   const weather = await weatherPromise;
-  const now = new Date().getTime();
-  if (now > weather.sunset && now < weather.sunrise) {
-    localStorage.setItem("theme", "dark");
-  } else {
+  const now = Date.now() / 1000;
+  if (now >= weather.sunrise && now < weather.sunset) {
     localStorage.setItem("theme", "light");
+  } else {
+    localStorage.setItem("theme", "dark");
   }
   updateTheme();
 };
