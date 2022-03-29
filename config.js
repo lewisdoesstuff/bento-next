@@ -18,6 +18,7 @@ const CONFIG = {
   // Clock
   twelveHourFormat: false,
   flashSeparator: false,
+  
   // Theme
   theme: "bento",
   imageBackground: false,
@@ -26,7 +27,7 @@ const CONFIG = {
     "arc",
     "bento",
     "catppuccin",
-    "conceptdark",
+    "conceptdark", // dark mode only
     "monokai",
     "nord",
     "sakura",
@@ -37,7 +38,7 @@ const CONFIG = {
   // Search Bar
   searchBar: true,
   searchEngine: "google", // google, ddg
-  barStyle: "bento",
+  barStyle: "bento", // bento, minimal, boxy, rounded
   barPlaceholder: "", // if blank, use search engine name. Set to ' ' for no placeholder.
   autoFocusBar: true,
 
@@ -56,20 +57,21 @@ const CONFIG = {
   weatherUnit: "C", // 'F', 'C'
   language: "en", // More languages in https://openweathermap.org/current#multi
 
-  trackLocation: true, // If false or an error occurs, the app will use the lat/lon below
+  trackLocation: true, // Request location from the browser. If false, or location is denied, use the coordinates below.
   defaultLatitude: "37.775",
   defaultLongitude: "-122.419",
 
-  // Autochange
-  autoChangeTheme: true,
-
-  // Autochange by OS
+  // Autochange theme from OS preferece
   changeThemeByOS: true,
 
-  // Autochange by hour options (24hrs format, string must be in: hh:mm)
+  // Switch theme based on set hours. (24hr format, string must be in: hh:mm)
   changeThemeByHour: false,
   hourDarkThemeActive: "18:30",
   hourDarkThemeInactive: "07:00",
+
+  // Switch dark theme automatically from sunrise to sunset. Pulls from the browsers location, or falls back to the defaults if not.
+  // Requires an OpenWeatherMap API key.
+  changeThemeByLocation: false,
 
   // ┌┐ ┬ ┬┌┬┐┌┬┐┌─┐┌┐┌┌─┐
   // ├┴┐│ │ │  │ │ ││││└─┐
@@ -77,10 +79,10 @@ const CONFIG = {
 
   firstButtonsContainer: [
     {
-      id: "1",
-      name: "Github",
-      icon: "fab-github",
-      link: "https://github.com/"
+      id: "1", // entry ID, don't modify.
+      name: "Github", // set the name of the card
+      icon: "fab-github", // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
+      link: "https://github.com/" // provide a link to the page.
     },
     {
       id: "2",
