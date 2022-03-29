@@ -19,10 +19,14 @@ import "./assets/css/main.css";
 </script>
 
 <template>
-  <div class="bg-background dark:bg-darkbackground w-screen h-screen">
+  <div
+    class="bg-background dark:bg-darkbackground w-screen h-screen"
+    :class="config.imageBackground ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
+  >
     <div
       id="app"
       class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
+      :class="config.imageBackground ? 'bg-transparent dark:bg-transparent' : ''"
     >
       <ThemeButton />
       <SearchBar />
@@ -84,7 +88,11 @@ import "./assets/css/main.css";
             >
               <ListTwo />
             </div>
-            <div class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7" id="buttons2" v-if="config.bentoLayout == 'buttons'">
+            <div
+              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7"
+              id="buttons2"
+              v-if="config.bentoLayout == 'buttons'"
+            >
               <ButtonsTwo />
             </div>
           </div>

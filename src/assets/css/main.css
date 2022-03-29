@@ -14,6 +14,10 @@
   @apply bg-background dark:bg-background
 }
 
+.backgroundImage { 
+  @apply [background-image:var(--imgcol),_var(--imgbg)] dark:[background-image:var(--darkimgcol),_var(--imgbg)] bg-cover; 
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,11 +31,6 @@
   -moz-transition: none;
   -o-transition: none;
   transition: none;
-}
-
-.withImageBackground {
-  background-image: var(--imgcol), var(--imgbg);
-  background-size: cover;
 }
 
 .button__1 {

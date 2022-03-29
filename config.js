@@ -22,7 +22,7 @@ const CONFIG = {
   // Theme
   theme: "bento",
   imageBackground: false,
-  imageUrl: "./assets/background.jpg",
+  imageUrl: "background.jpg", // place in ./src/assets/images/ and provide the file name. Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
   themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
     "arc",
     "bento",

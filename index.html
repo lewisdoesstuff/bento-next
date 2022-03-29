@@ -26,6 +26,15 @@
       if (localStorage.getItem("colors")) {
         import(`./src/assets/css/themes/${localStorage.getItem("colors")}.css`);
       }
+      if (config.imageBackground) {
+        const root = document.querySelector(":root");
+        if (config.imageUrl.startsWith("http")) {
+          root.style.setProperty("--imgbg", `url(${config.imageUrl})`);
+        } else {
+          root.style.setProperty("--imgbg", `url(/src/assets/images/${config.imageUrl})`);
+        }
+        document.body.classList.add("withImageBackground");
+      }
     </script>
   </head>
 
