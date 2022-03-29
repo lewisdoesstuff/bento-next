@@ -1,12 +1,11 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, onBeforeMount, ref } from "vue";
 import { updateTheme, autoChange, theme } from "../scripts/updateTheme";
 import ThemeDropdown from "./ThemeDropdown.vue";
-onMounted(() => {
-  autoChange();
+onBeforeMount(async () => {
+  await autoChange();
 });
 
-const currentTheme = ref(theme);
 const toggleTheme = () => {
   if (localStorage.theme === "dark") {
     localStorage.theme = "light";
@@ -29,7 +28,7 @@ const isOpen = () => {
       @click="toggleTheme()"
       class="border-0 cursor-pointer text-foreground dark:text-darkforeground peer"
     >
-      <fa-icon :icon="currentTheme == 'dark' ? 'moon' : 'sun'" id="icon" class="w-5 h-5" />
+      <fa-icon :icon="theme == 'dark' ? 'moon' : 'sun'" id="icon" class="w-5 h-5" />
     </button>
     <fa-icon
       @click="isOpen()"

@@ -18,14 +18,15 @@ export const updateTheme = () => {
   }
 };
 
-export const autoChange = () => {
+export const autoChange = async () => {
   if (config.changeThemeByOS) {
-    osTheme();
+    theme.value = osTheme();
   } else if (config.changeThemeByHour) {
-    hourTheme();
+    theme.value = hourTheme();
   } else if (config.changeThemeByLocation) {
-    locationTheme();
+    theme.value = await locationTheme();
   }
+  updateTheme();
 };
 
 const osTheme = () => {
@@ -33,10 +34,11 @@ const osTheme = () => {
   osPrefers.addEventListener('change', e => {
     if (e.matches) {
       localStorage.setItem("theme", "dark");
+      return "dark";
     } else {
       localStorage.setItem("theme", "light");
+      return "light";
     }
-    updateTheme();
   });
 };
 
@@ -47,10 +49,11 @@ const hourTheme = () => {
   const time = `${hour}:${minute}`;
   if (time >= config.hourDarkThemeActive) {
     localStorage.setItem("theme", "dark");
+    return "dark";
   } else {
     localStorage.setItem("theme", "light");
+    return "light";
   }
-  updateTheme();
 };
 
 const locationTheme = async () => {
@@ -58,8 +61,9 @@ const locationTheme = async () => {
   const now = Date.now() / 1000;
   if (now >= weather.sunrise && now < weather.sunset) {
     localStorage.setItem("theme", "light");
+    return "dark";
   } else {
     localStorage.setItem("theme", "dark");
+    return "light";
   }
-  updateTheme();
 };

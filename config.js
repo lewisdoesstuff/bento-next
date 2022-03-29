@@ -62,7 +62,7 @@ const CONFIG = {
   defaultLongitude: "-122.419",
 
   // Autochange theme from OS preferece - The below options are all mutually exclusive. If you've got multiple set to true, the first one will be set and the rest ignored.
-  changeThemeByOS: true,
+  changeThemeByOS: false,
 
   // Switch theme based on set hours. (24hr format, string must be in: hh:mm)
   changeThemeByHour: false,
