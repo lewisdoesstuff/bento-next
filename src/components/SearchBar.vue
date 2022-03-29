@@ -14,12 +14,12 @@ onMounted(() => {
 const engines = {
   google: {
     url: "https://www.google.com/search?q=",
-    display: "Google"
+    display: "Google",
   },
   ddg: {
     url: "https://duckduckgo.com/?q=",
-    display: "DuckDuckGo"
-  }
+    display: "DuckDuckGo",
+  },
 };
 
 const placeholder = () => {
@@ -62,8 +62,15 @@ const submitted = () => {
         v-model="searchText"
         ref="searchBox"
       />
-      <button class="searchbutton  cursor-pointer w-[4em] h-full p-[5.5px] rounded-r-md text-center bg-cards dark:bg-darkcards ">
-        <fa-icon icon="magnifying-glass" class="text-foreground dark:text-darkforeground fill-current rounded-r-md bg-cards dark:bg-darkcards"></fa-icon>
+      <button
+        :class="config.barStyle"
+        class="searchbutton cursor-pointer w-[4em] h-full p-[6.9px] rounded-r-md text-center bg-cards dark:bg-darkcards"
+      >
+        <fa-icon
+          icon="magnifying-glass"
+          :class="config.barStyle"
+          class="text-foreground dark:text-darkforeground fill-current rounded-r-md bg-cards dark:bg-darkcards"
+        ></fa-icon>
       </button>
     </form>
   </div>
@@ -86,7 +93,7 @@ svg.minimal {
 }
 
 input.minimal {
-  @apply bg-transparent
+  @apply bg-transparent;
 }
 form.rounded {
   @apply max-w-2xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
@@ -94,11 +101,11 @@ form.rounded {
 input.rounded {
   @apply rounded-3xl bg-transparent;
 }
-button.rounded{
-   @apply  shadow-none h-full rounded-r-3xl
+button.rounded {
+  @apply shadow-none h-full rounded-r-3xl;
 }
 svg.rounded {
-  @apply rounded-r-3xl
+  @apply rounded-r-3xl;
 }
 
 input[type="search"]::-webkit-search-decoration,

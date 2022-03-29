@@ -1,7 +1,10 @@
 import { config } from "../../config";
-
+import { autoChange } from "./updateTheme";
 export const weatherPromise = getWeather();
-
+setInterval(() => {
+  weatherPromise = getWeather(); // update weather every 5 mins.
+  autoChange(); // also update the theme if it's now past sunset. Should also update the theme if config.ChangeThemeByHour is true.
+}, 300000)
 const tempUnit = config.weatherUnit;
 
 const kelvin = 273.15;

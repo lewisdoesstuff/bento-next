@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="./src/assets/css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module">
+      // this is the same script that's included in updateTheme(), we need to run it here as opposed to calling it from the module as we get a FOUC if not.
+      // I'm not actually sure why, but I'd assume it's down to load order.
       if (
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
       ) {
-        console.log("SET!")
         document.body.classList.add("notransition");
         document.documentElement.classList.add("dark");
       } else {

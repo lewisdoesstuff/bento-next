@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import { updateTheme, theme } from "../scripts/updateTheme";
+import { updateTheme, autoChange, theme } from "../scripts/updateTheme";
 import ThemeDropdown from "./ThemeDropdown.vue";
 onMounted(() => {
-  updateTheme();
+  autoChange();
 });
 
 const currentTheme = ref(theme);
