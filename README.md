@@ -12,6 +12,7 @@
 - [🚀 Usage](#usage)
   - [🐬 In a Docker Container](#docker)
   - [💾 With a web server](#httpserve)
+  - [🔐 SSL](#ssl)
 - [🎨 Customization](#customization)
   - [🛠️ General](#general)
   - [🕓 Clock](#clock)
@@ -25,17 +26,18 @@
 - [🍴 Changes and Contributing](#contribute)
   - [🖌️ Custom Themes](#customthemes)
   - [📂 Contributing Changes](#changes)
+  - [⌨️ Development Environment](#devenv)
 
 <a name="features"></a>
 ## ✨ Features
-- **Themes** Bento-next ships with 9 included themes, such as Nord, Arc, and Solarized, each with their own light/dark palletes.
-- **Local storage** Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
-- **Easy configuration** with the included `config.js` file.
-- **Dark/Light**, toggleable through your browser.
-- **Layouts!** adjust the layout of Bento to fit your needs and workflow.
-- **Clock and Date** 24/12 hour, with an optional animated separator.
-- **Greetings** are easy to modify.
-- **Icons** Bento-next supports a huge array of icons from [FontAwesome](https://fontawesome.com).
+- **Themes**: Bento-next ships with 9 included themes, such as Nord, Arc, and Solarized, each with their own light/dark palletes.
+- **Local storage**: Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
+- **Easy configuration**: with the included `config.js` file.
+- **Dark/Light**: toggleable through your browser or [automatically](#autochange).
+- **Layouts**: adjust the layout of Bento to fit your needs and workflow.
+- **Clock and Date**: 24/12 hour, with an optional animated separator.
+- **Greetings**: are easy to modify.
+- **Icons**: Bento-next supports a huge array of icons from [FontAwesome](https://fontawesome.com).
 
 <a name="usage"></a>
 ## 🚀 Usage
@@ -57,14 +59,19 @@ You can run Bento in a Docker Container, either with `docker run`, or with the i
   3. `cd` into the cloned repo, then run `# docker-compose -d up` to start. 
 
 <a name="httpserve"></a>
-### 💾 With a web server (nginx, apache, etc...)
 
-  #### Building Bento
+### 💾 With a web server (nginx, apache, etc...)
   1. Clone this repo with `git clone https://github.com/lewisdoesstuff/bento-next/`
   2. `cd bento-next` to enter the cloned repo.
   3. `npm install` to install node modules.
   4. `npm run build` to build the app.
   5. Copy the files placed in `./dist` to your webservers html directory. eg: `cp ./dist/* /usr/share/nginx/html -r` 
+
+<a name="ssl">
+
+### 🔐 SSL 
+Bento-next doesn't support SSL (https) connections by default, serving the page over port 8080.
+If you'd like to add SSL support (recommended), I recommend using a reverse-proxy such as [NGINX Proxy Manager](https://github.com/NginxProxyManager/nginx-proxy-manager) to add your SSL certificate to the host.
 
 <a name="customization"></a>
 ## 🔧 Customization
@@ -208,13 +215,11 @@ Every entry in the buttons or lists containers are editable through here! A brea
 <a name="autochange"></a>
 ### 🌑 Auto change theme
 
-**Note: The below options don't currently work in bento-next. Coming very soon!**
-
-The theme can be automatically changed by the OS' current theme or personalized hours
-that you can change in the `config.js` file:
+Bento-next can automatically swap your theme (light/dark) depending on one of 3 parameters that you can change in the `config.js` file.  
+Note: You can only use one of these at a time. If you've got multiple set to true, the first in the list will be respected.
 
 ```js
-  // Autochange theme from OS preferece
+  // Autochange theme from OS preferece - The below options are all mutually exclusive. If you've got multiple set to true, the first one will be set and the rest ignored.
   changeThemeByOS: true,
 
   // Switch theme based on set hours. (24hr format, string must be in: hh:mm)
@@ -281,3 +286,42 @@ For anything that you feel may be better suited to the upstream project, please 
 While I don't have a specific contributing guide, or code style to follow, please ensure your changes follow the general style of the program, and respect any existing features (no breaking changes, please!)  
 Please ensure that any PR's don't contain changes to the default `config.js` values, unless you need to add another. Please also ensure to remove your OpenWeatherMap API key!
 
+<a name="devenv">
+## ⌨️ Development Environment
+
+To make changes to Bento-next, you'll need to follow a few steps to set up your development environment.
+For this, we'll assume a Linux system, but this will work the same on Windows with WSL.
+
+### Prerequisites: 
+ * Node JS
+ * NPM
+ * A text editor (VSCode is recommended.)
+
+### Setup:
+Setting up a working dev environment is fairly straightforward with the below steps. These are platform agnostic, so you shouldn't need to make any changes depending on platform.
+ 1. Clone the repo with `git clone https://github.com/lewisdoesstuff/bento-next`, or your preffered Git client.
+ 2. `cd bento-next` to enter the cloned repo.
+ 3. Install dependencies with `npm install`
+ 4. Open the folder in your preffered text editor to begin developing! 
+ 5. Start the dev server with `npm run dev`.
+ 6. Connect to the local instance at https://localhost:3000.
+
+### Building: 
+Once you've made your changes, you'll want to build for production to remove any unused CSS (a lot), and generally speed up the site.
+
+#### Docker: 
+Docker is the recommended way to run Bento-next, and building a docker container with your changes is very straightforward!
+You'll need `docker` installed to build and run the image.
+
+  1. Ensure you're in the repo's root directory
+  2. Build the docker container with `docker build . -t bento-next`
+  3. Wait for the build to complete, then run the image in a new container with `docker run -it -d -p 8080:8080 --rm --name bento-next bento-next`. You can edit port mappings (left side port), or remove the `-d` flag if you'd like to see the output of the build and HTTP server.
+
+#### With an HTTP server (e.g. NGINX):
+You're able to run the production build of Bento-next with any HTTP server, as you don't need Node installed to host the page. 
+This isn't the recommended way to run Bento, and I won't be able to offer support for web server-specific issues.
+
+  1. Build Bento-next for production with `npm run build`.
+  2. Wait for the script to complete, then `cd dist/` to enter the output folder.
+  3. Copy the files to your webservers HTML directory, or point a web server at the `./dist` folder. 
+  4. Start your web server, and access Bento-next over your assigned port.
