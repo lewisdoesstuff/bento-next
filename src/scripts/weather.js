@@ -1,6 +1,6 @@
 import { config } from "../../config";
 import { autoChange } from "./updateTheme";
-export const weatherPromise = getWeather();
+export let weatherPromise = getWeather();
 setInterval(() => {
   weatherPromise = getWeather(); // update weather every 5 mins.
   autoChange(); // also update the theme if it's now past sunset. Should also update the theme if config.ChangeThemeByHour is true.
