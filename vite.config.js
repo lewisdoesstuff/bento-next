@@ -11,6 +11,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  base: "/bento-next/",
   build: {
     minify: false,
     target: 'esnext',
