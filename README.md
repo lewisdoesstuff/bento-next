@@ -83,7 +83,7 @@ Bento supports being hosted through GitHub Pages using a workflow action
    2. Clone your fork with `git clone https://github.com/{YOUR_GITHUB_ACCOUNT}/{FORK_NAME}`.
    3. Make any changes to the config you require.
    4. Edit `./github/pages.yml`, changing `lewisdoesstuff` to your GitHub username.
-   5. If the name of your repo is not `bento-next`, edit `vite.config.js`, changing `base` to the name of your repo, including the leading and trailing `/`
+   5. If the name of your repo is not `bento-next`, edit `package.json`, changing the `base` path for `build-pages` (line 7) to the name of your repo, including the leading and trailing `/`
    6. Create a new commit and push your changes to `origin/master`.
    7. Once pushed, you should see the "Build and Publish to Pages" workflow running under the Actions tab. (I'd recommend also removing the Docker build workflow while here.)
    8. Access your Bento-next install at `https://{YOUR_GITHUB_ACCOUNT}.github.io/${FORK_NAME}`
