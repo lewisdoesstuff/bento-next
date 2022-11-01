@@ -2,11 +2,20 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   theme: {
     container: {
-      center: true
+      center: true,
+    },
+    screens: {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px",
+      "2xl": "1536px",
+      "4xl": "3600px"
+
     },
     extend: {
       fontFamily: {
-        sans: ["Helvetica Neue", "Ubuntu Sans", ...defaultTheme.fontFamily.sans]
+        sans: ["Helvetica Neue", "Ubuntu Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         background: "var(--background)",
@@ -21,15 +30,15 @@ module.exports = {
         darkforeground: "var(--darkfg)",
         darksforeground: "var(--darksfg)",
         darkimggradient: "var(--darkimgcol)",
-      }
-    }
+      },
+    },
   },
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   darkMode: "class",
   variants: {
     extend: {
-      display: ["group-hover"]
-    }
+      display: ["group-hover"],
+    },
   },
-  plugins: []
+  plugins: [],
 };

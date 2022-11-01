@@ -41,7 +41,7 @@ const submitted = () => {
 </script>
 
 <template>
-  <div class="search absolute my-2 top-0 items-center justify-center" ref="search">
+  <div class="search fixed mx-10 my-5 top-0 items-center justify-center text-[1.5vh]" ref="search">
     <form
       id="form"
       class="searchform flex flex-row items-center rounded-md transition-all ease-in-out duration-150"
@@ -53,7 +53,7 @@ const submitted = () => {
       <input
         type="search"
         onfocus="this.select()"
-        class="searchinput h-full w-full p-2 rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
+        class="searchinput h-full w-full p-[1vh] rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
         :class="config.barStyle"
         id="query"
         name="q"
@@ -64,7 +64,7 @@ const submitted = () => {
       />
       <button
         :class="config.barStyle"
-        class="searchbutton cursor-pointer w-[4em] h-full p-[6.9px] rounded-r-md text-center bg-cards dark:bg-darkcards"
+        class="searchbutton cursor-pointer w-[4em] h-full p-[0.91vh] pr-2 rounded-r-md text-center bg-cards dark:bg-darkcards"
       >
         <fa-icon
           icon="magnifying-glass"
@@ -78,15 +78,15 @@ const submitted = () => {
 
 <style scoped>
 form.bento {
-  @apply max-w-2xl mt-2 w-screen shadow-md rounded-md hover:shadow-xl;
+  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md rounded-md hover:shadow-xl;
 }
 
 form.boxy {
-  @apply max-w-2xl mt-2 w-screen shadow-md border-2 border-sforeground dark:border-darksforeground;
+  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md border-2 border-sforeground dark:border-darksforeground;
 }
 
 form.minimal {
-  @apply max-w-2xl mt-2 w-screen h-7 border-l-8 border-sforeground dark:border-darksforeground text-transparent bg-cards dark:bg-darkcards;
+  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen h-7 border-l-8 border-sforeground dark:border-darksforeground text-transparent bg-cards dark:bg-darkcards;
 }
 svg.minimal {
   @apply hidden;
@@ -96,7 +96,7 @@ input.minimal {
   @apply bg-transparent;
 }
 form.rounded {
-  @apply max-w-2xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
+  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
 }
 input.rounded {
   @apply rounded-3xl bg-transparent;

@@ -43,14 +43,14 @@ const editing = ref(false);
 
 <template>
   <div class="flex justify-between">
-    <span class="text-2xl text-foreground dark:text-darkforeground whitespace-pre">{{ getGreeting() }}</span>
+    <span class="text-[2vh] text-foreground dark:text-darkforeground whitespace-pre">{{ getGreeting() }}</span>
     <contenteditable
       tag="span"
       :contenteditable="true"
       v-model="input"
       :noNL="true"
       @returned="save()"
-      class="text-2xl text-foreground dark:text-darkforeground outline-none hover:bg-cards hover:dark:bg-darkcards"
+      class="text-[2vh] text-foreground dark:text-darkforeground outline-none hover:bg-cards hover:dark:bg-darkcards"
     ></contenteditable>
   </div>
 </template>

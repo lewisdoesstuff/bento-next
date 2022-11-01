@@ -49,7 +49,7 @@
 - **Themes**: Bento-next ships with 9 included themes, such as Nord, Arc, and Solarized, each with their own light/dark palletes.
 - **Local storage**: Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
 - **Easy configuration**: with the included `config.js` file.
-- **Dark/Light**: toggleable through your browser or [automatically](#autochange).
+- **Dark/Light**: toggleable through your browser or [automatically](#moon-auto-change-theme).
 - **Layouts**: adjust the layout of Bento to fit your needs and workflow.
 - **Clock and Date**: 24/12 hour, with an optional animated separator.
 - **Greetings**: are easy to modify.
@@ -128,7 +128,7 @@ Adjust 12/24hr format, or enable an animated separator.
 
 ### :art: Themes
 
-Bento-next supports 9 pre-included themes, if you'd like to add more, please see the steps at [Custom Themes](#customthemes)
+Bento-next supports 9 pre-included themes, if you'd like to add more, please see the steps at [Custom Themes](#paintbrush-custom-themes)
 Included themes:
   
 - [Arc](https://github.com/horst3180/arc-theme)

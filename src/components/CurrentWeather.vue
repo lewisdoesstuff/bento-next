@@ -30,13 +30,13 @@ const setWeather = async () => {
 <template>
   <div class="weather flex items-center justify-center">
     <div class="weatherIcon">
-      <img class="w-16 h-16" :src="getIcon(icon)" />
+      <img class="w-max h-[4vh]" :src="getIcon(icon)" />
     </div>
     <div class="weatherValue">
-      <p class="text-3xl font-bold font-sans ml-4 text-foreground dark:text-darkforeground">{{ temp }}°</p>
+      <p class="text-[3vh] font-bold font-sans ml-4  text-foreground dark:text-darkforeground">{{ temp }}°</p>
     </div>
     <div class="weatherDescription">
-      <p class="text-2xl font-sans ml-4 text-foreground dark:text-darkforeground">{{ description }}</p>
+      <p class="text-[2vh] font-sans ml-4 text-foreground dark:text-darkforeground">{{ description }}</p>
     </div>
   </div>
 </template>

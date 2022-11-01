@@ -39,30 +39,32 @@ import "./assets/css/main.css";
           <Greeter />
         </div>
         <div
-          class="weatherBlock col-start-3 col-span-2 row-start-1 row-span-2 flex-col items-center justify-center hidden lg:flex"
+          class="weatherBlock pt-4 lg:pt-0 col-start-1 lg:col-start-3 col-span-4 lg:col-span-2 row-start-2 row-span-1 lg:row-start-1 lg:row-span-2 flex-col items-center justify-center flex"
         >
-          <div class="date flex items-center justify-center">
+          <div class="date items-center justify-center hidden lg:flex">
             <CurrentDate />
           </div>
-          <Suspense>
-            <CurrentWeather />
-          </Suspense>
+          <div class="items-center justify-center" >
+            <Suspense>
+              <CurrentWeather />
+            </Suspense>
+          </div>
         </div>
 
         <div
-          class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-2 gap-6"
+          class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-2 gap-[1.5vw]"
           id="linksBlock"
         >
           <div class="linksBlockLeft row-start-1 row-span-2 col-start-1 col-span-4 lg:col-span-2" id="linksBlockLeft">
             <div
-              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7"
+              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-[1.5vw]"
               id="buttons1"
               v-if="config.bentoLayout == 'bento' || config.bentoLayout == 'buttons'"
             >
               <ButtonsOne />
             </div>
             <div
-              class="listsContainerw-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
+              class="listsContainerw-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
               id="lists1"
               v-if="config.bentoLayout == 'lists'"
             >
@@ -75,21 +77,21 @@ import "./assets/css/main.css";
             id="linksBlockRight"
           >
             <div
-              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
+              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
               id="lists1"
               v-if="config.bentoLayout == 'bento'"
             >
               <ListOne />
             </div>
             <div
-              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-12 p-5"
+              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
               id="lists2"
               v-if="config.bentoLayout == 'lists'"
             >
               <ListTwo />
             </div>
             <div
-              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-7"
+              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-[1.5vw]"
               id="buttons2"
               v-if="config.bentoLayout == 'buttons'"
             >
