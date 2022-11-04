@@ -26,7 +26,9 @@ const CONFIG = {
   themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
     "arc",
     "bento",
-    "catppuccin",
+    "catppuccin-frappe",
+    "catppuccin-macchiato",
+    "catppuccin-mocha",
     "conceptdark", // dark mode only
     "monokai",
     "nord",
