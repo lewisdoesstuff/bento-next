@@ -33,6 +33,4 @@
       hsla(var(--frappe-base-h) calc(var(--frappe-base-s) * 1%) calc((var(--frappe-base-l) + 0) * 1%) / 70%),
       hsla(var(--frappe-base-h) calc(var(--frappe-base-s) * 1%) calc((var(--frappe-base-l) + 0) * 1%) / 90%)
     );
-  
-
 }
