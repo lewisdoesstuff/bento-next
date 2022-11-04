@@ -8,7 +8,7 @@ const props = defineProps({
 const setTheme = (theme) => {
   let link = document.createElement("link");
   link.rel = "stylesheet";
-  link.href = `/src/assets/css/themes/${theme}.css`;
+  link.href = `${window.location.origin}/src/assets/css/themes/${theme}.css`;
   document.head.appendChild(link);
   localStorage.setItem("colors", theme);
 };
