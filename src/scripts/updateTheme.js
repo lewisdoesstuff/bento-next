@@ -31,12 +31,14 @@ export const autoChange = async () => {
 
 const osTheme = () => {
   const osPrefers = window.matchMedia("(prefers-color-scheme: dark)");
-  osPrefers.addEventListener('change', e => {
+  osPrefers.addEventListener("change", e => {
     if (e.matches) {
       localStorage.setItem("theme", "dark");
+      updateTheme();
       return "dark";
     } else {
       localStorage.setItem("theme", "light");
+      updateTheme();
       return "light";
     }
   });
