@@ -33,6 +33,7 @@
     - [:cloud_with_rain: Weather](#cloud_with_rain-weather)
     - [:card_file_box: Buttons & Lists](#card_file_box-buttons--lists)
     - [:moon: Auto change theme](#moon-auto-change-theme)
+    - [:stop_sign: Disabling components](#stop_sign-disabling-components)
   - [:fork_and_knife: Changes and Contributing](#fork_and_knife-changes-and-contributing)
     - [:paintbrush: Custom Themes](#paintbrush-custom-themes)
     - [:open_file_folder: Contributing Changes](#open_file_folder-contributing-changes)
@@ -260,6 +261,26 @@ Note: You can only use one of these at a time. If you've got multiple set to tru
   // Switch dark theme automatically from sunrise to sunset. Pulls from the browsers location, or falls back to the defaults if not.
   // Requires an OpenWeatherMap API key.
   changeThemeByLocation: false,
+```
+
+### :stop_sign: Disabling components
+
+If you don't want to have a specific component enabled, you can disable it in `config.js`  
+To disable, just set the component you'd like to remove to `false`.  
+Please note disabling some components won't scale the others to fill in the gaps, but the layout should be usable. Disabling the theme button requires you to set the theme in `config.js`.
+
+```js
+  // Set any of the below options to false to disable drawing the component on the page.
+  // If themeButton is set to false, the theme can only be set in this file.
+  // Disabling the weather component may cause issues with location-based light/dark switching.
+  componentsEnabled: {
+    searchBar: true,
+    themeButton: true,
+    clock: true,
+    greeter: true,
+    date: true,
+    weather: true
+  }
 ```
 
 ## :fork_and_knife: Changes and Contributing

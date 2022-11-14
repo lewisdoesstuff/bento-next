@@ -255,7 +255,20 @@ const CONFIG = {
         }
       ]
     }
-  ]
+  ],
+
+  // Set any of the below options to false to disable drawing the component on the page.
+  // If themeButton is set to false, the theme can only be set in this file.
+  // Disabling the weather component may cause issues with location-based light/dark switching.
+  componentsEnabled: {
+    searchBar: true,
+    themeButton: true,
+    clock: true,
+    greeter: true,
+    date: true,
+    weather: true
+  }
+
 };
 
 export const config = CONFIG;

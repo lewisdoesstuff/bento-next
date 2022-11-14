@@ -28,25 +28,25 @@ import "./assets/css/main.css";
       class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
       :class="config.imageBackground ? 'bg-transparent dark:bg-transparent' : ''"
     >
-      <ThemeButton />
-      <SearchBar />
+      <ThemeButton v-if=config.componentsEnabled.themeButton />
+      <SearchBar v-if=config.componentsEnabled.searchBar />
 
       <div class="box w-full grid grid-cols-4 grid-rows-4 gap-5 p-1 lg:gap-6 lg:p-5">
         <div
           class="timeBlock row-start-1 row-span-2 col-start-1 col-span-4 flex flex-col items-center justify-center lg:col-span-2"
         >
-          <DigitalClock />
-          <Greeter />
+          <DigitalClock v-if=config.componentsEnabled.clock />
+          <Greeter v-if=config.componentsEnabled.greeter />
         </div>
         <div
           class="weatherBlock pt-4 lg:pt-0 col-start-1 lg:col-start-3 col-span-4 lg:col-span-2 row-start-2 row-span-1 lg:row-start-1 lg:row-span-2 flex-col items-center justify-center flex"
         >
           <div class="date items-center justify-center hidden lg:flex">
-            <CurrentDate />
+            <CurrentDate v-if=config.componentsEnabled.date />
           </div>
           <div class="items-center justify-center" >
             <Suspense>
-              <CurrentWeather />
+              <CurrentWeather v-if=config.componentsEnabled.weather />
             </Suspense>
           </div>
         </div>
