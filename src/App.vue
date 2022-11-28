@@ -28,7 +28,7 @@ import "./assets/css/main.css";
       class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
       :class="config.imageBackground ? 'bg-transparent dark:bg-transparent' : ''"
     >
-      <ThemeButton v-if=config.componentsEnabled.themeButton />
+      <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" />
       <SearchBar v-if=config.componentsEnabled.searchBar />
 
       <div class="box w-full grid grid-cols-4 grid-rows-4 gap-5 p-1 lg:gap-6 lg:p-5">
