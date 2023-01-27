@@ -21,6 +21,7 @@
       - [docker run](#docker-run)
       - [docker-compose](#docker-compose)
     - [:cloud: On GitHub Pages](#cloud-on-github-pages)
+    - [:robot: On Vercel](#robot-on-vercel)
     - [:floppy_disk: With a web server (nginx, apache, etc...)](#floppy_disk-with-a-web-server-nginx-apache-etc)
     - [:lock: SSL](#lock-ssl)
   - [:wrench: Customization](#wrench-customization)
@@ -87,7 +88,20 @@ Bento supports being hosted through GitHub Pages using a workflow action
    5. If the name of your repo is not `bento-next`, edit `package.json`, changing the `base` path for `build-pages` (line 7) to the name of your repo, including the leading and trailing `/`
    6. Create a new commit and push your changes to `origin/master`.
    7. Once pushed, you should see the "Build and Publish to Pages" workflow running under the Actions tab. (I'd recommend also removing the Docker build workflow while here.)
-   8. Access your Bento-next install at `https://{YOUR_GITHUB_ACCOUNT}.github.io/${FORK_NAME}`
+   8. Create a new github page with `gh-pages` branch.
+   9. Access your Bento-next install at `https://{YOUR_GITHUB_ACCOUNT}.github.io/{FORK_NAME}`
+
+### :robot: On Vercel
+
+Bento can also be hosted easily on [vercel](https://vercel.com/dashboard).
+
+  1. Fork this repo from GitHub.
+  2. Clone your fork with `git clone https://github.com/{YOUR_GITHUB_ACCOUNT}/{FORK_NAME}`.
+  3. Make any changes to the config you require and push the changes.
+  4. Add new project on Vercel.
+  5. Connect your GitHub account and Import your Forked Repo.
+  6. Change framework preset to Vue.js and Click on Deploy.
+  7. Access your deployment at `https://{VERCEL_PROJECT_NAME}-{VERCEL_USER_NAME}.vercel.app`
 
 ### :floppy_disk: With a web server (nginx, apache, etc...)
 
