@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, onBeforeMount, ref } from "vue";
 import { updateTheme, autoChange, theme } from "../scripts/updateTheme";
 import ThemeDropdown from "./ThemeDropdown.vue";

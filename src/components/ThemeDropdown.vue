@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, defineProps } from "vue";
 import { config } from "../../config";
 const props = defineProps({

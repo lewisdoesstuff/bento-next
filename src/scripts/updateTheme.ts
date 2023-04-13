@@ -1,4 +1,4 @@
-import { config } from "../../config.js";
+import { config } from "../../config";
 import { ref } from "vue";
 import { weatherPromise } from "./weather.js";
 
@@ -20,7 +20,7 @@ export const updateTheme = () => {
 
 export const autoChange = async () => {
   if (config.changeThemeByOS) {
-    theme.value = osTheme();
+    osTheme();
   } else if (config.changeThemeByHour) {
     theme.value = hourTheme();
   } else if (config.changeThemeByLocation) {

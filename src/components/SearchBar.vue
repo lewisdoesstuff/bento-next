@@ -1,5 +1,5 @@
-<script setup>
-import { config } from "../../config.js";
+<script setup lang="ts">
+import { config } from "../../config";
 import { ref, onMounted } from "vue";
 
 const searchBox = ref(null);

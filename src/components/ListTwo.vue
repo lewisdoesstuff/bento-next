@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { config } from "../../config";
 import SingleList from "./SingleList.vue";
 

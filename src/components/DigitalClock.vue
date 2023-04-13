@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { config } from "../../config.js";
+import { config } from "../../config";
 
 onMounted(() => {
   displayClock();
