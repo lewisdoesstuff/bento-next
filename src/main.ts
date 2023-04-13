@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
 import App from "./App.vue";
 import "./index.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -9,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //Add all icons to the library so you can use it in your page
 library.add(fas, fab);
 
-const app = createApp(App).component("fa-icon", FontAwesomeIcon);
-
+const pinia = createPinia();
+const app = createApp(App);
+app.use(pinia);
+app.component("fa-icon", FontAwesomeIcon);
 app.mount("#app");

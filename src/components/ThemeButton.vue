@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import { onMounted, onBeforeMount, ref } from "vue";
-import { updateTheme, autoChange, theme } from "../scripts/updateTheme";
+import { ref } from "vue";
 import ThemeDropdown from "./ThemeDropdown.vue";
-onBeforeMount(async () => {
-  await autoChange();
-});
+import { useConfigStore } from "../store/store";
+
+const store = useConfigStore();
 
 const toggleTheme = () => {
-  if (localStorage.theme === "dark") {
-    localStorage.theme = "light";
-  } else {
-    localStorage.theme = "dark";
-  }
-  updateTheme();
+  store.theme = store.theme == "dark" ? "light" : "dark";
 };
+
 const show = ref(false);
-const isOpen = () => {
-  console.log(show.value);
-  show.value = !show.value;
-};
+
 </script>
 
 <template>
@@ -28,10 +20,10 @@ const isOpen = () => {
       @click="toggleTheme()"
       class="border-0 cursor-pointer text-foreground dark:text-darkforeground peer"
     >
-      <fa-icon :icon="theme == 'dark' ? 'moon' : 'sun'" id="icon" class="w-max h-[2vh]" />
+      <fa-icon :icon="store.theme == 'dark' ? 'moon' : 'sun'" id="icon" class="w-max h-[2vh]" />
     </button>
     <fa-icon
-      @click="isOpen()"
+      @click="show = !show"
       :class="`${show ? '-translate-y-0 opacity-100' : 'opacity-0' } ${show ? 'rotate-180' : 'rotate-0'}`"
       class="w-max h-[1.5vh] -translate-y-5 hover:-translate-y-0 peer-hover:-translate-y-0 peer-hover:opacity-100 hover:opacity-100 opacity-0 pl-[1px] pt-1 text-foreground dark:text-darkforeground origin-center transition-all ease-in-out duration-200"
       icon="circle-down"

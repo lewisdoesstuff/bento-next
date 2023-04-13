@@ -9,13 +9,15 @@ import ButtonsOne from "./components/ButtonsOne.vue";
 import ButtonsTwo from "./components/ButtonsTwo.vue";
 import ListOne from "./components/ListOne.vue";
 import ListTwo from "./components/ListTwo.vue";
-
+import { useConfigStore } from "./store/store";
 //import ButtonsTwo from "./components/ButtonsTwo.vue";
 //import ListsOne from "./components/ListsOne.vue";
 //import ListsTwo from "./components/ListsTwo.vue";
 
 import { config } from "../config";
 import "./assets/css/main.css";
+const store = useConfigStore();
+document.title = config.title;
 </script>
 
 <template>
@@ -23,6 +25,7 @@ import "./assets/css/main.css";
     class="bg-background dark:bg-darkbackground w-screen h-screen"
     :class="config.imageBackground ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
   >
+  <link rel="stylesheet" :href="store.themeCss" :class="store.theme" />
     <div
       id="app"
       class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"

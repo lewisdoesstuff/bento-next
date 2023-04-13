@@ -1,14 +1,25 @@
 <script setup lang="ts">
+import { defineProps } from "vue";
 import { config } from "../../config";
-import SingleList from "./SingleList.vue";
+import { prefixedIcon } from "../scripts/iconPrefix";
+import { List } from "../types/config";
 
-const items = config.firstlistsContainer;
+const props = defineProps<{
+  list: List
+}>();
+
 </script>
 
 <template>
   <div class="contents">
-    <div v-for="item in items" :key="item.id" :class="`list__${item.id}`" class="flex items-center justify-center flex-col card shadow-md hover:shadow-xl shadow-gray-400/75 dark:shadow-black/40" >
-      <SingleList class="" :icon="item.icon" :links="item.links"></SingleList>
-    </div>
+      <fa-icon class="mt-[2vh] listIcon h-[3vh] w-full my-[1vh] grow text-foreground dark:text-darkforeground justify-self-start content-start basis-10" :icon="prefixedIcon(list.icon)"></fa-icon>
+      <a
+        v-for="(link, index) in list.links"
+        :key="index"
+        :target="config.openInNewTab ? '_blank' : ''"
+        :href="link.url"
+        class="listItem text-center justify-center rounded-md font-bold text-foreground text-[2.5vh] dark:text-darkforeground hover:bg-accent dark:hover:bg-darkaccent grow flex mb-[1.5vh] items-center"
+        >{{ link.name }}</a
+      >
   </div>
 </template>

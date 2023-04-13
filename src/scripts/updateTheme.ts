@@ -1,71 +1,67 @@
 import { config } from "../../config";
-import { ref } from "vue";
-import { weatherPromise } from "./weather.js";
+import { useConfigStore } from "../store/store";
 
-export const theme = ref("");
-export const updateTheme = () => {
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.body.classList.add("notransition");
-    document.documentElement.classList.add("dark");
-    theme.value = "dark";
-    document.body.classList.remove("notransition");
-  } else {
-    document.documentElement.classList.remove("dark");
-    theme.value = "light";
-  }
-};
+const store = useConfigStore();
 
-export const autoChange = async () => {
-  if (config.changeThemeByOS) {
-    osTheme();
-  } else if (config.changeThemeByHour) {
-    theme.value = hourTheme();
-  } else if (config.changeThemeByLocation) {
-    theme.value = await locationTheme();
-  }
-  updateTheme();
-};
-
-const osTheme = () => {
+const useOsPreference = () => {
   const osPrefers = window.matchMedia("(prefers-color-scheme: dark)");
-  osPrefers.addEventListener("change", e => {
+  osPrefers.addEventListener("change", (e) => {
     if (e.matches) {
       localStorage.setItem("theme", "dark");
-      updateTheme();
-      return "dark";
-    } else {
-      localStorage.setItem("theme", "light");
-      updateTheme();
-      return "light";
+      store.theme = "dark";
     }
+    localStorage.setItem("theme", "light");
+    store.theme = "light";
   });
 };
 
-const hourTheme = () => {
+export const useSetTime = () => {
   const date = new Date();
-  const hour = date.getHours() < 10 ? '0' + date.getHours().toString() : date.getHours().toString();
-  const minute = date.getMinutes() < 10 ? '0' + date.getMinutes().toString() : date.getMinutes().toString(); // adjust for hours/mins less than 10 (add a 0)
-  const time = `${hour}:${minute}`;
-  if (time >= config.hourDarkThemeActive) {
+  const time = date.getHours() + ":" + date.getMinutes();
+  if (time > config.darkModeOnTime) {
     localStorage.setItem("theme", "dark");
-    return "dark";
-  } else {
-    localStorage.setItem("theme", "light");
-    return "light";
+    store.theme = "dark";
+    return;
   }
+  if (time < config.lightModeOnTime) {
+    localStorage.setItem("theme", "dark");
+    store.theme = "dark";
+    return;
+  }
+  localStorage.setItem("theme", "light");
+  store.theme = "light";
+  return;
 };
 
-const locationTheme = async () => {
-  const weather = await weatherPromise;
+export const useSunriseSunset = async () => {
+  const weather = await store.weather;
   const now = Date.now() / 1000;
-  if (now >= weather.sunrise && now < weather.sunset) {
-    localStorage.setItem("theme", "light");
-    return "dark";
-  } else {
-    localStorage.setItem("theme", "dark");
-    return "light";
+  if (weather) {
+    if (weather.sys.sunrise > now || weather.sys.sunset < now) {
+      localStorage.setItem("theme", "dark");
+      store.theme = "dark";
+      return;
+    }
+  }
+  localStorage.setItem("theme", "light");
+  store.theme = "light";
+  return;
+};
+
+export const setTheme = () => {
+  switch (config.autoTheme) {
+    case "system":
+      useOsPreference();
+      break;
+    case "location":
+      useSunriseSunset();
+      break;
+    case "preset":
+      useSetTime();
+      break;
+    case "none":
+      localStorage.setItem("theme", "light");
+      store.theme = "light";
+      break;
   }
 };

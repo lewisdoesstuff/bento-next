@@ -1,20 +1,15 @@
 <script setup lang="ts">
-import { onMounted, defineProps } from "vue";
 import { config } from "../../config";
-const props = defineProps({
-  show: Boolean,
-});
+import { useConfigStore } from "../store/store";
 
-const setTheme = (theme) => {
-  let link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = `${window.location.href}css/themes/${theme}.css`;
-  document.head.appendChild(link);
-  localStorage.setItem("colors", theme);
+const store = useConfigStore();
+
+const setTheme = (theme: string) => {
+  store.colors = theme;
 };
 
-const capitalize = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
 </script>
 
