@@ -1,6 +1,6 @@
 # 🖥 Bento-next
 
-**A fork of Bento, the simple, customizable, and beautiful startpage written with Vue.js 3 and TailwindCSS!**
+**An elegant dashboard, written with Vue, Tailwind, and Typescript**
 
 ## [Demo](https://dash.lew.ooo)
 
@@ -14,7 +14,7 @@
 
 - [🖥 Bento-next](#-bento-next)
   - [Demo](#demo)
-  - [:point_down: Index](#point_down-index)
+  - [:point\_down: Index](#point_down-index)
   - [:sparkles: Features](#sparkles-features)
   - [:rocket: Usage](#rocket-usage)
     - [:dolphin: In a Docker Container](#dolphin-in-a-docker-container)
@@ -22,22 +22,22 @@
       - [docker-compose](#docker-compose)
     - [:cloud: On GitHub Pages](#cloud-on-github-pages)
     - [:robot: On Vercel](#robot-on-vercel)
-    - [:floppy_disk: With a web server (nginx, apache, etc...)](#floppy_disk-with-a-web-server-nginx-apache-etc)
+    - [:floppy\_disk: With a web server (nginx, apache, etc...)](#floppy_disk-with-a-web-server-nginx-apache-etc)
     - [:lock: SSL](#lock-ssl)
   - [:wrench: Customization](#wrench-customization)
-    - [:hammer_and_wrench: General](#hammer_and_wrench-general)
+    - [:hammer\_and\_wrench: General](#hammer_and_wrench-general)
     - [:clock5: Clock](#clock5-clock)
     - [:art: Themes](#art-themes)
     - [:mag: Search Bar](#mag-search-bar)
     - [:wave: Greetings](#wave-greetings)
-    - [:triangular_ruler: Layouts](#triangular_ruler-layouts)
-    - [:cloud_with_rain: Weather](#cloud_with_rain-weather)
-    - [:card_file_box: Buttons & Lists](#card_file_box-buttons--lists)
+    - [:triangular\_ruler: Layouts](#triangular_ruler-layouts)
+    - [:cloud\_with\_rain: Weather](#cloud_with_rain-weather)
+    - [:card\_file\_box: Buttons \& Lists](#card_file_box-buttons--lists)
     - [:moon: Auto change theme](#moon-auto-change-theme)
-    - [:stop_sign: Disabling components](#stop_sign-disabling-components)
-  - [:fork_and_knife: Changes and Contributing](#fork_and_knife-changes-and-contributing)
+    - [:stop\_sign: Disabling components](#stop_sign-disabling-components)
+  - [:fork\_and\_knife: Changes and Contributing](#fork_and_knife-changes-and-contributing)
     - [:paintbrush: Custom Themes](#paintbrush-custom-themes)
-    - [:open_file_folder: Contributing Changes](#open_file_folder-contributing-changes)
+    - [:open\_file\_folder: Contributing Changes](#open_file_folder-contributing-changes)
     - [:keyboard: Development Environment](#keyboard-development-environment)
       - [Prerequisites:](#prerequisites)
       - [Setup:](#setup)

@@ -55,11 +55,10 @@ const submitted = () => {
         v-model="searchText"
         ref="searchBox"
       />
-      <button class="h-10 w-1/12 cursor-pointer rounded-r-md bg-cards dark:bg-darkcards hover:text-sforeground dark:hover:text-darksforeground text-foreground dark:text-darkforeground">
-        <fa-icon
-          icon="magnifying-glass"
-          class="rounded-r-md bg-cards fill-current dark:bg-darkcards"
-        ></fa-icon>
+      <button
+        class="h-10 w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
+      >
+        <fa-icon icon="magnifying-glass" class="rounded-r-md bg-cards fill-current dark:bg-darkcards"></fa-icon>
       </button>
     </form>
   </div>

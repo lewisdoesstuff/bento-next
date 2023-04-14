@@ -23,7 +23,7 @@ const props = defineProps<{
         :key="index"
         :target="config.openInNewTab ? '_blank' : ''"
         :href="link.url"
-        class="w-full rounded-lg py-4 text-3xl font-bold text-foreground hover:bg-accent hover:text-sforeground dark:text-darkforeground dark:hover:bg-darkaccent dark:hover:text-darksforeground transition-all ease-in-out"
+        class="w-full rounded-lg py-4 text-3xl font-bold text-foreground transition-all ease-in-out hover:bg-accent hover:text-sforeground dark:text-darkforeground dark:hover:bg-darkaccent dark:hover:text-darksforeground"
         >{{ link.name }}</a
       >
     </div>

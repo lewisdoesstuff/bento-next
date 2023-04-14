@@ -22,7 +22,7 @@ const capitalize = (str: string) => {
       v-for="(theme, index) in config.themes"
       :key="index"
       @click="setTheme(theme)"
-      class="text-md block cursor-pointer px-4 py-2 text-center hover:bg-accent dark:hover:bg-darkaccent transition-all ease-in-out"
+      class="text-md block cursor-pointer px-4 py-2 text-center transition-all ease-in-out hover:bg-accent dark:hover:bg-darkaccent"
     >
       {{ capitalize(theme) }}
     </p>

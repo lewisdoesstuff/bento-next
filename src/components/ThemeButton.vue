@@ -8,11 +8,11 @@ const store = useConfigStore();
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
+const show = ref(false);
 
 const updateTheme = () => {
   store.theme = isDark.value ? 'dark' : 'light';
 };
-const show = ref(false);
 </script>
 
 <template>

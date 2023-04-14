@@ -15,16 +15,15 @@ import { onBeforeMount } from 'vue';
 
 const store = useConfigStore();
 document.title = config.title;
+
 onBeforeMount(() => {
   useConfigStore();
 }),
-
-
-
-setInterval(async () => {
-  store.weather = getWeather();
-  store.weatherIcon = await getIcon();
-}, 1800000);
+  // Fetch the weather every 30 minutes
+  setInterval(async () => {
+    store.weather = getWeather();
+    store.weatherIcon = await getIcon();
+  }, 1800000);
 </script>
 
 <template>
@@ -40,7 +39,6 @@ setInterval(async () => {
         <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
         <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto" />
       </div>
-
       <div class="flex w-3/5 flex-row justify-between pt-32">
         <div>
           <DigitalClock v-if="config.componentsEnabled.clock" class="w-full" />

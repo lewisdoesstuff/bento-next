@@ -10,12 +10,13 @@ const weather: Ref<OpenWeatherMap | null> = ref(null);
 
 onMounted(async () => {
   weather.value = await store.weather;
-  store.weatherIcon = await getIcon()
+  store.weatherIcon = await getIcon();
 });
 
 const formatDescription = () => {
   if (weather.value) {
     const desc = weather.value.weather[0].description;
+    // Uppercase the first letter
     return desc.charAt(0).toUpperCase() + desc.slice(1);
   }
   return 'Unknown';

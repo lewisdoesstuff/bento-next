@@ -15,7 +15,9 @@ const displayClock = () => {
 
   ampm.value = date.getHours() >= 12 ? 'pm' : 'am';
 
+  // Get the hours, providing the 12-hour format if set.
   hours.value = config.twelveHourFormat ? (date.getHours() % 12).toString() : date.getHours().toString();
+  // Get the minutes, adding a leading zero if needed.
   min.value = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes().toString();
 };
 

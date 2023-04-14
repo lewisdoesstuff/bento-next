@@ -3,6 +3,9 @@ import { useConfigStore } from "../store/store";
 
 const store = useConfigStore();
 
+/**
+ * Use `prefers-color-scheme` to set the theme
+ */
 const useOsPreference = () => {
   const osPrefers = window.matchMedia("(prefers-color-scheme: dark)");
   osPrefers.addEventListener("change", (e) => {
@@ -15,6 +18,9 @@ const useOsPreference = () => {
   });
 };
 
+/**
+ * Use the times set in the config to set the theme
+ */
 export const useSetTime = () => {
   const date = new Date();
   const time = date.getHours() + ":" + date.getMinutes();
@@ -33,6 +39,9 @@ export const useSetTime = () => {
   return;
 };
 
+/**
+ * Use weather data to set the theme based on sunrise and sunset
+ */
 export const useSunriseSunset = async () => {
   const weather = await store.weather;
   const now = Date.now() / 1000;
@@ -48,6 +57,9 @@ export const useSunriseSunset = async () => {
   return;
 };
 
+/**
+ * Sets the theme based on the config
+ */
 export const setTheme = () => {
   switch (config.autoTheme) {
     case "system":
@@ -60,8 +72,6 @@ export const setTheme = () => {
       useSetTime();
       break;
     case "none":
-      localStorage.setItem("theme", "light");
-      store.theme = "light";
       break;
   }
 };
