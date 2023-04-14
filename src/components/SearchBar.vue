@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { config } from "../../config";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, Ref } from "vue";
 
-const searchBox = ref(null);
+const searchBox: Ref<HTMLElement | null> = ref(null);
 const searchText = ref("");
 
 onMounted(() => {
-  if (config.autoFocusBar) {
+  if (config.autoFocusBar && searchBox.value) {
     searchBox.value.focus();
   }
 });
@@ -25,9 +25,8 @@ const engines = {
 const placeholder = () => {
   if (config.barPlaceholder === "") {
     return engines[config.searchEngine].display;
-  } else {
-    return config.barPlaceholder;
   }
+  return config.barPlaceholder;
 };
 
 const submitted = () => {
@@ -41,10 +40,10 @@ const submitted = () => {
 </script>
 
 <template>
-  <div class="search fixed mx-10 my-5 top-0 items-center justify-center text-[1.5vh]" ref="search">
+  <div ref="search">
     <form
       id="form"
-      class="searchform flex flex-row items-center rounded-md transition-all ease-in-out duration-150"
+      class="searchform flex flex-row items-center rounded-md transition-all duration-150 ease-in-out"
       :class="config.barStyle"
       role="search"
       autocomplete="off"
@@ -53,7 +52,7 @@ const submitted = () => {
       <input
         type="search"
         onfocus="this.select()"
-        class="searchinput h-full w-full p-[1vh] rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
+        class="searchinput h-full w-full rounded-l-md bg-cards p-[1vh] placeholder-foreground caret-accent shadow-inherit focus:outline-none dark:bg-darkcards dark:text-darkforeground dark:placeholder-darkforeground dark:caret-darkaccent"
         :class="config.barStyle"
         id="query"
         name="q"
@@ -64,12 +63,12 @@ const submitted = () => {
       />
       <button
         :class="config.barStyle"
-        class="searchbutton cursor-pointer w-[4em] h-full p-[0.91vh] pr-2 rounded-r-md text-center bg-cards dark:bg-darkcards"
+        class="searchbutton h-full w-[4em] cursor-pointer rounded-r-md bg-cards p-[0.91vh] pr-2 text-center dark:bg-darkcards"
       >
         <fa-icon
           icon="magnifying-glass"
           :class="config.barStyle"
-          class="text-foreground dark:text-darkforeground fill-current rounded-r-md bg-cards dark:bg-darkcards"
+          class="rounded-r-md bg-cards fill-current text-foreground dark:bg-darkcards dark:text-darkforeground"
         ></fa-icon>
       </button>
     </form>
@@ -78,15 +77,15 @@ const submitted = () => {
 
 <style scoped>
 form.bento {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md rounded-md hover:shadow-xl;
+  @apply mt-2 w-screen max-w-sm rounded-md shadow-md hover:shadow-xl lg:max-w-2xl 4xl:max-w-7xl;
 }
 
 form.boxy {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md border-2 border-sforeground dark:border-darksforeground;
+  @apply mt-2 w-screen max-w-sm border-2 border-sforeground shadow-md dark:border-darksforeground lg:max-w-2xl 4xl:max-w-7xl;
 }
 
 form.minimal {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen h-7 border-l-8 border-sforeground dark:border-darksforeground text-transparent bg-cards dark:bg-darkcards;
+  @apply mt-2 h-7 w-screen max-w-sm border-l-8 border-sforeground bg-cards text-transparent dark:border-darksforeground dark:bg-darkcards lg:max-w-2xl 4xl:max-w-7xl;
 }
 svg.minimal {
   @apply hidden;
@@ -96,13 +95,13 @@ input.minimal {
   @apply bg-transparent;
 }
 form.rounded {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
+  @apply mt-2 w-screen max-w-sm rounded-3xl bg-cards shadow-md dark:bg-darkcards lg:max-w-2xl 4xl:max-w-7xl;
 }
 input.rounded {
   @apply rounded-3xl bg-transparent;
 }
 button.rounded {
-  @apply shadow-none h-full rounded-r-3xl;
+  @apply h-full rounded-r-3xl shadow-none;
 }
 svg.rounded {
   @apply rounded-r-3xl;

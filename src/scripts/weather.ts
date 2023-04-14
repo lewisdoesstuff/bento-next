@@ -7,16 +7,15 @@ interface Position {
   lon: string;
 }
 
-const store = useConfigStore();
-
-export const toCelcius = (temp: number) => Math.round(temp - 273.15); // Convert Kelvin to Celcius
-export const toFahrenheit = (temp: number) => Math.round((temp * 9) / 5 - 459.67); // Convert Kelvin to Fahrenheit
+const toCelcius = (temp: number) => Math.round(temp - 273.15); // Convert Kelvin to Celcius
+const toFahrenheit = (temp: number) => Math.round((temp * 9) / 5 - 459.67); // Convert Kelvin to Fahrenheit
 
 /**
  * Get the URL to the weather icon for the current weather
  * @returns URL - Path to icon
  */
 export const getIcon = async () => {
+  const store = useConfigStore();
   const iconTheme = config.weatherIcons;
   const weather = (await store.weather)?.weather[0].main;
   // Set the icon from the weather. If it doesn't exist, use the unknown icon.
@@ -31,9 +30,13 @@ export const getIcon = async () => {
  */
 const fetchWeather = async (position: Position) => {
   const api = `https://api.openweathermap.org/data/2.5/weather?lat=${position.lat}&lon=${position.lon}&lang=${config.language}&appid=${config.weatherKey}`;
-  const response = await fetch(api).catch((err) => {
-    throw new Error("Failed to fetch weather!", err);
+  const response = await fetch(api).then((res) => {
+    if (!res.ok) {
+      throw new Error(`Failed to fetch weather! ${res.status}: ${res.statusText}`);
+    }
+    return res;
   });
+
   const data: OpenWeatherMap = await response.json().catch((err) => {
     throw new Error("Failed to parse weather!", err);
   });
@@ -79,5 +82,7 @@ export const getWeather = async () => {
     console.error(err);
     return null;
   });
+  if (!weather) return weather;
+  weather.main.temp = config.weatherUnit === "C" ? toCelcius(weather.main.temp) : toFahrenheit(weather.main.temp);
   return weather;
 };

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { config } from "../../config";
-import ListOne from './ListOne.vue'
+import ListOne from "./ListOne.vue";
 const layout = config.layout;
 
 const listAmount = () => {
@@ -11,10 +11,10 @@ const listAmount = () => {
 </script>
 
 <template>
-  <div v-for="i in listAmount()" :key="i" class="flex flex-col justify-center items-center">
-    <div class="contents">
-        <ListOne class="" :list="config.lists[i][0]" />
-        <ListOne class="" :list="config.lists[i][1]" />
+  <div v-for="i in listAmount()" :key="i" class="">
+    <div class="flex flex-row gap-8 h-full">
+      <ListOne class="" :list="config.lists[i - 1][0]" />
+      <ListOne class="" :list="config.lists[i - 1][1]" />
     </div>
   </div>
 </template>

@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import { config } from "../../config";
-import SingleButton from './SingleButton.vue';
+import { defineProps } from 'vue';
+import { config } from '../../config';
+import { Button } from '../types/config';
+import { prefixedIcon } from '../scripts/iconPrefix';
 
-const items = config.firstButtonsContainer;
+const props = defineProps<{
+  button: Button;
+}>();
 </script>
 
 <template>
-  <div class="contents">
-    <div class="contents" v-for="item in items" :key="item.id">
-      <SingleButton :id="item.id" :link="item.link" :icon="item.icon"></SingleButton>
-    </div>
+  <div
+    class="flex h-48 w-48 items-center justify-center rounded-lg bg-cards shadow-md transition-all duration-200 hover:-translate-y-2 hover:bg-accent hover:shadow-lg dark:bg-darkcards dark:hover:bg-darkaccent"
+  >
+    <a class="text-foreground dark:text-darkforeground" :href="props.button.url" :target="config.openInNewTab ? '_blank' : ''">
+      <fa-icon :icon="prefixedIcon(props.button.icon)" class="h-[4.5rem] w-[4.5rem]" />
+    </a>
   </div>
 </template>
