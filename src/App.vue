@@ -10,9 +10,21 @@ import ListContainer from './components/ListContainer.vue';
 import { useConfigStore } from './store/store';
 import { config } from '../config';
 import './assets/css/main.css';
+import { getIcon, getWeather } from './scripts/weather';
+import { onBeforeMount } from 'vue';
 
 const store = useConfigStore();
 document.title = config.title;
+onBeforeMount(() => {
+  useConfigStore();
+}),
+
+
+
+setInterval(async () => {
+  store.weather = getWeather();
+  store.weatherIcon = await getIcon();
+}, 1800000);
 </script>
 
 <template>
@@ -21,8 +33,8 @@ document.title = config.title;
     class="h-screen w-screen bg-background dark:bg-darkbackground"
     :class="config.backgroundImage ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
   >
-    <link rel="stylesheet" :href="store.themeCss" :class="store.theme" />
-    <div class="flex w-full h-full flex-col items-center">
+    <link rel="stylesheet" :href="store.themeCss" :class="store.colors" />
+    <div class="flex h-full w-full flex-col items-center">
       <div class="flex w-full flex-row">
         <div class="w-1/3"></div>
         <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
@@ -41,7 +53,7 @@ document.title = config.title;
           </Suspense>
         </div>
       </div>
-      <div class="flex w-full flex-row justify-between mt-auto mb-16 px-64">
+      <div class="mb-16 mt-auto flex w-full flex-row justify-between px-64">
         <ButtonsContainer />
         <ListContainer />
       </div>

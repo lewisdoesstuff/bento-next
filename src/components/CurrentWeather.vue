@@ -2,6 +2,7 @@
 import { Ref, onMounted, ref } from 'vue';
 import { useConfigStore } from '../store/store';
 import { OpenWeatherMap } from '../types/openWeatherMap';
+import { getIcon } from '../scripts/weather';
 
 const store = useConfigStore();
 
@@ -9,6 +10,7 @@ const weather: Ref<OpenWeatherMap | null> = ref(null);
 
 onMounted(async () => {
   weather.value = await store.weather;
+  store.weatherIcon = await getIcon()
 });
 
 const formatDescription = () => {

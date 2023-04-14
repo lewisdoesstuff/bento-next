@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { config } from "../../config";
-import { useConfigStore } from "../store/store";
+import { config } from '../../config';
+import { useConfigStore } from '../store/store';
 
 const store = useConfigStore();
 
 const setTheme = (theme: string) => {
   store.colors = theme;
+  store.themeCss = `./src/assets/css/themes/${theme}.css`;
 };
 
 const capitalize = (str: string) => {
@@ -15,13 +16,13 @@ const capitalize = (str: string) => {
 
 <template>
   <div
-    class="absolute right-1 py-2 mt-2 bg-cards dark:bg-darkcards text-foreground dark:text-darkforeground rounded-md shadow-xl w-max justify-center"
+    class="absolute right-1 mt-2 w-max justify-center rounded-md bg-cards py-2 text-foreground shadow-xl dark:bg-darkcards dark:text-darkforeground"
   >
     <p
       v-for="(theme, index) in config.themes"
       :key="index"
       @click="setTheme(theme)"
-      class="block px-4 py-2 text-md cursor-pointer hover:text-background dark:hover:text-darkbackground hover:bg-accent dark:hover:bg-darkaccent text-center"
+      class="text-md block cursor-pointer px-4 py-2 text-center hover:bg-accent dark:hover:bg-darkaccent transition-all ease-in-out"
     >
       {{ capitalize(theme) }}
     </p>

@@ -44,7 +44,6 @@ export const config: Config = {
   // Search Bar
   searchBar: true,
   searchEngine: "google", // google, ddg
-  barStyle: "bento", // bento, minimal, boxy, rounded
   barPlaceholder: "", // if blank, use search engine name. Set to ' ' for no placeholder.
   autoFocusBar: true,
 

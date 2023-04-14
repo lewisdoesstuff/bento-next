@@ -17,7 +17,7 @@ const toFahrenheit = (temp: number) => Math.round((temp * 9) / 5 - 459.67); // C
 export const getIcon = async () => {
   const store = useConfigStore();
   const iconTheme = config.weatherIcons;
-  const weather = (await store.weather)?.weather[0].main;
+  const weather = (await store.weather)?.weather[0].icon;
   // Set the icon from the weather. If it doesn't exist, use the unknown icon.
   const icon = `../assets/icons/weather/${iconTheme}/${weather ? weather : "unknown"}.png`;
   return new URL(icon, import.meta.url).href;

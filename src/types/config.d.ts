@@ -17,7 +17,6 @@ export interface Config {
 
   searchBar: boolean;
   searchEngine: "google" | "ddg";
-  barStyle: "bento" | "minimal" | "boxy" | "rounded";
   barPlaceholder: string;
   autoFocusBar: boolean;
 
