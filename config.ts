@@ -38,7 +38,6 @@ export const config: Config = {
     "nord",
     "sakura",
     "solarized",
-    "summer",
   ],
 
   // Search Bar

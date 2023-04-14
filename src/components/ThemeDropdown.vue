@@ -16,7 +16,7 @@ const capitalize = (str: string) => {
 
 <template>
   <div
-    class="absolute right-1 mt-2 w-max justify-center rounded-md bg-cards py-2 text-foreground shadow-xl dark:bg-darkcards dark:text-darkforeground"
+    class="absolute right-1 justify-center rounded-md bg-cards py-2 text-foreground shadow-xl dark:bg-darkcards dark:text-darkforeground"
   >
     <p
       v-for="(theme, index) in config.themes"

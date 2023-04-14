@@ -14,7 +14,7 @@ const props = defineProps<{
     class="group flex w-72 flex-col items-center rounded-lg bg-cards pb-2 pt-4 shadow-md transition-all duration-200 ease-in-out hover:-translate-y-2 hover:shadow-lg dark:bg-darkcards"
   >
     <fa-icon
-      class="group my-2 h-10 w-10 text-foreground group-hover:text-sforeground dark:text-darkforeground dark:group-hover:text-darksforeground"
+      class="group my-2 h-10 w-10 text-foreground group-hover:text-sforeground dark:text-darkforeground dark:group-hover:text-darksforeground transition ease-in-out"
       :icon="prefixedIcon(list.icon)"
     ></fa-icon>
     <div class="flex h-full w-full flex-col justify-between px-8 text-center">
