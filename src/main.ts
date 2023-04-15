@@ -16,5 +16,6 @@ const app = createApp(App);
 app.use(pinia);
 // Initialize the store here to ensure it exists before importing components
 const store = useConfigStore();
+await import(`./assets/css/themes/${store.colors}.css`);
 app.component('fa-icon', FontAwesomeIcon);
 app.mount('#app');

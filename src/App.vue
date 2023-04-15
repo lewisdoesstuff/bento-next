@@ -9,15 +9,16 @@ import ButtonsContainer from './components/ButtonsContainer.vue';
 import ListContainer from './components/ListContainer.vue';
 import { useConfigStore } from './store/store';
 import { config } from '../config';
-import './assets/css/main.css';
 import { getIcon, getWeather } from './scripts/weather';
 import { onBeforeMount } from 'vue';
+import { setTheme } from './scripts/updateTheme';
 
 const store = useConfigStore();
 document.title = config.title;
 
 onBeforeMount(() => {
-  useConfigStore();
+ useConfigStore();
+ setTheme();
 }),
   // Fetch the weather every 30 minutes
   setInterval(async () => {

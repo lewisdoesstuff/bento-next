@@ -7,6 +7,7 @@ const store = useConfigStore();
 const setTheme = (theme: string) => {
   store.colors = theme;
   store.themeCss = `./src/assets/css/themes/${theme}.css`;
+  localStorage.setItem('colors', theme);
 };
 
 const capitalize = (str: string) => {
