@@ -17,8 +17,8 @@ const store = useConfigStore();
 document.title = config.title;
 
 onBeforeMount(() => {
- useConfigStore();
- setTheme();
+  useConfigStore();
+  setTheme();
 }),
   // Fetch the weather every 30 minutes
   setInterval(async () => {
@@ -34,13 +34,13 @@ onBeforeMount(() => {
     :class="config.backgroundImage ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
   >
     <link rel="stylesheet" :href="store.themeCss" :class="store.colors" />
-    <div class="flex h-full w-full flex-col items-center">
+    <div class="flex h-full w-full flex-col items-center justify-between">
       <div class="flex w-full flex-row">
         <div class="w-1/3"></div>
         <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
         <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto" />
       </div>
-      <div class="flex w-3/5 flex-row justify-between pt-32">
+      <div class="flex h-2/5 w-3/5 flex-row items-center justify-between">
         <div>
           <DigitalClock v-if="config.componentsEnabled.clock" class="w-full" />
           <Greeter v-if="config.componentsEnabled.greeter" class="pt-4" />
@@ -52,9 +52,9 @@ onBeforeMount(() => {
           </Suspense>
         </div>
       </div>
-      <div class="mb-16 mt-auto flex w-full flex-row justify-between px-64">
-        <ButtonsContainer />
-        <ListContainer />
+      <div class="mb-16 flex h-2/5 w-5/6 flex-row items-end justify-between">
+        <ButtonsContainer class="w-1/2" />
+        <ListContainer class="w-1/2" />
       </div>
     </div>
   </div>

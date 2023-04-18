@@ -56,9 +56,12 @@ const submitted = () => {
         ref="searchBox"
       />
       <button
-        class="h-10 w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
+        class="group h-10 w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground transition-all duration-75 ease-in-out hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
       >
-        <fa-icon icon="magnifying-glass" class="rounded-r-md bg-cards fill-current dark:bg-darkcards"></fa-icon>
+        <fa-icon
+          icon="magnifying-glass"
+          class="rounded-r-md bg-cards fill-current transition-all duration-150 ease-in-out dark:bg-darkcards"
+        ></fa-icon>
       </button>
     </form>
   </div>

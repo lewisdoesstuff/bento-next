@@ -25,7 +25,7 @@ setInterval(() => displayClock(), 1000);
 </script>
 
 <template>
-  <div class="flex flex-row justify-center">
+  <div class="flex flex-row justify-center w-full">
     <div class="font-sans text-9xl font-bold text-foreground dark:text-darkforeground">{{ hours }}</div>
     <div class="font-sans text-9xl font-bold text-foreground dark:text-darkforeground" :class="config.flashSeparator ? 'pulse' : ''">
       {{ ':' }}

@@ -11,10 +11,10 @@ const listAmount = () => {
 </script>
 
 <template>
-  <div v-for="i in listAmount()" :key="i" class="">
-    <div class="flex h-full flex-row gap-12">
-      <ListOne class="" :list="config.lists[i - 1][0]" />
-      <ListOne class="" :list="config.lists[i - 1][1]" />
+  <div v-for="i in listAmount()" :key="i" class="h-full w-1/2">
+    <div class="flex h-full justify-center gap-16 w-full flex-row grow">
+      <ListOne class="w-1/2" :list="config.lists[i - 1][0]" />
+      <ListOne class="w-1/2" :list="config.lists[i - 1][1]" />
     </div>
   </div>
 </template>
