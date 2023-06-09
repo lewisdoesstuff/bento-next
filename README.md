@@ -1,6 +1,6 @@
 # 🖥 Bento-next
 
-**An elegant dashboard, written with Vue, Tailwind, and Typescript**
+## An elegant dashboard, written with Vue, Tailwind, and Typescript<!-- omit from toc -->
 
 ## [Demo](https://dash.lew.ooo)
 
@@ -32,8 +32,9 @@
     - [:wave: Greetings](#wave-greetings)
     - [:triangular\_ruler: Layouts](#triangular_ruler-layouts)
     - [:cloud\_with\_rain: Weather](#cloud_with_rain-weather)
-    - [:card\_file\_box: Buttons \& Lists](#card_file_box-buttons--lists)
+      - [Setting the OpenWeatherMap API key](#setting-the-openweathermap-api-key)
     - [:moon: Auto change theme](#moon-auto-change-theme)
+    - [:card\_file\_box: Buttons \& Lists](#card_file_box-buttons--lists)
     - [:stop\_sign: Disabling components](#stop_sign-disabling-components)
   - [:fork\_and\_knife: Changes and Contributing](#fork_and_knife-changes-and-contributing)
     - [:paintbrush: Custom Themes](#paintbrush-custom-themes)
@@ -48,18 +49,17 @@
 
 ## :sparkles: Features
 
-- **Themes**: Bento-next ships with 9 included themes, such as Nord, Arc, and Solarized, each with their own light/dark palletes.
+- **Themes**: Bento-next ships with 9 included themes, such as Catppuccin, Nord, Arc, and Solarized, each with their own light/dark palletes.
 - **Local storage**: Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
-- **Easy configuration**: with the included `config.js` file.
+- **Easy configuration**: with the included `config.ts` file.
 - **Dark/Light**: toggleable through your browser or [automatically](#moon-auto-change-theme).
 - **Layouts**: adjust the layout of Bento to fit your needs and workflow.
 - **Clock and Date**: 24/12 hour, with an optional animated separator.
-- **Greetings**: are easy to modify.
 - **Icons**: Bento-next supports a huge array of icons from [FontAwesome](https://fontawesome.com).
 
 ## :rocket: Usage
 
-Bento-next currently supports running in a Docker container (recommended), on GitHub Pages, or hosted with your own web server.
+Bento-next currently supports running in a Docker container (recommended), on GitHub Pages, Vercel, or hosted with your own web server.
 
 ### :dolphin: In a Docker Container
 
@@ -67,9 +67,9 @@ You can run Bento in a Docker Container, either with `docker run`, or with the i
 
 #### docker run
 
- 1. Clone this repo to pull the config.js file: `git clone https://github.com/lewisdoesstuff/bento-next/`
+ 1. Clone this repo to pull the config.ts file: `git clone https://github.com/lewisdoesstuff/bento-next/`
  2. Run the following `docker` command, providing the path to the config.js file, changing port mappings if needed.
- 3. `# docker run -it -d -p 80:8080 -v <config.js location>:/usr/share/nginx/html/config.js lewisdoesstuff/bento-next`
+ 3. `# docker run -it -d -p 80:8080 -v <config.ts location>:/usr/share/nginx/html/config.ts lewisdoesstuff/bento-next`
 
 #### docker-compose
 
@@ -118,7 +118,7 @@ If you'd like to add SSL support (recommended), I recommend using a reverse-prox
 
 ## :wrench: Customization
 
-All settings can be managed in the `config.js` file:
+All settings can be managed in the `config.ts` file:
 
 ### :hammer_and_wrench: General
 
@@ -148,7 +148,7 @@ Included themes:
   
 - [Arc](https://github.com/horst3180/arc-theme)
 - Bento (default)
-- [Catppuccin](https://github.com/catppuccin/catppuccin)
+- [Catppuccin (Frappe, Macchiato, Mocha)](https://github.com/catppuccin/catppuccin)
 - [Concept-Dark](https://www.deviantart.com/zb652/art/Concept-Dark-885878180)
 - [Monokai (free)](https://monokai.pro/)
 - [Nord](https://www.nordtheme.com/)
@@ -159,32 +159,36 @@ Included themes:
 You're also able to set a custom background image in the config. You can either place the file in `./src/assets/images/` and provide the file name, or provide a link to the image.
 
 ```js
-// Theme
+  // Theme
   theme: "bento",
-  imageBackground: false,
-  imageUrl: "background.jpg", // place in ./src/assets/images/ and provide the file name. Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
-  themes: [   // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
+
+  // Place a background image in ./src/assets/images/ and provide the file name.
+  // Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
+  // Set to "" to disable.
+  backgroundImage: "", 
+  themes: [
+    // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
     "arc",
     "bento",
-    "catppuccin",
+    "catppuccin-frappe",
+    "catppuccin-macchiato",
+    "catppuccin-mocha",
     "conceptdark", // dark mode only
     "monokai",
     "nord",
     "sakura",
     "solarized",
-    "summer"
   ],
 ```
 
 ### :mag: Search Bar
 
-Bento-next includes a search bar by default, with 4 themes to choose from. If you'd like to add your own, you'll have to do this in the app's source (for now). You can find the search bar at `./src/components/SearchBar.vue`.
+Bento-next includes a search bar by default. You can change the search engine and placeholder text as below
 
 ```js
   // Search Bar
   searchBar: true,
   searchEngine: "google", // google, ddg
-  barStyle: "bento", // bento, minimal, boxy, rounded
   barPlaceholder: "", // if blank, use search engine name. Set to ' ' for no placeholder.
   autoFocusBar: true,
 ```
@@ -214,7 +218,8 @@ If you want to customize all your extra buttons and lists go to [:card_file_box:
 
 ### :cloud_with_rain: Weather
 
-Bento provides a weather widget that pulls data from OpenWeatherMap. To use this, you'll need to add an API key to the settings. You can generate a free API key from [OpenWeatherMap](https://openweathermap.org/api). You'll need a "Current Weather Data" key.  
+Bento provides a weather widget that pulls data from OpenWeatherMap. To use this, you'll need to add an API key to the settings. You can generate a free API key from [OpenWeatherMap](https://openweathermap.org/api). You'll need a "Current Weather Data" key.
+
 You can provide a default lat/long, or have Bento automatically pull your location from your browsers location data.
 If this isn't available, or you deny location permissions, Bento will fall back to using the lat/long set in the config.
 
@@ -227,7 +232,7 @@ Finally, choose an icon set:
 
 ```js
   // Weather
-  weatherKey: "YourOpenWeatherMapAPIKey", // Write here your API Key
+  weatherKey: import.meta.env.VITE_API_KEY, // Set your OpenWeatherMap key in .env - Move the included .env.example to .env
   weatherIcons: "OneDark", // 'Onedark', 'Nord', 'Dark', 'White'
   weatherUnit: "C", // 'F', 'C'
   language: "en", // More languages in https://openweathermap.org/current#multi
@@ -237,44 +242,79 @@ Finally, choose an icon set:
   defaultLongitude: "-122.419",
 ```
 
+#### Setting the OpenWeatherMap API key
+
+To set the OpenWeatherMap API key, you'll need to create a `.env` file.  
+Bento-next includes a `.env.example` file, just move this to `.env`, and add your API key inside.
+
+### :moon: Auto change theme
+
+Bento-next can automatically swap your theme (light/dark) using 1 of 4 modes
+
+```js
+  // Automatic theme switching:
+  // "system" - Switches based on OS color preference
+  // "location" - Switches based on local sunrise/sunset (requires OpenWeatherMap API key)
+  // "preset" - Switches based on set hours
+  // "none" - No automatic switching
+  autoTheme: "system",
+```
+
+If you're using `'preset'` as the theme switching mode, you can set the hours to switch below
+
+```js
+  // If autoTheme is set to "preset", set the hours below.
+  darkModeOnTime: "18:30",
+  lightModeOnTime: "07:00",
+```
+
 ### :card_file_box: Buttons & Lists
 
 Every entry in the buttons or lists containers are editable through here! A breakdown of the object is below.
 
 ```js
-  itemContainer: [
-    {
-      id: "1", // entry ID, don't modify.
-      name: "Github", // set the name of the card
-      icon: "fab-github", // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
-      link: "https://github.com", // provide a link to the page.
-    },
-    {
-      id: "2",
-      name: "GMail",
-      icon: "envelope",
-      link: "https://mail.google.com/",
-    },
+  // Buttons
+  buttons: [
+    // First buttons group
+    // If you're using the 'bento' layout, this is the only group that will be used.
+    [
+      {
+        name: "Github", // set the name of the card
+        icon: "fab-github", // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
+        url: "https://github.com/", // provide a link to the page.
+      },
+    ]
   ]
 ```
 
-### :moon: Auto change theme
-
-Bento-next can automatically swap your theme (light/dark) depending on one of 3 parameters that you can change in the `config.js` file.  
-Note: You can only use one of these at a time. If you've got multiple set to true, the first in the list will be respected.
-
 ```js
-  // Autochange theme from OS preferece - The below options are all mutually exclusive. If you've got multiple set to true, the first one will be set and the rest ignored.
-  changeThemeByOS: true,
-
-  // Switch theme based on set hours. (24hr format, string must be in: hh:mm)
-  changeThemeByHour: false,
-  hourDarkThemeActive: "18:30",
-  hourDarkThemeInactive: "07:00",
-
-  // Switch dark theme automatically from sunrise to sunset. Pulls from the browsers location, or falls back to the defaults if not.
-  // Requires an OpenWeatherMap API key.
-  changeThemeByLocation: false,
+  // Lists
+  lists: [
+    // First list group
+    // If you're using the 'bento' layout, this is the only group that will be used.
+    [
+      {
+        icon: "music", // Icon for the list to use. The same as the buttons.
+        links: [
+          {
+            name: "Inspirational", // Display text for the link
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL to the page
+          },
+          {
+            name: "Classic",
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            name: "Oldies",
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+          {
+            name: "Rock",
+            url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          },
+        ],
+      }
+    ]
 ```
 
 ### :stop_sign: Disabling components
@@ -301,7 +341,7 @@ Please note disabling some components won't scale the others to fill in the gaps
 
 ### :paintbrush: Custom Themes
 
-Bento can be expanded with user-defined themes! To create one, add a new .css file to `./public/css/themes/`, then add it to the array of themes in `config.js`.
+Bento can be expanded with user-defined themes! To create one, add a new .css file to `./public/css/themes/`, then add it to the array of themes in `config.ts`.
 If you've got a theme you'd like to see included, please open a PR, or open an issue with a link to the color palette.
 Example:
 
@@ -364,7 +404,7 @@ Setting up a working dev environment is fairly straightforward with the below st
  3. Install dependencies with `npm install`
  4. Open the folder in your preffered text editor to begin developing!
  5. Start the dev server with `npm run dev`.
- 6. Connect to the local instance at `https://localhost:3000`.
+ 6. Connect to the local instance at `https://localhost:5173`.
 
 #### Building:
 
