@@ -12,7 +12,6 @@ const useOsPreference = () => {
     if (e.matches) {
       localStorage.setItem("theme", "dark");
       store.theme = "dark";
-      console.log("Changed!")
     }
     localStorage.setItem("theme", "light");
     store.theme = "light";

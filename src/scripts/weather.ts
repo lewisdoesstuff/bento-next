@@ -19,7 +19,7 @@ export const getIcon = async () => {
   const iconTheme = config.weatherIcons;
   const weather = (await store.weather)?.weather[0].icon;
   // Set the icon from the weather. If it doesn't exist, use the unknown icon.
-  const icon = `../assets/icons/weather/${iconTheme}/${weather ? weather : "unknown"}.png`;
+  const icon = new URL(`../assets/icons/weather/${iconTheme}/${weather ? weather : "unknown"}.png`, import.meta.url).href;
   return new URL(icon, import.meta.url).href;
 };
 

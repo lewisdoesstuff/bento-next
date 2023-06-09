@@ -28,7 +28,7 @@ const initialState = {
   weatherIcon: new URL(`../assets/icons/weather/${config.weatherIcons}/unknown.png`, import.meta.url).href as string,
   theme: getDefaultTheme() as "light" | "dark",
   colors: getDefaultColors(),
-  themeCss: `./src/assets/css/themes/${getDefaultColors()}.css`,
+  themeCss: new URL(`./src/assets/css/themes/${getDefaultColors()}.css`, import.meta.url).href,
 };
 
 export const useConfigStore = defineStore('config', {
