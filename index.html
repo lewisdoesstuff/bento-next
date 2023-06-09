@@ -4,42 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="./src/index.css" />
-    <link rel="stylesheet" href="./src/assets/css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module">
-      // this is the same script that's included in updateTheme(), we need to run it here as opposed to calling it from the module as we get a FOUC if not.
-      // I'm not actually sure why, but I'd assume it's down to load order.
-      if (
-        localStorage.theme === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.body.classList.add("notransition");
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
 
-      import { config } from "./config.js";
-
-      document.title = config.title;
-      import(`./src/assets/css/themes/${config.theme}.css`);
-      if (localStorage.getItem("colors")) {
-        import(`./src/assets/css/themes/${localStorage.getItem("colors")}.css`);
-      }
-      if (config.imageBackground) {
-        const root = document.querySelector(":root");
-        if (config.imageUrl.startsWith("http")) {
-          root.style.setProperty("--imgbg", `url(${config.imageUrl})`);
-        } else {
-          root.style.setProperty("--imgbg", `url(/src/assets/images/${config.imageUrl})`);
-        }
-        document.body.classList.add("withImageBackground");
-      }
-    </script>
   </head>
 
   <body class="bg-background dark:bg-darkbackground">
     <div id="app" class=""></div>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

@@ -1,48 +1,41 @@
-<script setup>
-import { onMounted, onBeforeMount, ref } from "vue";
-import { updateTheme, autoChange, theme } from "../scripts/updateTheme";
-import ThemeDropdown from "./ThemeDropdown.vue";
-onBeforeMount(async () => {
-  await autoChange();
-});
+<script setup lang="ts">
+import { ref } from 'vue';
+import ThemeDropdown from './ThemeDropdown.vue';
+import { useConfigStore } from '../store/store';
+import { useDark, useToggle } from '@vueuse/core';
 
-const toggleTheme = () => {
-  if (localStorage.theme === "dark") {
-    localStorage.theme = "light";
-  } else {
-    localStorage.theme = "dark";
-  }
-  updateTheme();
-};
+const store = useConfigStore();
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
 const show = ref(false);
-const isOpen = () => {
-  console.log(show.value);
-  show.value = !show.value;
+
+const updateTheme = () => {
+  store.theme = isDark.value ? 'dark' : 'light';
 };
 </script>
 
 <template>
-  <div class="flex flex-col absolute mx-1 right-2 top-20 lg:top-4">
+  <div class="group flex flex-col pr-2 pt-7">
     <button
-      id="themeButton"
-      @click="toggleTheme()"
-      class="border-0 cursor-pointer text-foreground dark:text-darkforeground peer"
+      @click="
+        toggleDark();
+        updateTheme();
+      "
+      class="group cursor-pointer text-foreground transition-all ease-in-out hover:text-sforeground group-hover:-translate-y-0.5 dark:text-darkforeground dark:hover:text-darksforeground"
+      :class="`${show ? '-translate-y-0.5' : ''}`"
     >
-      <fa-icon :icon="theme == 'dark' ? 'moon' : 'sun'" id="icon" class="w-max h-[2vh]" />
+      <fa-icon :icon="store.theme == 'dark' ? 'moon' : 'sun'" id="icon" class="h-6" />
     </button>
     <fa-icon
-      @click="isOpen()"
-      :class="`${show ? '-translate-y-0 opacity-100' : 'opacity-0' } ${show ? 'rotate-180' : 'rotate-0'}`"
-      class="w-max h-[1.5vh] -translate-y-5 hover:-translate-y-0 peer-hover:-translate-y-0 peer-hover:opacity-100 hover:opacity-100 opacity-0 pl-[1px] pt-1 text-foreground dark:text-darkforeground origin-center transition-all ease-in-out duration-200"
+      @click="show = !show"
+      :class="`${show ? 'translate-y-0 rotate-180 opacity-100' : 'rotate-0 opacity-0'}`"
+      class="group translate-y-4 cursor-pointer text-foreground opacity-0 transition-all duration-200 ease-in-out hover:text-sforeground group-hover:-translate-y-0 group-hover:opacity-100 dark:text-darkforeground dark:hover:text-darksforeground"
       icon="circle-down"
     ></fa-icon>
 
     <transition name="fade">
-      <ThemeDropdown
-        @click.prevent
-        v-if="show"
-        class="top-10 4xl:top-20 right-6 opacity-100 transition-all duration-100 ease-in-out text-[1.5vh]"
-      />
+      <ThemeDropdown @click.prevent v-if="show" class="mr-1 mt-14 transition-all duration-100 ease-in-out" />
     </transition>
   </div>
 </template>
@@ -52,7 +45,9 @@ const isOpen = () => {
 .fade-leave-active {
   transition: opacity 0.2s;
 }
-.fade-enter-from, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter-from,
+.fade-leave-to {
+  transform: translateY(1rem);
   opacity: 0;
 }
 </style>

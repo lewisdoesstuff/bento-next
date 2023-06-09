@@ -2,12 +2,12 @@
   /* Light Colors  */
 
   --background: #f5f6f7; /* Background color */
-  --accent: #5294e2; /* Hover color */
+  --accent: #f0f0f0; /* Hover color */
   --cards: #d9dde0; /* Cards color */
 
   /* Fonts Color */
   --fg: #5c616c; /* Foreground color */
-  --sfg: #ffffff; /* Sceondary Foreground color */
+  --sfg: #5294e2; /* Sceondary Foreground color */
 
   /* Image background  */
   --imgcol: linear-gradient(rgba(245, 246, 247, 0.7), rgba(245, 246, 247, 0.7)); /* Filter color */

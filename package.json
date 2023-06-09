@@ -13,20 +13,25 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@vueuse/core": "^10.0.2",
     "lucide-vue-next": "^0.17.13",
-    "vue": "^3.2.31",
+    "pinia": "^2.0.34",
+    "typescript": "^5.0.4",
+    "vue": "^3.2.47",
     "vue-contenteditable": "^3.0.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
-    "@vitejs/plugin-vue": "^2.2.2",
+    "@types/node": "^18.15.11",
+    "@vitejs/plugin-vue": "^4.1.0",
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.4",
     "eslint": "^8.5.0",
     "eslint-plugin-vue": "^8.2.0",
     "postcss": "^8.4.12",
-    "prettier": "^2.5.1",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.7",
     "tailwindcss": "^3.0.23",
-    "vite": "^2.8.4"
+    "vite": "^4.2.1"
   }
 }

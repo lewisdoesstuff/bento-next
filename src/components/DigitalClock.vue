@@ -1,37 +1,40 @@
-<script setup>
-import { ref, onMounted } from "vue";
-import { config } from "../../config.js";
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { config } from '../../config';
 
 onMounted(() => {
   displayClock();
 });
 
-const hh = ref(null);
-const min = ref(null);
-const ampm = ref(null);
+const hours = ref('00');
+const min = ref('00');
+const ampm = ref('am');
+
 const displayClock = () => {
   const date = new Date();
-  min.value = ("0" + date.getMinutes()).slice(-2);
-  hh.value = date.getHours();
-  ampm.value = "";
 
-  if (config.twelveHourFormat) {
-    ampm.value = hh.value >= 12 ? " pm" : " am";
-    hh.value = hh.value % 12;
-    hh.value = hh.value ? hh.value : 12;
-  }
+  ampm.value = date.getHours() >= 12 ? 'pm' : 'am';
+
+  // Get the hours, providing the 12-hour format if set.
+  hours.value = config.twelveHourFormat ? (date.getHours() % 12).toString() : date.getHours().toString();
+  // Get the minutes, adding a leading zero if needed.
+  min.value = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes().toString();
 };
-
 
 setInterval(() => displayClock(), 1000);
 </script>
 
 <template>
-  <div class="clock flex align-center justify-center">
-    <div id="hour" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground">{{ hh }}</div>
-    <div id="separator" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground" :class="config.flashSeparator  ? 'pulse' : ''">{{ ":" }}</div>
-    <div id="minutes" class="text-[12vh] font-bold font-sans text-foreground dark:text-darkforeground">
-      {{ min + ampm }}
+  <div class="flex flex-row justify-center w-full">
+    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground">{{ hours }}</div>
+    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground" :class="config.flashSeparator ? 'pulse' : ''">
+      {{ ':' }}
+    </div>
+    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground">
+      {{ min }}
+    </div>
+    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground" v-if="config.twelveHourFormat">
+      {{ ampm }}
     </div>
   </div>
 </template>
@@ -42,7 +45,7 @@ setInterval(() => displayClock(), 1000);
     opacity: 0.25;
   }
   25% {
-    opacity: 0.50;
+    opacity: 0.5;
   }
   50% {
     opacity: 1;
@@ -52,6 +55,6 @@ setInterval(() => displayClock(), 1000);
   }
 }
 .blink {
-  animation: pulse 1s cubic-bezier( 0.05, 0.46, 0.92, 0.5 )  infinite;
+  animation: pulse 1s cubic-bezier(0.05, 0.46, 0.92, 0.5) infinite;
 }
 </style>

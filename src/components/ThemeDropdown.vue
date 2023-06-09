@@ -1,32 +1,29 @@
-<script setup>
-import { onMounted, defineProps } from "vue";
-import { config } from "../../config";
-const props = defineProps({
-  show: Boolean,
-});
+<script setup lang="ts">
+import { config } from '../../config';
+import { useConfigStore } from '../store/store';
 
-const setTheme = (theme) => {
-  let link = document.createElement("link");
-  link.rel = "stylesheet";
-  link.href = `${window.location.href}css/themes/${theme}.css`;
-  document.head.appendChild(link);
-  localStorage.setItem("colors", theme);
+const store = useConfigStore();
+
+const setTheme = (theme: string) => {
+  store.colors = theme;
+  store.themeCss = `./src/assets/css/themes/${theme}.css`;
+  localStorage.setItem('colors', theme);
 };
 
-const capitalize = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
 };
 </script>
 
 <template>
   <div
-    class="absolute right-1 py-2 mt-2 bg-cards dark:bg-darkcards text-foreground dark:text-darkforeground rounded-md shadow-xl w-max justify-center"
+    class="absolute right-1 justify-center rounded-md bg-cards py-2 text-foreground shadow-xl dark:bg-darkcards dark:text-darkforeground"
   >
     <p
       v-for="(theme, index) in config.themes"
       :key="index"
       @click="setTheme(theme)"
-      class="block px-4 py-2 text-md cursor-pointer hover:text-background dark:hover:text-darkbackground hover:bg-accent dark:hover:bg-darkaccent text-center"
+      class="text-md block cursor-pointer px-4 py-2 text-center transition-all ease-in-out hover:bg-accent dark:hover:bg-darkaccent"
     >
       {{ capitalize(theme) }}
     </p>

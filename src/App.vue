@@ -1,104 +1,63 @@
-<script setup>
-import SearchBar from "./components/SearchBar.vue";
-import ThemeButton from "./components/ThemeButton.vue";
-import DigitalClock from "./components/DigitalClock.vue";
-import Greeter from "./components/Greeter.vue";
-import CurrentDate from "./components/CurrentDate.vue";
-import CurrentWeather from "./components/CurrentWeather.vue";
-import ButtonsOne from "./components/ButtonsOne.vue";
-import ButtonsTwo from "./components/ButtonsTwo.vue";
-import ListOne from "./components/ListOne.vue";
-import ListTwo from "./components/ListTwo.vue";
+<script setup lang="ts">
+import SearchBar from './components/SearchBar.vue';
+import ThemeButton from './components/ThemeButton.vue';
+import DigitalClock from './components/DigitalClock.vue';
+import Greeter from './components/Greeter.vue';
+import CurrentDate from './components/CurrentDate.vue';
+import CurrentWeather from './components/CurrentWeather.vue';
+import ButtonsContainer from './components/ButtonsContainer.vue';
+import ListContainer from './components/ListContainer.vue';
+import { useConfigStore } from './store/store';
+import { config } from '../config';
+import { getIcon, getWeather } from './scripts/weather';
+import { onBeforeMount } from 'vue';
+import { setTheme } from './scripts/updateTheme';
 
-//import ButtonsTwo from "./components/ButtonsTwo.vue";
-//import ListsOne from "./components/ListsOne.vue";
-//import ListsTwo from "./components/ListsTwo.vue";
+const store = useConfigStore();
+document.title = config.title;
 
-import { config } from "../config";
-import "./assets/css/main.css";
+onBeforeMount(() => {
+  useConfigStore();
+  setTheme();
+}),
+  // Fetch the weather every 30 minutes
+  setInterval(async () => {
+    store.weather = getWeather();
+    store.weatherIcon = await getIcon();
+  }, 1800000);
 </script>
 
 <template>
   <div
-    class="bg-background dark:bg-darkbackground w-screen h-screen"
-    :class="config.imageBackground ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
+    id="app"
+    class="h-screen w-screen bg-background dark:bg-darkbackground"
+    :class="config.backgroundImage ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
   >
-    <div
-      id="app"
-      class="flex w-4/5 h-screen justify-center mx-auto bg-background dark:bg-darkbackground transition-all ease-in-out duration-150"
-      :class="config.imageBackground ? 'bg-transparent dark:bg-transparent' : ''"
-    >
-      <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" />
-      <SearchBar v-if=config.componentsEnabled.searchBar />
-
-      <div class="box w-full grid grid-cols-4 grid-rows-4 gap-5 p-1 lg:gap-6 lg:p-5">
-        <div
-          class="timeBlock row-start-1 row-span-2 col-start-1 col-span-4 flex flex-col items-center justify-center lg:col-span-2"
-        >
-          <DigitalClock v-if=config.componentsEnabled.clock />
-          <Greeter v-if=config.componentsEnabled.greeter />
+    <link rel="stylesheet" :href="store.themeCss" :class="store.colors" />
+    <div class="flex h-full w-full flex-col items-center justify-between">
+      <div class="flex w-full flex-row">
+        <div class="w-1/3"></div>
+        <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
+        <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto mr-2" />
+      </div>
+      <div class="flex h-2/5 w-3/5 flex-row items-center justify-between">
+        <div class="w-full xl:w-1/2">
+          <DigitalClock v-if="config.componentsEnabled.clock" class="w-full" />
+          <Greeter v-if="config.componentsEnabled.greeter" class="pt-2 hidden xl:flex" />
+          <Suspense>
+            <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4 flex xl:hidden" />
+          </Suspense>
         </div>
-        <div
-          class="weatherBlock pt-4 lg:pt-0 col-start-1 lg:col-start-3 col-span-4 lg:col-span-2 row-start-2 row-span-1 lg:row-start-1 lg:row-span-2 flex-col items-center justify-center flex"
-        >
-          <div class="date items-center justify-center hidden lg:flex">
-            <CurrentDate v-if=config.componentsEnabled.date />
-          </div>
-          <div class="items-center justify-center" >
-            <Suspense>
-              <CurrentWeather v-if=config.componentsEnabled.weather />
-            </Suspense>
-          </div>
+        <div class="hidden xl:inline">
+          <CurrentDate v-if="config.componentsEnabled.date" />
+          <Suspense>
+            <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4" />
+          </Suspense>
         </div>
-
-        <div
-          class="linksBlock row-start-3 row-span-2 col-start-1 col-span-4 grid grid-cols-4 grid-rows-2 gap-[1.5vw]"
-          id="linksBlock"
-        >
-          <div class="linksBlockLeft row-start-1 row-span-2 col-start-1 col-span-4 lg:col-span-2" id="linksBlockLeft">
-            <div
-              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-[1.5vw]"
-              id="buttons1"
-              v-if="config.bentoLayout == 'bento' || config.bentoLayout == 'buttons'"
-            >
-              <ButtonsOne />
-            </div>
-            <div
-              class="listsContainerw-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
-              id="lists1"
-              v-if="config.bentoLayout == 'lists'"
-            >
-              <ListOne />
-            </div>
-          </div>
-
-          <div
-            class="linksBlockRight row-start-1 row-span-2 col-start-3 col-span-2 hidden lg:block"
-            id="linksBlockRight"
-          >
-            <div
-              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
-              id="lists1"
-              v-if="config.bentoLayout == 'bento'"
-            >
-              <ListOne />
-            </div>
-            <div
-              class="listsContainer w-full h-full grid grid-cols-2 grid-rows-1 gap-[3vw] p-5"
-              id="lists2"
-              v-if="config.bentoLayout == 'lists'"
-            >
-              <ListTwo />
-            </div>
-            <div
-              class="buttonsContainer h-full w-full grid grid-cols-3 grid-rows-2 gap-[3vw] py-24 lg:p-5 lg:gap-[1.5vw]"
-              id="buttons2"
-              v-if="config.bentoLayout == 'buttons'"
-            >
-              <ButtonsTwo />
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="mb-8 md:mb-16 flex h-2/5 w-full xl:gap-16 px-[4%] xl:px-[7%] flex-row justify-evenly xl:justify-center">
+        <ButtonsContainer class="w-full" :class="{'hidden': config.layout === 'lists', 'md:w-1/2': config.layout === 'bento'}"/>
+        <ListContainer class="w-1/2" :class="{'hidden': config.layout === 'buttons'}"/>
       </div>
     </div>
   </div>

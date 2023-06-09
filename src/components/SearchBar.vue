@@ -1,33 +1,32 @@
-<script setup>
-import { config } from "../../config.js";
-import { ref, onMounted } from "vue";
+<script setup lang="ts">
+import { config } from '../../config';
+import { ref, onMounted, Ref } from 'vue';
 
-const searchBox = ref(null);
-const searchText = ref("");
+const searchBox: Ref<HTMLElement | null> = ref(null);
+const searchText = ref('');
 
 onMounted(() => {
-  if (config.autoFocusBar) {
+  if (config.autoFocusBar && searchBox.value) {
     searchBox.value.focus();
   }
 });
 
 const engines = {
   google: {
-    url: "https://www.google.com/search?q=",
-    display: "Google",
+    url: 'https://www.google.com/search?q=',
+    display: 'Google',
   },
   ddg: {
-    url: "https://duckduckgo.com/?q=",
-    display: "DuckDuckGo",
+    url: 'https://duckduckgo.com/?q=',
+    display: 'DuckDuckGo',
   },
 };
 
 const placeholder = () => {
-  if (config.barPlaceholder === "") {
+  if (config.barPlaceholder === '') {
     return engines[config.searchEngine].display;
-  } else {
-    return config.barPlaceholder;
   }
+  return config.barPlaceholder;
 };
 
 const submitted = () => {
@@ -36,88 +35,34 @@ const submitted = () => {
   } else {
     window.location.href = `${engines[config.searchEngine].url}${searchText.value}`;
   }
-  searchText.value = "";
+  searchText.value = '';
 };
 </script>
 
 <template>
-  <div class="search fixed mx-10 my-5 top-0 items-center justify-center text-[1.5vh]" ref="search">
+  <div ref="search">
     <form
-      id="form"
-      class="searchform flex flex-row items-center rounded-md transition-all ease-in-out duration-150"
-      :class="config.barStyle"
+      class="mt-2 flex flex-row items-center rounded-md bg-cards text-foreground shadow-md transition-all duration-150 ease-in-out hover:-translate-y-0.5 hover:shadow-lg dark:bg-darkcards dark:text-darkforeground dark:caret-darkforeground"
       role="search"
       autocomplete="off"
       @submit.prevent="submitted()"
     >
       <input
-        type="search"
         onfocus="this.select()"
-        class="searchinput h-full w-full p-[1vh] rounded-l-md bg-cards dark:bg-darkcards dark:text-darkforeground caret-accent dark:caret-darkaccent focus:outline-none placeholder-foreground dark:placeholder-darkforeground shadow-inherit"
-        :class="config.barStyle"
-        id="query"
-        name="q"
+        class="h-10 w-full rounded-l-md bg-inherit px-3 text-inherit placeholder-foreground caret-inherit focus:outline-none"
         :placeholder="placeholder()"
         :aira-label="placeholder()"
         v-model="searchText"
         ref="searchBox"
       />
       <button
-        :class="config.barStyle"
-        class="searchbutton cursor-pointer w-[4em] h-full p-[0.91vh] pr-2 rounded-r-md text-center bg-cards dark:bg-darkcards"
+        class="group h-10 pr-2 md:pr-0 md:w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground transition-all duration-75 ease-in-out hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
       >
         <fa-icon
           icon="magnifying-glass"
-          :class="config.barStyle"
-          class="text-foreground dark:text-darkforeground fill-current rounded-r-md bg-cards dark:bg-darkcards"
+          class="rounded-r-md bg-cards fill-current transition-all duration-150 ease-in-out dark:bg-darkcards"
         ></fa-icon>
       </button>
     </form>
   </div>
 </template>
-
-<style scoped>
-form.bento {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md rounded-md hover:shadow-xl;
-}
-
-form.boxy {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen shadow-md border-2 border-sforeground dark:border-darksforeground;
-}
-
-form.minimal {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 w-screen h-7 border-l-8 border-sforeground dark:border-darksforeground text-transparent bg-cards dark:bg-darkcards;
-}
-svg.minimal {
-  @apply hidden;
-}
-
-input.minimal {
-  @apply bg-transparent;
-}
-form.rounded {
-  @apply max-w-sm lg:max-w-2xl 4xl:max-w-7xl mt-2 bg-cards dark:bg-darkcards w-screen shadow-md rounded-3xl;
-}
-input.rounded {
-  @apply rounded-3xl bg-transparent;
-}
-button.rounded {
-  @apply shadow-none h-full rounded-r-3xl;
-}
-svg.rounded {
-  @apply rounded-r-3xl;
-}
-
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-}
-
-#path path {
-  d: path(
-    "M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"
-  );
-}
-</style>

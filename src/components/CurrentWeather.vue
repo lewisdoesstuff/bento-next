@@ -1,42 +1,32 @@
-<script setup>
-import { onMounted, ref } from "vue";
-import { weatherPromise } from "../scripts/weather";
-import { getIcon } from "../scripts/weatherIcons";
+<script setup lang="ts">
+import { Ref, onMounted, ref } from 'vue';
+import { useConfigStore } from '../store/store';
+import { OpenWeatherMap } from '../types/openWeatherMap';
+import { getIcon } from '../scripts/weather';
 
-const icon = ref("unknown");
-const temp = ref("-");
-const description = ref("Unknown");
-onMounted(() => {
-  setWeather();
+const store = useConfigStore();
+
+const weather: Ref<OpenWeatherMap | null> = ref(null);
+
+onMounted(async () => {
+  weather.value = await store.weather;
+  store.weatherIcon = await getIcon();
 });
 
-const weather = ref(null); // the error here is a mistake. Node and Vue both support top level await.
-
-const setWeather = async () => {
-  weather.value = await weatherPromise;
-  temp.value = weather.value.temperature;
-
-  const words = weather.value.description.split(" ");
-  for (let i = 0; i < words.length; i++) {
-    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+const formatDescription = () => {
+  if (weather.value) {
+    const desc = weather.value.weather[0].description;
+    // Uppercase the first letter
+    return desc.charAt(0).toUpperCase() + desc.slice(1);
   }
-  let caps = words.join(" ");
-  description.value = caps;
-
-  icon.value = weather.value.icon;
+  return 'Unknown';
 };
 </script>
 
 <template>
-  <div class="weather flex items-center justify-center">
-    <div class="weatherIcon">
-      <img class="w-max h-[4vh]" :src="getIcon(icon)" />
-    </div>
-    <div class="weatherValue">
-      <p class="text-[3vh] font-bold font-sans ml-4  text-foreground dark:text-darkforeground">{{ temp }}°</p>
-    </div>
-    <div class="weatherDescription">
-      <p class="text-[2vh] font-sans ml-4 text-foreground dark:text-darkforeground">{{ description }}</p>
-    </div>
+  <div class="flex items-center justify-center">
+    <img class="h-10 w-10" :src="store.weatherIcon" />
+    <p class="ml-4 font-sans text-3xl font-bold text-foreground dark:text-darkforeground">{{ weather?.main.temp }}°</p>
+    <p class="ml-4 font-sans text-xl text-foreground dark:text-darkforeground">{{ formatDescription() }}</p>
   </div>
 </template>
