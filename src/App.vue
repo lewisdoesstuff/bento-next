@@ -41,19 +41,22 @@ onBeforeMount(() => {
         <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto" />
       </div>
       <div class="flex h-2/5 w-3/5 flex-row items-center justify-between">
-        <div>
+        <div class="w-full xl:w-1/2">
           <DigitalClock v-if="config.componentsEnabled.clock" class="w-full" />
-          <Greeter v-if="config.componentsEnabled.greeter" class="pt-4" />
+          <Greeter v-if="config.componentsEnabled.greeter" class="pt-2 hidden xl:flex" />
+          <Suspense>
+            <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4 flex xl:hidden" />
+          </Suspense>
         </div>
-        <div>
+        <div class="hidden xl:inline">
           <CurrentDate v-if="config.componentsEnabled.date" />
           <Suspense>
             <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4" />
           </Suspense>
         </div>
       </div>
-      <div class="mb-16 flex h-2/5 w-5/6 flex-row items-end justify-between">
-        <ButtonsContainer class="w-1/2" />
+      <div class="mb-8 md:mb-16 flex h-2/5 w-full xl:gap-16 px-[4%] xl:px-[7%] flex-row justify-evenly xl:justify-center">
+        <ButtonsContainer class="w-full md:w-1/2" />
         <ListContainer class="w-1/2" />
       </div>
     </div>

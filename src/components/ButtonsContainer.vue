@@ -12,7 +12,7 @@ const buttonsAmount = () => {
 </script>
 
 <template>
-  <div class="grid h-full w-2/3 grid-cols-3 grid-rows-2 gap-8">
+  <div class="grid grid-cols-3 grid-rows-2 gap-8">
     <div v-for="i in buttonsAmount()" class="contents">
       <div v-for="button in config.buttons[i - 1]">
         <ButtonsOne class="" :button="button" />

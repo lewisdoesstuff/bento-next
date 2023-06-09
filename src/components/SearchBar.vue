@@ -56,7 +56,7 @@ const submitted = () => {
         ref="searchBox"
       />
       <button
-        class="group h-10 w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground transition-all duration-75 ease-in-out hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
+        class="group h-10 pr-2 md:pr-0 md:w-1/12 cursor-pointer rounded-r-md bg-cards text-foreground transition-all duration-75 ease-in-out hover:text-sforeground dark:bg-darkcards dark:text-darkforeground dark:hover:text-darksforeground"
       >
         <fa-icon
           icon="magnifying-glass"
