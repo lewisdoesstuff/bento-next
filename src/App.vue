@@ -38,7 +38,7 @@ onBeforeMount(() => {
       <div class="flex w-full flex-row">
         <div class="w-1/3"></div>
         <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
-        <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto" />
+        <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto mr-2" />
       </div>
       <div class="flex h-2/5 w-3/5 flex-row items-center justify-between">
         <div class="w-full xl:w-1/2">
