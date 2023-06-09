@@ -56,8 +56,8 @@ onBeforeMount(() => {
         </div>
       </div>
       <div class="mb-8 md:mb-16 flex h-2/5 w-full xl:gap-16 px-[4%] xl:px-[7%] flex-row justify-evenly xl:justify-center">
-        <ButtonsContainer class="w-full md:w-1/2" />
-        <ListContainer class="w-1/2" />
+        <ButtonsContainer class="w-full" :class="{'hidden': config.layout === 'lists', 'md:w-1/2': config.layout === 'bento'}"/>
+        <ListContainer class="w-1/2" :class="{'hidden': config.layout === 'buttons'}"/>
       </div>
     </div>
   </div>
