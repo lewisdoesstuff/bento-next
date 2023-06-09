@@ -2,6 +2,8 @@
 
 ## An elegant dashboard, written with Vue, Tailwind, and Typescript<!-- omit from toc -->
 
+**Note:** If you're upgrading from Bento-next v1, you'll need to pull the new `config.ts`
+
 ## [Demo](https://dash.lew.ooo)
 
 ![image](assets/header.png)
