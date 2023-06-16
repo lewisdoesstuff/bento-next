@@ -40,24 +40,24 @@ onBeforeMount(() => {
         <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
         <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto mr-2" />
       </div>
-      <div class="flex h-2/5 w-3/5 flex-row items-center justify-between">
+      <div class="flex h-2/5 w-full flex-row items-center">
         <div class="w-full xl:w-1/2">
-          <DigitalClock v-if="config.componentsEnabled.clock" class="w-full" />
-          <Greeter v-if="config.componentsEnabled.greeter" class="pt-2 hidden xl:flex" />
+          <DigitalClock v-if="config.componentsEnabled.clock" />
+          <Greeter v-if="config.componentsEnabled.greeter" class="hidden pt-2 xl:flex" />
           <Suspense>
-            <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4 flex xl:hidden" />
+            <CurrentWeather v-if="config.componentsEnabled.weather" class="flex pt-4 xl:hidden" />
           </Suspense>
         </div>
-        <div class="hidden xl:inline">
+        <div class="hidden xl:inline w-1/2">
           <CurrentDate v-if="config.componentsEnabled.date" />
           <Suspense>
             <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4" />
           </Suspense>
         </div>
       </div>
-      <div class="mb-8 md:mb-16 flex h-2/5 w-full xl:gap-16 px-[4%] xl:px-[7%] flex-row justify-evenly xl:justify-center">
-        <ButtonsContainer class="w-full" :class="{'hidden': config.layout === 'lists', 'md:w-1/2': config.layout === 'bento'}"/>
-        <ListContainer class="w-1/2" :class="{'hidden': config.layout === 'buttons'}"/>
+      <div class="mb-8 flex h-2/5 w-full flex-row justify-evenly px-[4%] md:mb-16 xl:justify-center xl:gap-16 xl:px-[7%]">
+        <ButtonsContainer class="w-full" :class="{ hidden: config.layout === 'lists', 'md:w-1/2': config.layout === 'bento' }" />
+        <ListContainer class="w-1/2" :class="{ hidden: config.layout === 'buttons' }" />
       </div>
     </div>
   </div>
