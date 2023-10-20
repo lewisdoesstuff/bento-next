@@ -1,4 +1,3 @@
-
 /**
  * Config object type
  * Ensures correctness in config.ts
@@ -15,8 +14,13 @@ export interface Config {
   backgroundImage: string;
   themes: string[];
 
+  font: {
+    source: 'local' | 'google';
+    name: string;
+  };
+
   searchBar: boolean;
-  searchEngine: "google" | "ddg";
+  searchEngine: 'google' | 'ddg';
   barPlaceholder: string;
   autoFocusBar: boolean;
 
@@ -25,18 +29,18 @@ export interface Config {
   greetingEvening: string;
   greetingNight: string;
 
-  layout: "bento" | "lists" | "buttons";
+  layout: 'bento' | 'lists' | 'buttons';
 
   weatherKey: string;
-  weatherIcons: "OneDark" | "Nord" | "Dark" | "White";
-  weatherUnit: "F" | "C";
+  weatherIcons: 'OneDark' | 'Nord' | 'Dark' | 'White';
+  weatherUnit: 'F' | 'C';
   language: string;
 
   trackLocation: boolean;
   defaultLatitude: string;
   defaultLongitude: string;
 
-  autoTheme: "system" | "location" | "preset" | "none";
+  autoTheme: 'system' | 'location' | 'preset' | 'none';
   darkModeOnTime: string;
   lightModeOnTime: string;
 
