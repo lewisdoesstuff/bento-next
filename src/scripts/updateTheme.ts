@@ -1,20 +1,19 @@
-import { config } from "../../config";
-import { useConfigStore } from "../store/store";
-
+import { config } from '../../config';
+import { useConfigStore } from '../store/store';
 
 /**
  * Use `prefers-color-scheme` to set the theme
  */
 const useOsPreference = () => {
   const store = useConfigStore();
-  const osPrefers = window.matchMedia("(prefers-color-scheme: dark)");
-  osPrefers.addEventListener("change", (e) => {
+  const osPrefers = window.matchMedia('(prefers-color-scheme: dark)');
+  osPrefers.addEventListener('change', (e) => {
     if (e.matches) {
-      localStorage.setItem("theme", "dark");
-      store.theme = "dark";
+      localStorage.setItem('theme', 'dark');
+      store.theme = 'dark';
     }
-    localStorage.setItem("theme", "light");
-    store.theme = "light";
+    localStorage.setItem('theme', 'light');
+    store.theme = 'light';
   });
 };
 
@@ -24,19 +23,19 @@ const useOsPreference = () => {
 export const useSetTime = () => {
   const store = useConfigStore();
   const date = new Date();
-  const time = date.getHours() + ":" + date.getMinutes();
+  const time = date.getHours() + ':' + date.getMinutes();
   if (time > config.darkModeOnTime) {
-    localStorage.setItem("theme", "dark");
-    store.theme = "dark";
+    localStorage.setItem('theme', 'dark');
+    store.theme = 'dark';
     return;
   }
   if (time < config.lightModeOnTime) {
-    localStorage.setItem("theme", "dark");
-    store.theme = "dark";
+    localStorage.setItem('theme', 'dark');
+    store.theme = 'dark';
     return;
   }
-  localStorage.setItem("theme", "light");
-  store.theme = "light";
+  localStorage.setItem('theme', 'light');
+  store.theme = 'light';
   return;
 };
 
@@ -49,13 +48,13 @@ export const useSunriseSunset = async () => {
   const now = Date.now() / 1000;
   if (weather) {
     if (weather.sys.sunrise > now || weather.sys.sunset < now) {
-      localStorage.setItem("theme", "dark");
-      store.theme = "dark";
+      localStorage.setItem('theme', 'dark');
+      store.theme = 'dark';
       return;
     }
   }
-  localStorage.setItem("theme", "light");
-  store.theme = "light";
+  localStorage.setItem('theme', 'light');
+  store.theme = 'light';
   return;
 };
 
@@ -64,16 +63,29 @@ export const useSunriseSunset = async () => {
  */
 export const setTheme = () => {
   switch (config.autoTheme) {
-    case "system":
+    case 'system':
       useOsPreference();
       break;
-    case "location":
+    case 'location':
       useSunriseSunset();
       break;
-    case "preset":
+    case 'preset':
       useSetTime();
       break;
-    case "none":
+    case 'none':
       break;
   }
+};
+
+/**
+ * Sets the font based on the config
+ */
+export const setFont = () => {
+  if (config.font.source === 'google') {
+    const font = document.createElement('link');
+    font.href = `https://fonts.googleapis.com/css?family=${config.font.name.replace(' ', '+')}:400,700&display=swap`;
+    font.rel = 'stylesheet';
+    document.head.appendChild(font);
+  }
+  document.documentElement.style.setProperty('--custom-font', config.font.name);
 };

@@ -11,7 +11,7 @@ import { useConfigStore } from './store/store';
 import { config } from '../config';
 import { getIcon, getWeather } from './scripts/weather';
 import { onBeforeMount } from 'vue';
-import { setTheme } from './scripts/updateTheme';
+import { setTheme, setFont } from './scripts/updateTheme';
 
 const store = useConfigStore();
 document.title = config.title;
@@ -19,6 +19,7 @@ document.title = config.title;
 onBeforeMount(() => {
   useConfigStore();
   setTheme();
+  setFont();
 }),
   // Fetch the weather every 30 minutes
   setInterval(async () => {
@@ -48,7 +49,7 @@ onBeforeMount(() => {
             <CurrentWeather v-if="config.componentsEnabled.weather" class="flex pt-4 xl:hidden" />
           </Suspense>
         </div>
-        <div class="hidden xl:inline w-1/2">
+        <div class="hidden w-1/2 xl:inline">
           <CurrentDate v-if="config.componentsEnabled.date" />
           <Suspense>
             <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4" />

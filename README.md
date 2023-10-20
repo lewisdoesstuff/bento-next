@@ -30,6 +30,7 @@
     - [:hammer\_and\_wrench: General](#hammer_and_wrench-general)
     - [:clock5: Clock](#clock5-clock)
     - [:art: Themes](#art-themes)
+    - [🗚 Fonts](#-fonts)
     - [:mag: Search Bar](#mag-search-bar)
     - [:wave: Greetings](#wave-greetings)
     - [:triangular\_ruler: Layouts](#triangular_ruler-layouts)
@@ -181,6 +182,22 @@ You're also able to set a custom background image in the config. You can either 
     "sakura",
     "solarized",
   ],
+```
+
+### 🗚 Fonts
+
+Bento-next supports custom fonts, either locally installed, or from Google Fonts!
+
+To configure, edit the `font` object in the config:
+
+```js
+  // Font Family
+  font: {
+    // 'google' or 'local'
+    source: 'google',
+    // Font name, e.g. 'Roboto' (case sensitive)
+    name: 'Overpass',
+  },
 ```
 
 ### :mag: Search Bar
