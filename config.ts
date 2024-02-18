@@ -11,7 +11,7 @@ import { Config } from './src/types/config';
 // Use an editor with Typescript support to get autocomplete and validity checking!
 export const config: Config = {
   // General
-  name: 'John',
+  name: 'Idea',
   openInNewTab: true,
   title: 'Bento',
 
@@ -100,38 +100,12 @@ export const config: Config = {
   buttons: [
     // First buttons group
     // If you're using the 'bento' layout, this is the only group that will be used.
-    [
-      {
-        name: 'Github', // set the name of the card
-        icon: 'fab-github', // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
-        url: 'https://github.com/', // provide a link to the page.
-      },
-      {
-        name: 'Mail',
-        icon: 'envelope',
-        url: 'https://mail.protonmail.com/',
-      },
-      {
-        name: 'Todoist',
-        icon: 'list-ol',
-        url: 'https://todoist.com',
-      },
-      {
-        name: 'Calendar',
-        icon: 'calendar',
-        url: 'https://calendar.google.com/calendar/r',
       },
       {
         name: 'Reddit',
         icon: 'fab-reddit',
         url: 'https://reddit.com',
       },
-      {
-        name: 'Odysee',
-        icon: 'fab-youtube',
-        url: 'https://odysee.com/',
-      },
-    ],
     // Second buttons group
     // You muse use the 'buttons' layout to use this group.
     [
@@ -146,24 +120,11 @@ export const config: Config = {
         url: 'https://twitter.com/',
       },
       {
-        name: 'bot',
+        name: 'discord',
         icon: 'fab-discord',
         url: 'https://discord.com/app',
       },
       {
-        name: 'Amazon',
-        icon: 'fab-amazon',
-        url: 'https://amazon.com/',
-      },
-      {
-        name: 'Hashnode',
-        icon: 'fab-hashnode',
-        url: 'https://hashnode.com/',
-      },
-      {
-        name: 'Figma',
-        icon: 'fab-figma',
-        url: 'https://figma.com/',
       },
     ],
   ],
