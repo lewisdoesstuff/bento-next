@@ -9,6 +9,6 @@ jobs:
     - id: Build-Vue
       uses: lewisdoesstuff/VuePagesAction@1.0.2
       with:
-        username: 'lewisdoesstuff'
+        username: 'idea90'
         reponame: 'bento-next'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
