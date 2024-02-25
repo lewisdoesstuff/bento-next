@@ -61,7 +61,7 @@ export const config: Config = {
   greetingNight: 'Sweet dreams,',
 
   // Layout
-  layout: 'bento', // 'bento', 'lists', 'buttons'
+  layout: 'buttons', // 'bento', 'lists', 'buttons'
 
   // Weather
   weatherKey: import.meta.env.VITE_API_KEY, // Set your OpenWeatherMap key in .env - Move the included .env.example to .env
