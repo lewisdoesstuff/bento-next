@@ -11,7 +11,7 @@ import { Config } from './src/types/config';
 // Use an editor with Typescript support to get autocomplete and validity checking!
 export const config: Config = {
   // General
-  name: 'John',
+  name: 'Idea',
   openInNewTab: true,
   title: 'Bento',
 
@@ -24,16 +24,16 @@ export const config: Config = {
     // 'google' or 'local'
     source: 'google',
     // Font name, e.g. 'Roboto' (case sensitive)
-    name: 'Overpass',
+    name: 'Roboto',
   },
 
   // Theme
-  theme: 'bento',
+  theme: 'catppuccin-macchiato',
 
   // Place a background image in ./src/assets/images/ and provide the file name.
   // Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
   // Set to "" to disable.
-  backgroundImage: '',
+  backgroundImage: 'https://cdn.discordapp.com/attachments/986267698545721406/1223529619408293968/forrest.png?ex=661a2fc1&is=6607bac1&hm=430de40400fcb00437bd3bc4974e4b8a01be1de5f71c71e0482597c98ffc052e&'
   themes: [
     // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
     'arc',
@@ -61,7 +61,7 @@ export const config: Config = {
   greetingNight: 'Sweet dreams,',
 
   // Layout
-  layout: 'bento', // 'bento', 'lists', 'buttons'
+  layout: 'lists', // 'bento', 'lists', 'buttons'
 
   // Weather
   weatherKey: import.meta.env.VITE_API_KEY, // Set your OpenWeatherMap key in .env - Move the included .env.example to .env
@@ -93,45 +93,19 @@ export const config: Config = {
     clock: true,
     greeter: true,
     date: true,
-    weather: true,
+    weather: false,
   },
 
   // Buttons
   buttons: [
     // First buttons group
     // If you're using the 'bento' layout, this is the only group that will be used.
-    [
-      {
-        name: 'Github', // set the name of the card
-        icon: 'fab-github', // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
-        url: 'https://github.com/', // provide a link to the page.
-      },
-      {
-        name: 'Mail',
-        icon: 'envelope',
-        url: 'https://mail.protonmail.com/',
-      },
-      {
-        name: 'Todoist',
-        icon: 'list-ol',
-        url: 'https://todoist.com',
-      },
-      {
-        name: 'Calendar',
-        icon: 'calendar',
-        url: 'https://calendar.google.com/calendar/r',
       },
       {
         name: 'Reddit',
         icon: 'fab-reddit',
         url: 'https://reddit.com',
       },
-      {
-        name: 'Odysee',
-        icon: 'fab-youtube',
-        url: 'https://odysee.com/',
-      },
-    ],
     // Second buttons group
     // You muse use the 'buttons' layout to use this group.
     [
@@ -146,24 +120,11 @@ export const config: Config = {
         url: 'https://twitter.com/',
       },
       {
-        name: 'bot',
+        name: 'discord',
         icon: 'fab-discord',
         url: 'https://discord.com/app',
       },
       {
-        name: 'Amazon',
-        icon: 'fab-amazon',
-        url: 'https://amazon.com/',
-      },
-      {
-        name: 'Hashnode',
-        icon: 'fab-hashnode',
-        url: 'https://hashnode.com/',
-      },
-      {
-        name: 'Figma',
-        icon: 'fab-figma',
-        url: 'https://figma.com/',
       },
     ],
   ],
