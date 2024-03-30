@@ -24,7 +24,7 @@ export const config: Config = {
     // 'google' or 'local'
     source: 'google',
     // Font name, e.g. 'Roboto' (case sensitive)
-    name: 'Overpass',
+    name: 'Roboto',
   },
 
   // Theme
@@ -33,7 +33,7 @@ export const config: Config = {
   // Place a background image in ./src/assets/images/ and provide the file name.
   // Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
   // Set to "" to disable.
-  backgroundImage: '',
+  backgroundImage: 'https://cdn.discordapp.com/attachments/986267698545721406/1223529619408293968/forrest.png?ex=661a2fc1&is=6607bac1&hm=430de40400fcb00437bd3bc4974e4b8a01be1de5f71c71e0482597c98ffc052e&'
   themes: [
     // List of installed themes, add your own themes in ./src/assets/css/themes and include it in the array below.
     'arc',
@@ -61,7 +61,7 @@ export const config: Config = {
   greetingNight: 'Sweet dreams,',
 
   // Layout
-  layout: 'buttons', // 'bento', 'lists', 'buttons'
+  layout: 'lists', // 'bento', 'lists', 'buttons'
 
   // Weather
   weatherKey: import.meta.env.VITE_API_KEY, // Set your OpenWeatherMap key in .env - Move the included .env.example to .env
@@ -93,7 +93,7 @@ export const config: Config = {
     clock: true,
     greeter: true,
     date: true,
-    weather: true,
+    weather: false,
   },
 
   // Buttons
