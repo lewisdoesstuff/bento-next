@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { config } from '../../config';
-import { useConfigStore } from '../store/store';
+import { config } from "../../config";
+import { useConfigStore } from "../store/store";
 
 const store = useConfigStore();
 
 const setTheme = (theme: string) => {
-  store.colors = theme;
-  store.themeCss = `${window.location.href}css/themes/${theme}.css`;
-  localStorage.setItem('colors', theme);
+	store.colors = theme;
+	store.themeCss = `${window.location.href}css/themes/${theme}.css`;
+	localStorage.setItem("colors", theme);
 };
 
 const capitalize = (str: string) => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
+	return str.charAt(0).toUpperCase() + str.slice(1);
 };
 </script>
 

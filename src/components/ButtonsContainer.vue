@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { config } from '../../config';
-import ButtonsOne from './ButtonsOne.vue';
+import { config } from "../../config";
+import ButtonsOne from "./ButtonsOne.vue";
 
 const layout = config.layout;
 
 const buttonsAmount = () => {
-  if (layout === 'bento') return 1;
-  if (layout === 'buttons') return 2;
-  return 0;
+	if (layout === "bento") return 1;
+	if (layout === "buttons") return 2;
+	return 0;
 };
 </script>
 

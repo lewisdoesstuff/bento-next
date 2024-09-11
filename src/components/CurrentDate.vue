@@ -1,19 +1,32 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 
 onMounted(() => {
-  displayDate();
+	displayDate();
 });
 
-const mm = ref('');
-const dd = ref('');
+const mm = ref("");
+const dd = ref("");
 
 const displayDate = () => {
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+	const monthNames = [
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec",
+	];
 
-  const date = new Date();
-  mm.value = `${monthNames[date.getMonth()]} `;
-  dd.value = date.getDate().toString();
+	const date = new Date();
+	mm.value = `${monthNames[date.getMonth()]} `;
+	dd.value = date.getDate().toString();
 };
 </script>
 

@@ -1,31 +1,32 @@
 <script setup lang="ts">
-import SearchBar from './components/SearchBar.vue';
-import ThemeButton from './components/ThemeButton.vue';
-import DigitalClock from './components/DigitalClock.vue';
-import Greeter from './components/Greeter.vue';
-import CurrentDate from './components/CurrentDate.vue';
-import CurrentWeather from './components/CurrentWeather.vue';
-import ButtonsContainer from './components/ButtonsContainer.vue';
-import ListContainer from './components/ListContainer.vue';
-import { useConfigStore } from './store/store';
-import { config } from '../config';
-import { getIcon, getWeather } from './scripts/weather';
-import { onBeforeMount } from 'vue';
-import { setTheme, setFont } from './scripts/updateTheme';
+import SearchBar from "./components/SearchBar.vue";
+import ThemeButton from "./components/ThemeButton.vue";
+import DigitalClock from "./components/DigitalClock.vue";
+import Greeter from "./components/Greeter.vue";
+import CurrentDate from "./components/CurrentDate.vue";
+import CurrentWeather from "./components/CurrentWeather.vue";
+import ButtonsContainer from "./components/ButtonsContainer.vue";
+import ListContainer from "./components/ListContainer.vue";
+import { useConfigStore } from "./store/store";
+import { config } from "../config";
+import { getIcon, getWeather } from "./scripts/weather";
+import { onBeforeMount } from "vue";
+import { setTheme, setFont } from "./scripts/updateTheme";
 
 const store = useConfigStore();
 document.title = config.title;
 
 onBeforeMount(() => {
-  useConfigStore();
-  setTheme();
-  setFont();
-}),
-  // Fetch the weather every 30 minutes
-  setInterval(async () => {
-    store.weather = getWeather();
-    store.weatherIcon = await getIcon();
-  }, 1800000);
+	useConfigStore();
+	setTheme();
+	setFont();
+});
+
+// Fetch the weather every 30 minutes
+setInterval(async () => {
+	store.weather = getWeather();
+	store.weatherIcon = await getIcon();
+}, 1800000);
 </script>
 
 <template>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { config } from '../../config';
-import ListOne from './ListOne.vue';
+import { config } from "../../config";
+import ListOne from "./ListOne.vue";
 const layout = config.layout;
 
 const listAmount = () => {
-  if (layout === 'bento') return 1;
-  if (layout === 'lists') return 2;
-  return 0;
+	if (layout === "bento") return 1;
+	if (layout === "lists") return 2;
+	return 0;
 };
 </script>
 

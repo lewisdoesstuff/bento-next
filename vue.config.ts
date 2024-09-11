@@ -1,8 +1,8 @@
 module.exports = {
-    configureWebpack: {
-      devtool: "source-map"
-    },
-    contentBase: "./src",
-    publicPath: "/",
-    publicDir: "public"
-  };
+	configureWebpack: {
+		devtool: "source-map",
+	},
+	contentBase: "./src",
+	publicPath: "/",
+	publicDir: "public",
+};

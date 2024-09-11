@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { config } from '../../config';
-import { Button } from '../types/config';
-import { prefixedIcon } from '../scripts/iconPrefix';
+import { config } from "../../config";
+import type { Button } from "../types/config";
+import { prefixedIcon } from "../scripts/iconPrefix";
 
 const props = defineProps<{
-  button: Button;
+	button: Button;
 }>();
 //48 52
 </script>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import ThemeDropdown from './ThemeDropdown.vue';
-import { useConfigStore } from '../store/store';
-import { useDark, useToggle } from '@vueuse/core';
+import { ref } from "vue";
+import ThemeDropdown from "./ThemeDropdown.vue";
+import { useConfigStore } from "../store/store";
+import { useDark, useToggle } from "@vueuse/core";
 
 const store = useConfigStore();
 
@@ -11,7 +11,7 @@ const toggleDark = useToggle(isDark);
 const show = ref(false);
 
 const updateTheme = () => {
-  store.theme = isDark.value ? 'dark' : 'light';
+	store.theme = isDark.value ? "dark" : "light";
 };
 </script>
 

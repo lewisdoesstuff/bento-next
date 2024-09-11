@@ -1,35 +1,37 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
-import { config } from '../../config';
-import contenteditable from 'vue-contenteditable';
+import { type Ref, ref } from "vue";
+import { config } from "../../config";
+import contenteditable from "vue-contenteditable";
 
 const today = new Date();
 const hour = today.getHours();
 
 const getGreeting = () => {
-  if (hour >= 23 || hour < 6) {
-    return `${config.greetingNight} `;
-  } else if (hour >= 6 && hour < 12) {
-    return `${config.greetingMorning} `;
-  } else if (hour >= 12 && hour < 17) {
-    return `${config.greetingAfternoon} `;
-  }
-  return `${config.greetingEvening} `;
+	if (hour >= 23 || hour < 6) {
+		return `${config.greetingNight} `;
+	}
+	if (hour >= 6 && hour < 12) {
+		return `${config.greetingMorning} `;
+	}
+	if (hour >= 12 && hour < 17) {
+		return `${config.greetingAfternoon} `;
+	}
+	return `${config.greetingEvening} `;
 };
 
-const name = () => localStorage.getItem('name') || config.name;
+const name = () => localStorage.getItem("name") || config.name;
 
 const input = ref(name());
 const nameBox: Ref<HTMLElement | null> = ref(null);
 const save = () => {
-  if (nameBox.value) {
-    nameBox.value.blur();
-  }
-  // Delete the item if the input is empty, add it if not.
-  const storageAction = input.value === '' ? 'removeItem' : 'setItem';
-  localStorage[storageAction]('name', input.value);
+	if (nameBox.value) {
+		nameBox.value.blur();
+	}
+	// Delete the item if the input is empty, add it if not.
+	const storageAction = input.value === "" ? "removeItem" : "setItem";
+	localStorage[storageAction]("name", input.value);
 
-  input.value = name();
+	input.value = name();
 };
 </script>
 

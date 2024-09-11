@@ -1,24 +1,29 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { config } from '../../config';
+import { ref, onMounted } from "vue";
+import { config } from "../../config";
 
 onMounted(() => {
-  displayClock();
+	displayClock();
 });
 
-const hours = ref('00');
-const min = ref('00');
-const ampm = ref('am');
+const hours = ref("00");
+const min = ref("00");
+const ampm = ref("am");
 
 const displayClock = () => {
-  const date = new Date();
+	const date = new Date();
 
-  ampm.value = date.getHours() >= 12 ? 'pm' : 'am';
+	ampm.value = date.getHours() >= 12 ? "pm" : "am";
 
-  // Get the hours, providing the 12-hour format if set.
-  hours.value = config.twelveHourFormat ? (date.getHours() % 12).toString() : date.getHours().toString();
-  // Get the minutes, adding a leading zero if needed.
-  min.value = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes().toString();
+	// Get the hours, providing the 12-hour format if set.
+	hours.value = config.twelveHourFormat
+		? (date.getHours() % 12).toString()
+		: date.getHours().toString();
+	// Get the minutes, adding a leading zero if needed.
+	min.value =
+		date.getMinutes() < 10
+			? `0${date.getMinutes()}`
+			: date.getMinutes().toString();
 };
 
 setInterval(() => displayClock(), 1000);

@@ -1,41 +1,41 @@
 <script setup lang="ts">
-import { config } from '../../config';
-import { ref, onMounted, Ref } from 'vue';
+import { config } from "../../config";
+import { ref, onMounted, type Ref } from "vue";
 
 const searchBox: Ref<HTMLElement | null> = ref(null);
-const searchText = ref('');
+const searchText = ref("");
 
 onMounted(() => {
-  if (config.autoFocusBar && searchBox.value) {
-    searchBox.value.focus();
-  }
+	if (config.autoFocusBar && searchBox.value) {
+		searchBox.value.focus();
+	}
 });
 
 const engines = {
-  google: {
-    url: 'https://www.google.com/search?q=',
-    display: 'Google',
-  },
-  ddg: {
-    url: 'https://duckduckgo.com/?q=',
-    display: 'DuckDuckGo',
-  },
+	google: {
+		url: "https://www.google.com/search?q=",
+		display: "Google",
+	},
+	ddg: {
+		url: "https://duckduckgo.com/?q=",
+		display: "DuckDuckGo",
+	},
 };
 
 const placeholder = () => {
-  if (config.barPlaceholder === '') {
-    return engines[config.searchEngine].display;
-  }
-  return config.barPlaceholder;
+	if (config.barPlaceholder === "") {
+		return engines[config.searchEngine].display;
+	}
+	return config.barPlaceholder;
 };
 
 const submitted = () => {
-  if (config.openInNewTab) {
-    window.open(`${engines[config.searchEngine].url}${searchText.value}`);
-  } else {
-    window.location.href = `${engines[config.searchEngine].url}${searchText.value}`;
-  }
-  searchText.value = '';
+	if (config.openInNewTab) {
+		window.open(`${engines[config.searchEngine].url}${searchText.value}`);
+	} else {
+		window.location.href = `${engines[config.searchEngine].url}${searchText.value}`;
+	}
+	searchText.value = "";
 };
 </script>
 
