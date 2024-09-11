@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { type Ref, onMounted, ref } from "vue";
 import { config } from "../../config";
-import { ref, onMounted, type Ref } from "vue";
 
 const searchBox: Ref<HTMLElement | null> = ref(null);
 const searchText = ref("");

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import SearchBar from "./components/SearchBar.vue";
-import ThemeButton from "./components/ThemeButton.vue";
-import DigitalClock from "./components/DigitalClock.vue";
-import Greeter from "./components/Greeter.vue";
+import { onBeforeMount } from "vue";
+import { config } from "../config";
+import ButtonsContainer from "./components/ButtonsContainer.vue";
 import CurrentDate from "./components/CurrentDate.vue";
 import CurrentWeather from "./components/CurrentWeather.vue";
-import ButtonsContainer from "./components/ButtonsContainer.vue";
+import DigitalClock from "./components/DigitalClock.vue";
+import Greeter from "./components/Greeter.vue";
 import ListContainer from "./components/ListContainer.vue";
-import { useConfigStore } from "./store/store";
-import { config } from "../config";
+import SearchBar from "./components/SearchBar.vue";
+import ThemeButton from "./components/ThemeButton.vue";
+import { setFont, setTheme } from "./scripts/updateTheme";
 import { getIcon, getWeather } from "./scripts/weather";
-import { onBeforeMount } from "vue";
-import { setTheme, setFont } from "./scripts/updateTheme";
+import { useConfigStore } from "./store/store";
 
 const store = useConfigStore();
 document.title = config.title;

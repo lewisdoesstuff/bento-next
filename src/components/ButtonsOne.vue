@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { config } from "../../config";
-import type { Button } from "../types/config";
 import { prefixedIcon } from "../scripts/iconPrefix";
+import type { Button } from "../types/config";
 
 const props = defineProps<{
 	button: Button;

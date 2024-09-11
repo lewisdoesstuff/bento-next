@@ -1,8 +1,8 @@
-import { defineStore } from "pinia";
-import type { OpenWeatherMap } from "../types/openWeatherMap";
-import { getWeather } from "../scripts/weather";
-import { config } from "../../config";
 import { useDark } from "@vueuse/core";
+import { defineStore } from "pinia";
+import { config } from "../../config";
+import { getWeather } from "../scripts/weather";
+import type { OpenWeatherMap } from "../types/openWeatherMap";
 const getDefaultColors = () => {
 	const colors = localStorage.getItem("colors");
 	return colors || config.theme;
