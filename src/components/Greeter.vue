@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Ref, ref } from "vue";
-import { config } from "../../config";
 import contenteditable from "vue-contenteditable";
+import { config } from "../../config";
 
 const today = new Date();
 const hour = today.getHours();

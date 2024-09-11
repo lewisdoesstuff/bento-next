@@ -1,6 +1,6 @@
 import { config } from "../../config";
 import { useConfigStore } from "../store/store";
-import { OpenWeatherMap } from "../types/openWeatherMap";
+import type { OpenWeatherMap } from "../types/openWeatherMap";
 
 interface Position {
 	lat: string;
