@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { config } from '../../config';
 import { Button } from '../types/config';
 import { prefixedIcon } from '../scripts/iconPrefix';
