@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { type Ref, onMounted, ref } from "vue";
-import { getIcon } from "../scripts/weather";
 import { useConfigStore } from "../store/store";
 import type { OpenWeatherMap } from "../types/openWeatherMap";
 
