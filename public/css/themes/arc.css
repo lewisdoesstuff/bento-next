@@ -7,7 +7,7 @@
 
 	/* Fonts Color */
 	--fg: #5c616c; /* Foreground color */
-	--sfg: #ffffff; /* Sceondary Foreground color */
+	--sfg: #ffffff; /* Secondary Foreground color */
 
 	/* Image background  */
 	--imgcol: linear-gradient(rgba(245, 246, 247, 0.7), rgba(245, 246, 247, 0.7)); /* Filter color */
