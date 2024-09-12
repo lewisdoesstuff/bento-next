@@ -1,14 +1,5 @@
-//
-//    Bento-Next
-//    Config file
-//
-//
-//    https://github.com/migueravila/Bento - upstream
-
 import type { Config } from "./src/types/config";
 
-// Bento-next config
-// Use an editor with Typescript support to get autocomplete and validity checking!
 export const config: Config = {
 	// General
 	name: "Deniz",
@@ -97,29 +88,25 @@ export const config: Config = {
 	},
 
 	// Buttons
+	// * Prefix brand icons with 'fab-' (e.g. 'fab-github')
 	buttons: [
 		// First buttons group
 		// If you're using the 'bento' layout, this is the only group that will be used.
 		[
 			{
-				name: "Github", // set the name of the card
-				icon: "fab-github", // provide a FontAwesome icon name. Regular icons (fa-) don't require a prefix, while FA-Brands icons must be prefixed with "fab-"
-				url: "https://github.com/", // provide a link to the page.
+				name: "Github",
+				icon: "fab-github",
+				url: "https://github.com",
 			},
 			{
-				name: "Mail",
-				icon: "envelope",
-				url: "https://mail.protonmail.com/",
+				name: "Proxer",
+				icon: "play",
+				url: "https://proxer.me",
 			},
 			{
-				name: "Todoist",
-				icon: "list-ol",
-				url: "https://todoist.com",
-			},
-			{
-				name: "Calendar",
-				icon: "calendar",
-				url: "https://calendar.google.com/calendar/r",
+				name: "YouTube",
+				icon: "fab-youtube",
+				url: "https://youtube.com",
 			},
 			{
 				name: "Reddit",
@@ -127,9 +114,14 @@ export const config: Config = {
 				url: "https://reddit.com",
 			},
 			{
-				name: "Odysee",
-				icon: "fab-youtube",
-				url: "https://odysee.com/",
+				name: "Instagram",
+				icon: "fab-instagram",
+				url: "https://www.instagram.com",
+			},
+			{
+				name: "X", 
+				icon: "fab-x-twitter", 
+				url: "https://x.com/home", 
 			},
 		],
 		// Second buttons group
@@ -174,44 +166,44 @@ export const config: Config = {
 		// If you're using the 'bento' layout, this is the only group that will be used.
 		[
 			{
-				icon: "music", // Icon for the list to use. The same as the buttons.
+				icon: "toolbox", // Icon for the list to use. The same as the buttons.
 				links: [
 					{
-						name: "Inspirational", // Display text for the link
-						url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL to the page
+						name: "Cobalt", // Display text for the link
+						url: "https://cobalt.tools", // URL to the page
 					},
 					{
-						name: "Classic",
-						url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+						name: "PDF Tools",
+						url: "https://tools.pdf24.org",
 					},
 					{
-						name: "Oldies",
-						url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+						name: "Translator",
+						url: "https://www.deepl.com",
 					},
 					{
-						name: "Rock",
-						url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+						name: "Google Drive",
+						url: "https://drive.google.com/drive/home",
 					},
 				],
 			},
 			{
-				icon: "coffee",
+				icon: "building-columns",
 				links: [
 					{
-						name: "Linkedin",
-						url: "https://www.linkedin.com",
+						name: "S-Plan",
+						url: "https://splan.hdm-stuttgart.de/splan",
 					},
 					{
-						name: "Dribbble",
-						url: "https://www.dribbble.com",
+						name: "Selma",
+						url: "https://idp.hdm-stuttgart.de/idp/profile/SAML2/Redirect/SSO?execution=e1s1",
 					},
 					{
-						name: "Trello",
-						url: "https://www.trello.com",
+						name: "Moodle",
+						url: "https://moodle.hdm-stuttgart.de",
 					},
 					{
-						name: "Slack",
-						url: "https://www.slack.com",
+						name: "ILIAS",
+						url: "https://learn.mi.hdm-stuttgart.de",
 					},
 				],
 			},
