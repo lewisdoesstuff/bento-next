@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --custom-font: 'Overpass, sans-serif';
+	--custom-font: "Overpass, sans-serif";
 }
 
 body {
-  font-family: var(--custom-font);
+	font-family: var(--custom-font);
 }
