@@ -11,9 +11,9 @@ import type { Config } from "./src/types/config";
 // Use an editor with Typescript support to get autocomplete and validity checking!
 export const config: Config = {
 	// General
-	name: "John",
+	name: "Deniz",
 	openInNewTab: true,
-	title: "Bento",
+	title: "New Tab",
 
 	// Clock
 	twelveHourFormat: false,
