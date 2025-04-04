@@ -1,0 +1,28 @@
+:root {
+  /* Light Colors  */
+
+  /* Concept-Dark is a dark-mode only theme. Light theme mirrors dark. */
+  --background: #373b3e; /* Background color */
+  --accent: #484c52; /* Hover color */
+  --cards: #323538; /* Cards color */
+
+  /* Fonts Color */
+  --fg: #b5bbc9; /* Foreground color */
+  --sfg: #ff9d47; /* Secondary Foreground color */
+
+  /* Image background  */
+  --imgcol: linear-gradient(rgba(55 59, 62, 0.85), rgba(55 59, 62, 0.85)); /* Filter color */
+
+  /* Dark Colors  */
+
+  --darkbackground: #373b3e; /* Background color */
+  --darkaccent: #484c52; /* Hover color */
+  --darkcards: #323538; /* Cards color */
+
+  /* Fonts Color */
+  --darkfg: #b5bbc9; /* Foreground color */
+  --darksfg: #ff9d47; /* Secondary Foreground color */
+
+  /* Image background  */
+  --darkimgcol: linear-gradient(rgba(55 59, 62, 0.85), rgba(55 59, 62, 0.85)); /* Filter color */
+}
