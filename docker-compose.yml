@@ -4,9 +4,9 @@ services:
   bento:
     image: lewisdoesstuff/bento-next
     volumes:
-      # Append Bento config/.env location to below line.
-      - /config.ts:/usr/share/nginx/html/config.ts
-      - /.env:/usr/share/nginx/html/.env
+      # Host path: Container path
+      - ./config.ts:/src/config.ts
+      - ./.env:/src/.env
     ports:
       # Replace host port 80 (left side) with desired port.
       - 80:8080
