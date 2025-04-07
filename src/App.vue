@@ -32,7 +32,8 @@ onBeforeMount(() => {
   <div
     id="app"
     class="h-screen w-screen bg-background dark:bg-darkbackground"
-    :class="config.backgroundImage ? 'backgroundImage bg-transparent dark:bg-transparent' : ''"
+    :class="config.backgroundImage ? 'bg-transparent dark:bg-transparent' : ''"
+    :style="{backgroundImage: store.backgroundImage === '' ? '' : `url(${store.backgroundImage})`, backgroundSize: 'cover'}"
   >
     <link rel="stylesheet" :href="store.themeCss" :class="store.colors" />
     <div class="flex h-full w-full flex-col items-center justify-between">
