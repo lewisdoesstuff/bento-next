@@ -166,6 +166,7 @@ You're also able to set a custom background image in the config. You can either 
   theme: "bento",
 
   // Place a background image in ./src/assets/images/ and provide the file name.
+  // If running in docker, ensure that you have a bind mount for `./src/assets/images:/src/src/assets/images`
   // Alternatively, provide a URL to an image. If the page is served over https, you may have issues loading images from insecure origins.
   // Set to "" to disable.
   backgroundImage: "", 
