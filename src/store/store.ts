@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { OpenWeatherMap } from '../types/openWeatherMap';
-import { getWeather } from '../scripts/weather';
+import { getIcon, getWeather } from '../scripts/weather';
 import { config } from '../../config';
 import { useDark } from '@vueuse/core';
 
@@ -25,9 +25,10 @@ const getImageBackgroundUrl = () => {
 };
 
 const initialState = {
-  weather: getWeather() as Promise<OpenWeatherMap | null>,
+  weather: null as OpenWeatherMap | null,
+  weatherLoading: false,
   weatherIcon: new URL(`../assets/icons/weather/${config.weatherIcons}/unknown.png`, import.meta.url).href as string,
-  theme: getDefaultTheme() as "light" | "dark",
+  theme: getDefaultTheme() as 'light' | 'dark',
   colors: getDefaultColors(),
   backgroundImage: getImageBackgroundUrl(),
   themeCss: new URL(`./src/assets/css/themes/${getDefaultColors()}.css`, import.meta.url).href,
@@ -35,5 +36,17 @@ const initialState = {
 
 export const useConfigStore = defineStore('config', {
   state: () => initialState,
-  actions: {},
+  actions: {
+    /** Fetch the current weather and its icon. */
+    async loadWeather() {
+      if (this.weatherLoading) return;
+      this.weatherLoading = true;
+      try {
+        this.weather = await getWeather();
+        this.weatherIcon = await getIcon();
+      } finally {
+        this.weatherLoading = false;
+      }
+    },
+  },
 });

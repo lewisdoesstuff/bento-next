@@ -31,9 +31,11 @@
     - [:clock5: Clock](#clock5-clock)
     - [:art: Themes](#art-themes)
     - [🗚 Fonts](#-fonts)
+    - [🗚 Icons](#-icons)
     - [:mag: Search Bar](#mag-search-bar)
     - [:wave: Greetings](#wave-greetings)
     - [:triangular\_ruler: Layouts](#triangular_ruler-layouts)
+    - [:rocket: Launch animation](#rocket-launch-animation)
     - [:cloud\_with\_rain: Weather](#cloud_with_rain-weather)
       - [Setting the OpenWeatherMap API key](#setting-the-openweathermap-api-key)
     - [:moon: Auto change theme](#moon-auto-change-theme)
@@ -56,9 +58,10 @@
 - **Local storage**: Using someone else's instance? Change the theme and name for you and you only with the theme menu, or by clicking the name text.
 - **Easy configuration**: with the included `config.ts` file.
 - **Dark/Light**: toggleable through your browser or [automatically](#moon-auto-change-theme).
-- **Layouts**: adjust the layout of Bento to fit your needs and workflow.
+- **Layouts**: four layouts: `bento`, `lists`, `buttons`, and `editorial`, to fit your needs and workflow.
+- **Launch animation**: clicking a button tile plays a short launch animation before opening its link.
 - **Clock and Date**: 24/12 hour, with an optional animated separator.
-- **Icons**: Bento-next supports a huge array of icons from [FontAwesome](https://fontawesome.com).
+- **Icons**: [FontAwesome](https://fontawesome.com) icons, imported on demand — the ones your config uses are generated automatically, so unused icons aren't bundled.
 
 ## :rocket: Usage
 
@@ -71,13 +74,15 @@ You can run Bento in a Docker Container, either with `docker run`, or with the i
 #### docker run
 
  1. Clone this repo to pull the config.ts file: `git clone https://github.com/lewisdoesstuff/bento-next/`
- 2. Run the following `docker` command, providing the path to the config.js file, changing port mappings if needed.
- 3. `# docker run -it -d -p 80:8080 -v <config.ts location>:/usr/share/nginx/html/config.ts lewisdoesstuff/bento-next`
+ 2. Run the following `docker` command, providing the path to your `config.ts` (and `.env` file, for the weather key), changing port mappings if needed.
+ 3. `# docker run -it -d -p 80:8080 -v <config.ts location>:/src/config.ts -v <.env location>:/src/.env lewisdoesstuff/bento-next`
+
+The container rebuilds the app on startup, reading `config.ts` and `.env` from `/src`, so changes to either take effect on the next start.
 
 #### docker-compose
 
   1. Clone this repo with `git clone https://github.com/lewisdoesstuff/bento-next/`
-  2. Edit port mappings, and provide a path to the config.js file in `docker-compose.yml`
+  2. Edit port mappings, and set the paths to your `config.ts` and `.env` files in `docker-compose.yml`
   3. `cd` into the cloned repo, then run `# docker-compose -d up` to start.
 
 ### :cloud: On GitHub Pages
@@ -125,13 +130,14 @@ All settings can be managed in the `config.ts` file:
 
 ### :hammer_and_wrench: General
 
-Change the default name (displayed to all users), choose if links open in a new tab, and change the window title.
+Change the default name (displayed to all users), choose if links open in a new tab, change the window title, and toggle the tile launch animation.
 
 ```js
   // General
   name: "John",
   openInNewTab: true,
   title: "Bento",
+  launchAnimation: true, // animate a button tile opening (only when openInNewTab is true)
 ```
 
 ### :clock5: Clock
@@ -227,14 +233,28 @@ Edit the displayed greetings for morning, afternoon, evening, and night.
 
 ### :triangular_ruler: Layouts
 
-Bento has three different layouts `bento`, `lists`, and `buttons`. `Bento` is a split with buttons on the left and lists on the right. `Lists` swaps the buttons out for another list container, and `buttons` does the same with buttons.
+Bento has four layouts:
+
+- **`editorial`** (default): a left-aligned hero (clock, date, greeting and weather) above a full-width search and a single unified grid: six icon tiles over three list panels.
+- **`bento`**: buttons on the left, lists on the right.
+- **`lists`**: the buttons are replaced by a second list container.
+- **`buttons`**: the lists are replaced by a second button grid.
 
 ```js
   // Layout
-  bentoLayout: 'bento', // 'bento', 'lists', 'buttons'
+  layout: 'editorial', // 'editorial', 'bento', 'lists', 'buttons'
 ```
 
+`editorial` can show up to three lists from the first list group; `bento` shows the first two of that group, and `lists` shows both groups.
+
 If you want to customize all your extra buttons and lists go to [:card_file_box: Buttons & Lists](#card_file_box-buttons--lists)
+
+### :rocket: Launch animation
+
+Clicking a button tile plays a short "launch" animation.  
+Requires `openInNewTab` to be set to `true`.  
+
+Set `launchAnimation: false` to skip the animation and open the link immediately.
 
 ### :cloud_with_rain: Weather
 
@@ -336,6 +356,8 @@ Every entry in the buttons or lists containers are editable through here! A brea
       }
     ]
 ```
+
+The first list group takes up to three lists; the `editorial` layout shows all three, while `bento` uses the first two.
 
 ### :stop_sign: Disabling components
 

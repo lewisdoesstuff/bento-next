@@ -1,22 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { useClock } from '../scripts/useClock';
 
-onMounted(() => {
-  displayDate();
-});
-
-const mm = ref('');
-const dd = ref('');
-
-const displayDate = () => {
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-  const date = new Date();
-  mm.value = `${monthNames[date.getMonth()]} `;
-  dd.value = date.getDate().toString();
-};
+const { month, day } = useClock();
 </script>
 
 <template>
-  <p class="display-text text-center font-bold text-foreground dark:text-darkforeground">{{ mm }} {{ dd }}</p>
+  <p class="display-text text-center font-bold text-foreground dark:text-darkforeground">{{ month }} {{ day }}</p>
 </template>

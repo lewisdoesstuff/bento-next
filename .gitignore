@@ -2,6 +2,9 @@
 node_modules/
 /dist/
 
+# generated from config.ts at dev/build time
+src/icons.generated.ts
+
 # local env files
 .env.local
 .env.*.local
