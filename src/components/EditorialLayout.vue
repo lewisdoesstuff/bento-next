@@ -40,7 +40,7 @@ onMounted(() => {
         <ThemeButton v-if="config.componentsEnabled.themeButton" />
       </header>
 
-      <section class="mt-10 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+      <section class="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
         <h1
           v-if="config.componentsEnabled.clock"
           class="p-rise flex items-end font-sans text-[clamp(4rem,12vw,10rem)] font-bold tabular-nums leading-none"
@@ -54,7 +54,7 @@ onMounted(() => {
           </span>
         </h1>
 
-        <div class="flex flex-col gap-1.5 lg:items-end lg:pb-3">
+        <div class="flex flex-col gap-1.5 lg:items-end">
           <p
             v-if="config.componentsEnabled.date"
             class="p-rise text-[clamp(2.5rem,4.5vw,4.5rem)] font-bold leading-none"
