@@ -14,6 +14,7 @@ export const config: Config = {
   name: 'John',
   openInNewTab: true,
   title: 'Bento',
+  launchAnimation: true, // animate a button tile opening (only when openInNewTab is true)
 
   // Clock
   twelveHourFormat: false,
@@ -62,7 +63,7 @@ export const config: Config = {
   greetingNight: 'Sweet dreams,',
 
   // Layout
-  layout: 'bento', // 'bento', 'lists', 'buttons'
+  layout: 'editorial', // 'editorial', 'bento', 'lists', 'buttons'
 
   // Weather
   weatherKey: import.meta.env.VITE_API_KEY, // Set your OpenWeatherMap key in .env - Move the included .env.example to .env
@@ -213,6 +214,27 @@ export const config: Config = {
           {
             name: 'Slack',
             url: 'https://www.slack.com',
+          },
+        ],
+      },
+      {
+        icon: 'newspaper',
+        links: [
+          {
+            name: 'Hacker News',
+            url: 'https://news.ycombinator.com/',
+          },
+          {
+            name: 'Lobsters',
+            url: 'https://lobste.rs/',
+          },
+          {
+            name: 'Ars Technica',
+            url: 'https://arstechnica.com/',
+          },
+          {
+            name: 'The Verge',
+            url: 'https://www.theverge.com/',
           },
         ],
       },

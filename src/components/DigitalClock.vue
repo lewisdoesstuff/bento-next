@@ -1,27 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
 import { config } from '../../config';
+import { useClock } from '../scripts/useClock';
 
-onMounted(() => {
-  displayClock();
-});
-
-const hours = ref('00');
-const min = ref('00');
-const ampm = ref('am');
-
-const displayClock = () => {
-  const date = new Date();
-
-  ampm.value = date.getHours() >= 12 ? 'pm' : 'am';
-
-  // Get the hours, providing the 12-hour format if set.
-  hours.value = config.twelveHourFormat ? (date.getHours() % 12).toString() : date.getHours().toString();
-  // Get the minutes, adding a leading zero if needed.
-  min.value = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes().toString();
-};
-
-setInterval(() => displayClock(), 1000);
+const { hours, minutes, ampm } = useClock();
 </script>
 
 <template>
@@ -31,7 +12,7 @@ setInterval(() => displayClock(), 1000);
       {{ ':' }}
     </div>
     <div class="display-text font-sans font-bold text-foreground dark:text-darkforeground">
-      {{ min }}
+      {{ minutes }}
     </div>
     <div
       v-if="config.twelveHourFormat"
