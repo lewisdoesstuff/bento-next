@@ -4,7 +4,7 @@
  * Left-aligned hero, a full-width search, and one unified labelled grid: six icon
  * tiles over list panels. Composes the shared composables and tile.
  */
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { config } from '../../config';
 import { useConfigStore } from '../store/store';
 import { useClock } from '../scripts/useClock';
@@ -28,13 +28,43 @@ const buttons = config.buttons[0];
 const lists = config.lists[0].filter((list): list is List => Boolean(list));
 
 const searchBox = ref<HTMLInputElement | null>(null);
-onMounted(() => {
+const clockRef = ref<HTMLElement | null>(null);
+const dateRef = ref<HTMLElement | null>(null);
+const detailsRef = ref<HTMLElement | null>(null);
+
+/** Distance from an element's box top to the top of its rendered glyphs. */
+const glyphTop = (el: HTMLElement) => {
+  const cs = getComputedStyle(el);
+  const ctx = document.createElement('canvas').getContext('2d');
+  if (!ctx) return 0;
+  ctx.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  const metrics = ctx.measureText(el.textContent?.trim() ?? '');
+  const size = parseFloat(cs.fontSize);
+  const lineHeight = cs.lineHeight === 'normal' ? size * 1.2 : parseFloat(cs.lineHeight);
+  const halfLeading = (lineHeight - (metrics.fontBoundingBoxAscent + metrics.fontBoundingBoxDescent)) / 2;
+  return halfLeading + metrics.fontBoundingBoxAscent - metrics.actualBoundingBoxAscent;
+};
+
+/** Align the date's cap top with the clock's — they use leading-none at different sizes/fonts. */
+const alignDate = () => {
+  const clock = clockRef.value;
+  const date = dateRef.value;
+  const details = detailsRef.value;
+  if (!clock || !date || !details) return;
+  details.style.marginTop = window.innerWidth >= 1024 ? `${Math.round(glyphTop(clock) - glyphTop(date))}px` : '';
+};
+
+onMounted(async () => {
   if (config.autoFocusBar && searchBox.value) searchBox.value.focus();
+  await document.fonts.ready;
+  alignDate();
+  window.addEventListener('resize', alignDate);
 });
+onBeforeUnmount(() => window.removeEventListener('resize', alignDate));
 </script>
 
 <template>
-  <div class="min-h-screen w-full text-foreground dark:text-darkforeground">
+  <div class="editorial min-h-screen w-full text-foreground dark:text-darkforeground">
     <div class="mx-auto max-w-[1500px] px-6 py-7 xl:px-10">
       <header class="p-fade flex items-center justify-end">
         <ThemeButton v-if="config.componentsEnabled.themeButton" />
@@ -43,7 +73,8 @@ onMounted(() => {
       <section class="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
         <h1
           v-if="config.componentsEnabled.clock"
-          class="p-rise flex items-end font-sans text-[clamp(4rem,12vw,10rem)] font-bold tabular-nums leading-none"
+          ref="clockRef"
+          class="hero-clock p-rise flex items-end font-sans font-bold tabular-nums leading-none"
           style="--d: 40ms"
         >
           <span>{{ hours }}</span>
@@ -54,10 +85,11 @@ onMounted(() => {
           </span>
         </h1>
 
-        <div class="flex flex-col gap-1.5 lg:items-end">
+        <div ref="detailsRef" class="hero-details flex flex-col gap-1.5 lg:items-end">
           <p
             v-if="config.componentsEnabled.date"
-            class="p-rise text-[clamp(2.5rem,4.5vw,4.5rem)] font-bold leading-none"
+            ref="dateRef"
+            class="hero-date p-rise font-bold leading-none"
             style="--d: 120ms"
           >
             {{ month }} {{ day }}
@@ -137,6 +169,19 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.editorial {
+  --clock-size: clamp(4rem, 12vw, 10rem);
+  --date-size: clamp(2.5rem, 4.5vw, 4.5rem);
+}
+
+.hero-clock {
+  font-size: var(--clock-size);
+}
+
+.hero-date {
+  font-size: var(--date-size);
+}
+
 @keyframes p-rise {
   from {
     opacity: 0;
