@@ -9,7 +9,7 @@ const { weather, description } = useWeather();
 <template>
   <div class="flex items-center justify-center">
     <img class="h-10 w-10" :src="store.weatherIcon" />
-    <p class="ml-4 font-sans text-3xl font-bold text-foreground dark:text-darkforeground">{{ weather?.main.temp }}°</p>
-    <p class="ml-4 font-sans text-xl text-foreground dark:text-darkforeground">{{ description || 'Unknown' }}</p>
+    <p class="ml-4 text-3xl font-bold text-foreground dark:text-darkforeground">{{ weather?.main.temp }}°</p>
+    <p class="ml-4 text-xl text-foreground dark:text-darkforeground">{{ description || 'Unknown' }}</p>
   </div>
 </template>

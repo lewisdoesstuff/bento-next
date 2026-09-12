@@ -14,6 +14,7 @@ import { useEditableName } from '../scripts/useEditableName';
 import { prefixedIcon } from '../scripts/iconPrefix';
 import ThemeButton from './ThemeButton.vue';
 import LaunchTile from './LaunchTile.vue';
+import ClockSeparator from './ClockSeparator.vue';
 import contenteditable from 'vue-contenteditable';
 import type { List } from '../types/config';
 
@@ -74,12 +75,14 @@ onBeforeUnmount(() => window.removeEventListener('resize', alignDate));
         <h1
           v-if="config.componentsEnabled.clock"
           ref="clockRef"
-          class="hero-clock p-rise flex items-end font-sans font-bold tabular-nums leading-none"
+          class="hero-clock p-rise flex items-end font-bold leading-none"
           style="--d: 40ms"
+          role="timer"
+          :aria-label="`${hours}:${minutes}${config.twelveHourFormat ? ' ' + ampm : ''}`"
         >
-          <span>{{ hours }}</span>
-          <span class="opacity-30" :class="config.flashSeparator ? 'blink' : ''">{{ ':' }}</span>
-          <span>{{ minutes }}</span>
+          <span class="tracking-[-0.04em]">{{ hours }}</span>
+          <ClockSeparator :blink="config.flashSeparator" class="mx-[0.06em] opacity-40" />
+          <span class="tracking-[-0.04em]">{{ minutes }}</span>
           <span v-if="config.twelveHourFormat" class="mb-2 ml-2 self-end text-[clamp(1.25rem,3.5vh,2.5rem)] lowercase">
             {{ ampm }}
           </span>

@@ -15,6 +15,17 @@ module.exports = {
 
     },
     extend: {
+      keyframes: {
+        "clock-blink": {
+          "0%": { opacity: "0.25" },
+          "25%": { opacity: "0.5" },
+          "50%": { opacity: "1" },
+          "100%": { opacity: "0.25" },
+        },
+      },
+      animation: {
+        "clock-blink": "clock-blink 1s cubic-bezier(0.05, 0.46, 0.92, 0.5) infinite",
+      },
       fontFamily: {
         sans: ["Helvetica Neue", "Ubuntu Sans", ...defaultTheme.fontFamily.sans],
       },
