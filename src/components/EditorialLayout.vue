@@ -129,3 +129,61 @@ onMounted(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+@keyframes p-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes p-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes p-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Entrance choreography. `backwards` rather than `both` so the finished animation
+   doesn't pin the element's transform and block the tile hover lift. */
+.p-rise {
+  animation: p-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+.p-pop {
+  animation: p-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+.p-fade {
+  animation: p-fade 0.6s ease backwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .p-rise,
+  .p-pop,
+  .p-fade {
+    animation: none;
+  }
+}
+</style>
