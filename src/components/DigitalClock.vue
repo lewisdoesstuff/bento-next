@@ -25,15 +25,18 @@ setInterval(() => displayClock(), 1000);
 </script>
 
 <template>
-  <div class="flex flex-row justify-center w-full">
-    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground">{{ hours }}</div>
-    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground" :class="config.flashSeparator ? 'pulse' : ''">
+  <div class="flex w-full flex-row items-end justify-center">
+    <div class="display-text font-sans font-bold text-foreground dark:text-darkforeground">{{ hours }}</div>
+    <div class="display-text font-sans font-bold text-foreground dark:text-darkforeground" :class="config.flashSeparator ? 'blink' : ''">
       {{ ':' }}
     </div>
-    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground">
+    <div class="display-text font-sans font-bold text-foreground dark:text-darkforeground">
       {{ min }}
     </div>
-    <div class="font-sans text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground" v-if="config.twelveHourFormat">
+    <div
+      v-if="config.twelveHourFormat"
+      class="mb-2 self-end font-sans text-[clamp(1.25rem,3.5vh,2.5rem)] font-bold lowercase text-foreground dark:text-darkforeground"
+    >
       {{ ampm }}
     </div>
   </div>

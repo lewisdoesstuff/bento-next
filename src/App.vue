@@ -31,31 +31,23 @@ onBeforeMount(() => {
 <template>
   <div
     id="app"
-    class="h-screen w-screen bg-background dark:bg-darkbackground"
+    class="h-screen w-full bg-background dark:bg-darkbackground"
     :class="config.backgroundImage ? 'bg-transparent dark:bg-transparent' : ''"
-    :style="{backgroundImage: store.backgroundImage === '' ? '' : `url(${store.backgroundImage})`, backgroundSize: 'cover'}"
+    :style="{ backgroundImage: store.backgroundImage === '' ? '' : `url(${store.backgroundImage})`, backgroundSize: 'cover' }"
   >
     <link rel="stylesheet" :href="store.themeCss" :class="store.colors" />
     <div class="flex h-full w-full flex-col items-center justify-between">
-      <div class="flex w-full flex-row">
-        <div class="w-1/3"></div>
-        <SearchBar v-if="config.componentsEnabled.searchBar" class="w-1/3 pt-4" />
-        <ThemeButton :class="config.componentsEnabled.themeButton ? '' : 'hidden'" class="ml-auto mr-2" />
+      <div class="grid w-full grid-cols-[1fr_minmax(0,36rem)_1fr] items-center gap-4 px-2 pt-6">
+        <SearchBar v-if="config.componentsEnabled.searchBar" class="col-start-2" />
+        <ThemeButton v-if="config.componentsEnabled.themeButton" class="col-start-3 justify-self-end" />
       </div>
-      <div class="flex h-2/5 w-full flex-row items-center">
-        <div class="w-full xl:w-1/2">
-          <DigitalClock v-if="config.componentsEnabled.clock" />
-          <Greeter v-if="config.componentsEnabled.greeter" class="hidden pt-2 xl:flex" />
-          <Suspense>
-            <CurrentWeather v-if="config.componentsEnabled.weather" class="flex pt-4 xl:hidden" />
-          </Suspense>
-        </div>
-        <div class="hidden w-1/2 xl:inline">
-          <CurrentDate v-if="config.componentsEnabled.date" />
-          <Suspense>
-            <CurrentWeather v-if="config.componentsEnabled.weather" class="pt-4" />
-          </Suspense>
-        </div>
+      <div class="grid h-2/5 w-full grid-cols-1 place-items-center content-center gap-2 xl:grid-cols-2 xl:gap-y-4">
+        <DigitalClock v-if="config.componentsEnabled.clock" class="xl:col-start-1 xl:row-start-1" />
+        <CurrentDate v-if="config.componentsEnabled.date" class="hidden xl:col-start-2 xl:row-start-1 xl:block" />
+        <Greeter v-if="config.componentsEnabled.greeter" class="hidden xl:col-start-1 xl:row-start-2 xl:flex" />
+        <Suspense>
+          <CurrentWeather v-if="config.componentsEnabled.weather" class="xl:col-start-2 xl:row-start-2" />
+        </Suspense>
       </div>
       <div class="mb-8 flex h-2/5 w-full flex-row justify-evenly px-[4%] md:mb-16 xl:justify-center xl:gap-16 xl:px-[7%]">
         <ButtonsContainer class="w-full" :class="{ hidden: config.layout === 'lists', 'md:w-1/2': config.layout === 'bento' }" />

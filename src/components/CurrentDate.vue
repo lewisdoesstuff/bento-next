@@ -18,5 +18,5 @@ const displayDate = () => {
 </script>
 
 <template>
-  <p class="text-[12vh] leading-none font-bold text-foreground dark:text-darkforeground text-center">{{ mm }} {{ dd }}</p>
+  <p class="display-text text-center font-bold text-foreground dark:text-darkforeground">{{ mm }} {{ dd }}</p>
 </template>

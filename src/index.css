@@ -9,3 +9,8 @@
 body {
   font-family: var(--custom-font);
 }
+
+.display-text {
+  font-size: clamp(3.25rem, 11vh, 8rem);
+  line-height: 1;
+}
