@@ -55,7 +55,13 @@ onMounted(() => {
         </h1>
 
         <div class="flex flex-col gap-1.5 lg:items-end lg:pb-3">
-          <p v-if="config.componentsEnabled.date" class="p-rise text-4xl font-bold" style="--d: 120ms">{{ month }} {{ day }}</p>
+          <p
+            v-if="config.componentsEnabled.date"
+            class="p-rise text-[clamp(2.5rem,4.5vw,4.5rem)] font-bold leading-none"
+            style="--d: 120ms"
+          >
+            {{ month }} {{ day }}
+          </p>
           <p v-if="config.componentsEnabled.greeter" class="p-rise text-base text-sforeground dark:text-darksforeground" style="--d: 160ms">
             {{ greeting
             }}<contenteditable
