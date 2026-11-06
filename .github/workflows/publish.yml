@@ -10,6 +10,10 @@ on:
     branches: 
      - master
      - main
+  # Weekly rebuild so base-image (node:lts-alpine) security fixes ship without a code change.
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
 
 jobs:
   push_to_registry:
@@ -17,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
